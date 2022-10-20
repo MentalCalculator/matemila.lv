@@ -1,0 +1,958 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
+
+* {
+    box-sizing: border-box;
+}
+
+:root{
+    --dark_purple: #6a2c70;
+    --dark_purple2: #471e4b;
+    --light_purple: #8d3a95;
+    --rose: #fd7aa3;
+    --rose_2: #FEACC6;
+ 
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom right, var(--dark_purple2), var(--dark_purple), var(--light_purple)); 
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--dark_purple); 
+  }
+
+body{
+    font-family: Josefin Sans;
+    margin: 0;
+    padding: 0;
+    max-width: 2560px;
+    margin: auto;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: var(--dark_purple2);
+    background-image: linear-gradient(to bottom right, var(--dark_purple2), var(--dark_purple), var(--light_purple));
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    /*max-width: 2560px;
+    margin: auto;*/
+}
+
+.logo {
+    float: left;
+    width: 170px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+nav .navbar{
+    height: 100%;
+    max-width: 1600px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+nav .navbar .nav-links .links{
+    display: flex;
+}
+
+nav .navbar .nav-links .links li{
+    position: relative;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0 10px;
+}
+
+nav .navbar .nav-links .links li a, .drop{
+    color: var(--rose_2);
+    font-size: 21px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.8s;
+}
+
+nav .navbar .nav-links .links li.social-networks a{
+    font-size: 36px;
+    padding: 2px;
+}
+
+nav .navbar .nav-links .links li a:hover, .drop:hover{
+    color: yellow;
+}
+
+nav .navbar .nav-links .links li .arrow{
+    font-size: 30px;
+    color: var(--rose_2);
+    transition: all 0.5s ease;
+}
+
+nav .navbar .nav-links .links li:hover .first-arrow,
+nav .navbar .nav-links .links li:hover .second-arrow,
+nav .navbar .nav-links .links li:hover .third-arrow {
+    transform: rotate(180deg);
+}
+
+nav .navbar .nav-links .links .sub-menu {
+    position: absolute;
+    top: 40px;
+    background-color: var(--dark_purple);
+    border-radius: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    display: none;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+}
+
+nav .navbar .nav-links .links li:hover > .first-sub-menu,
+nav .navbar .nav-links .links li:hover > .second-sub-menu,
+nav .navbar .nav-links .links li:hover > .third-sub-menu {
+    display: block;
+}
+
+nav .navbar .nav-links .links .sub-menu li {
+    padding-top: 10px;
+}
+
+nav .navbar .login-button {
+    background-color: var(--rose);
+    padding: 10px 20px;
+    border: 2px solid var(--rose_2);
+    border-radius: 20px;
+    transition: all 0.5s;
+}
+
+nav .navbar .login-button:hover {
+    background-color: skyblue;
+    border: 2px solid slategray;
+}
+
+nav .navbar .hamburger-icon {
+    display: none;
+}
+
+nav .navbar .hamburger-icon i{
+    font-size: 40px;
+    color: var(--rose_2);
+} 
+
+/* Galvenā lapa / The Main Page */
+
+.indexImage {
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin-top: 95px;
+    border-radius: 30px;
+    width: 90%; 
+    height: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(../Images/IndexBackground1.png);
+    background-size: cover;
+    background-position: bottom;
+    position: relative;
+}
+
+.indexImage .indexImageLayer {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.indexImage .textOnImage1 {
+    margin-top: 32px;
+    margin-left: 32px;
+    width: 75%;
+}
+
+.indexImage p {
+    margin-bottom: 25px;
+}
+
+.indexImage .textOnImage1 .textOnImage1_1 {
+    color: white;
+    font-size: 40px;
+}
+
+.indexImage .textOnImage1 .textOnImage1_2 {
+    color: white;
+    font-size: 55px;
+    margin-top: 10px;
+}
+
+.indexImage .textOnImage1 .textOnImage1_3 {
+    color: white;
+    font-size: 70px;
+    margin-top: 10px;
+}
+
+.indexImage .textOnImage1 .textOnImage1_3 .matemila {
+    color: var(--rose_2);
+    font-size: 100px;
+}
+
+.newsSection {
+    margin-top: 20px;
+    height: auto;
+    padding: 20px;
+}
+
+.newsSection h2{
+    font-size: 80px;
+    text-align: center;
+    margin-top: 10px;
+    color: var(--dark_purple2);
+}
+
+.newsSection .newsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.newsSection .newsContainer .newsBox{
+    background-color: var(--dark_purple);
+    background-image: linear-gradient(to bottom right, var(--dark_purple2), var(--dark_purple), var(--light_purple));
+    box-shadow: 10px 10px 5px #aaaaaa;
+    height: auto;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 32px;
+}
+
+.newsSection .newsContainer .newsBox .newsBox_half1{
+    padding: 10px;
+    width: 40%;
+}
+
+.newsSection .newsContainer .newsBox .newsBox_half1 .newsBoxImage{
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 2px 6px 18px #000000;
+}
+
+.newsSection .newsContainer .newsBox .newsBox_half2{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    width: 60%;
+}
+
+.newsSection .newsContainer .newsBox .newsBox_half2 h3{
+    color: var(--rose_2);
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.newsSection .newsContainer .newsBox .newsBox_half2 .newsBoxText{
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.newsSection .newsContainer .newsBox .newsBox_half2 .newsBoxDate{
+    color: var(--rose);
+    font-size: 18px;
+    margin-top: -20px;
+}
+
+.newsSection .newsContainer .newsBox .newsBox_half2 .newsBoxButton{
+    border: 2px solid white;
+    padding: 4px;
+    background-color: var(--rose_2);
+    border-radius: 12px;
+    color: var(--dark_purple2);
+    text-decoration: none;
+    box-shadow: 1px 4px 18px #000000;
+}
+
+.aboutUs {
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    border-radius: 50px;
+    background-image: linear-gradient(to bottom right, var(--rose_2), var(--light_purple), var(--dark_purple));
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.aboutUs h2{
+    font-size: 80px;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--rose_2);
+}
+
+.aboutUs .aboutUsBox{
+    background-image: linear-gradient(to bottom right, var(--rose_2), var(--rose), violet);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    border-radius: 40px;
+}
+
+.aboutUs .aboutUsBox .aboutUsBoxIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    width: 10%;
+    padding: 20px;
+}
+
+.aboutUs .aboutUsBox .aboutUsBoxIcon i{
+    font-size: 90px;
+    color: var(--dark_purple2);
+}
+
+.aboutUs .aboutUsBox p{
+    font-size: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: var(--dark_purple2);
+}
+
+.aboutUs .aboutUsBox li{
+    color: var(--dark_purple2);
+}
+
+footer {
+    margin-top: 40px;
+    border: 2px solid purple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom right, var(--dark_purple2), var(--dark_purple), var(--light_purple));
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+footer .footerBox{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+footer .leftFooterContent .footerText1{
+    font-size: 20px;
+    color: var(--rose);
+}
+
+footer .rightFooterContent{
+    line-height: 0.6;
+}
+
+footer .rightFooterContent .rightFooterLabel {
+    font-size: 30px;
+    color: var(--rose_2)
+}
+
+footer .rightFooterContent .rightFooterField {
+    font-size: 24px;
+    color: blanchedalmond;
+}
+
+footer .rightFooterContent .rightFooterField a{
+    color: blanchedalmond;
+    text-decoration: none;
+    margin-left: 16px;
+    transition: 0.8s color;
+}
+
+footer .rightFooterContent .rightFooterField a:hover{
+    color: yellow;
+}
+
+/* Priekš dažādām lapām / For various pages */
+
+.purplePageHeader{
+    margin-top: 100px;
+    background-image: linear-gradient(to bottom right, var(--dark_purple2), var(--dark_purple), var(--rose_2));
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 4px 18px #000000;
+}
+
+.purplePageHeader .headerIcon{
+    height: 150px;
+    margin: 0 10px 0 10px;
+}
+
+.purplePageHeader h1{
+    font-size: 64px;
+    color: var(--rose_2);
+    text-align: center;
+    margin: 0 10px 0 10px;
+}
+
+/* Ātrrēķināšanas treniņu lauku lapa / Mental Math Training Discilpines Page */
+
+.numbersModeBar{
+    margin-top: 40px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: linear-gradient(to top left, var(--dark_purple2), var(--dark_purple), var(--rose_2));
+    border-radius: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.numbersModeBar .numbersModeText{
+    font-size: 54px;
+    color: white;
+    padding: 10px;
+}
+
+.numbersModeBar ul{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.numbersModeBar ul li{
+    list-style: none;
+    margin: 5px 20px 5px 20px;
+    color: var(--rose_2);
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 0px;
+    list-style-position: inside;
+    padding: 6px;
+    transition: background-image 0.5s ease-in-out, color 0.5s;
+}
+
+.numbersModeBar ul li.active{
+    background-image: linear-gradient(to top left, var(--rose), var(--rose_2));
+    padding: 6px;
+    border-radius: 12px;
+    color: var(--dark_purple2);
+}
+
+.discilpinesList{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 32px;
+    border: 2px solid var(--rose);
+    padding-bottom: 30px;
+}
+
+.discilpinesList.hide{
+    display: none;
+}
+
+.discilpinesList h2{
+    font-size: 40px;
+    color: var(--dark_purple2);
+    text-align: center;
+}
+
+.discilpinesList .discilpine{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.discilpinesList .discilpine .discilpineModes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.discilpinesList .discilpine h3{
+    font-size: 24px;
+    color: var(--light_purple)
+}
+
+.discilpinesList .discilpine h3 i{
+    border: 2px solid var(--dark_purple);
+    padding: 3px;
+    font-size: 32px;
+    border-radius: 50%;
+}
+
+.discilpinesList .discilpine .discilpineModes a{
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: var(--dark_purple);
+    text-decoration: none;
+    font-size: 22px;
+    border: 2px solid var(--dark_purple);
+    border-radius: 32px;
+    padding: 6px;
+}
+
+/*.discilpinesList#discilpinesList2, .discilpinesList#discilpinesList3{
+    display: none;
+}*/
+
+/* Ātrrēķināšanas instrukcijas lapa / Mental Math Instruction Page */
+
+.instructionSection{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.instructionSection .instructionQuestion{
+    background-image: linear-gradient(to bottom right, var(--dark_purple2), var(--dark_purple), var(--light_purple));
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    height: 50px;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 12px;
+    box-shadow: 1px 4px 18px #000000;
+    cursor: pointer;
+}
+
+.instructionSection .instructionQuestion p{
+    font-size: 32px;
+    color: var(--rose_2);
+}
+
+.instructionSection .instructionQuestion .bx-chevron-down,
+.instructionSection .instructionQuestion .bx-chevron-up{
+    font-size: 48px;
+    color: var(--rose_2);
+    
+}
+
+.instructionSection .instructionQuestion .bx-chevron-down{
+    display: block;
+    rotate: 0deg;
+    transition: rotate 0.2s;
+}
+
+
+.instructionSection .instructionQuestion .instructionQuestionNumber{
+    background-color: var(--rose_2);
+    color: var(--dark_purple2);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.instructionSection .instructionAnswer{
+    background-image: linear-gradient(to bottom right, var(--rose_2), var(--rose), darksalmon);
+    padding: 0 12px;
+    border-radius: 30px;
+    box-shadow: 1px 4px 18px #000000;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+
+.instructionSection p{
+    font-size: 18px;
+}
+
+
+/*****/
+/*****/
+/* Mobilajām ierīcēm / for mobile devices */
+/*****/
+/*****/
+
+@media (max-width: 1199px){
+    nav .navbar{
+        max-width: 100%;
+        padding: 0 2px;
+    }
+
+    nav .navbar .nav-links .links li{
+        padding: 0 7px;
+    }
+
+    nav .navbar .nav-links .links li a, .drop{
+        font-size: 18px;
+    }
+
+    nav .navbar .nav-links .links li.social-networks a{
+        font-size: 24px;
+        letter-spacing: 3px;
+    }
+
+    nav .navbar .login-button {
+        padding: 5px 15px;
+    }
+    
+    nav .navbar .login-button a{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 990px){
+    nav .navbar .nav-links{
+        display: block;
+        position: fixed;
+        background-color: var(--dark_purple2);
+        top: 80px;
+        left: 100%;
+        width: 100%;
+        padding-bottom: 15px;
+        border-radius: 30px;
+        transition: all 0.5s ease;
+    }
+
+    nav .navbar .nav-links .links{
+        display: block;
+    }
+
+    nav .navbar .nav-links .links li{
+        padding-top: 20px;
+        display: block;
+    }
+
+    nav .navbar .nav-links .links li a, .drop{
+        font-size: 32px;
+    }
+
+    nav .navbar .nav-links .links li.social-networks a{
+        font-size: 40px;
+        padding-left: 12px;
+    }
+
+    nav .navbar .nav-links .links li.social-networks a:first-child{
+        padding-left: 0px;
+    }
+
+    nav .navbar .nav-links .links .sub-menu{
+        display: none;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    nav .navbar .nav-links .links .sub-menu li {
+        padding-top: 20px;
+    }
+
+    nav .navbar .nav-links .links li:hover > .first-sub-menu,
+    nav .navbar .nav-links .links li:hover > .second-sub-menu,
+    nav .navbar .nav-links .links li:hover > .third-sub-menu {
+        display: none;
+    }
+
+    nav .navbar .nav-links .links li .first-arrow,
+    nav .navbar .nav-links .links li .second-arrow,
+    nav .navbar .nav-links .links li .third-arrow {
+        font-size: 30px;
+    }
+
+    nav .navbar .nav-links .links li:hover .first-arrow,
+    nav .navbar .nav-links .links li:hover .second-arrow,
+    nav .navbar .nav-links .links li:hover .third-arrow {
+        transform: rotate(0deg);
+    }
+
+    nav .navbar .nav-links .links li .sub-menu.first-sub-menu.show,
+    nav .navbar .nav-links .links li .sub-menu.second-sub-menu.show,
+    nav .navbar .nav-links .links li .sub-menu.third-sub-menu.show{
+        display: block;
+        margin-top: 10px;
+        background-color: var(--dark_purple2);
+        box-shadow: none;
+        animation-name: sub-menu-fadein;
+        animation-duration: 0.7s;
+    }
+
+    nav .navbar .nav-links .links li .sub-menu.first-sub-menu.show li a,
+    nav .navbar .nav-links .links li .sub-menu.second-sub-menu.show li a,
+    nav .navbar .nav-links .links li .sub-menu.third-sub-menu.show li a{
+        color: #E78BB9;
+    }
+
+    @keyframes sub-menu-fadein{
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    nav .navbar .login-button{
+        display: block;
+        width: 160px;
+    }
+
+    nav .navbar .hamburger-icon{
+        display: block;
+        padding-right: 20px;
+    }
+
+    /* Galvenā lapa / The Main Page */
+
+    .indexImage{
+        background-position-x: right;
+        width: 100%;
+    }
+
+    .newsSection .newsContainer .newsBox{
+        width: 45%;
+        flex-direction: column;
+        padding: 5px 5px 10px 5px;
+    }
+
+    .newsSection .newsContainer .newsBox .newsBox_half1{
+        width: 100%;
+    }
+
+    .newsSection .newsContainer .newsBox .newsBox_half2{
+        margin-top: -15px;
+        width: 100%;
+    }
+
+    .newsSection .newsContainer .newsBox .newsBox_half2 h3{
+        text-align: center;
+        font-size: 31px;
+    }
+
+    .newsSection .newsContainer .newsBox .newsBox_half2 .newsBoxText{
+        line-height: 1.3;
+    }
+
+    .newsSection .newsContainer .newsBox .newsBox_half2 .newsBoxDate{
+        text-align: center;
+    }
+
+    .newsSection .newsContainer .newsBox .newsBox_half2 .newsBoxButton{
+        font-size: 22px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .aboutUs{
+        width: 100%;
+    }
+
+    .aboutUs .aboutUsBox{
+        flex-direction: column;
+    }
+
+    footer{
+        flex-direction: column;
+    }
+
+    footer .footerBox{
+        text-align: center;
+    }
+
+    /* Priekš vairākām lapām / For various pages */
+
+    .purplePageHeader .headerIcon{
+        height: 100px;
+    }
+    
+    .purplePageHeader h1{
+        font-size: 42px;
+    }
+
+    /* Ātrrēķināšanas treniņu lauku lapa / Mental Math Training Discilpines Page */
+
+    .numbersModeBar{
+        flex-direction: column;
+    }
+
+    .numbersModeBar .numbersModeText{
+        text-align: center;
+    }
+
+    .numbersModeBar ul{
+        align-items: center;
+    }
+
+    .numbersModeBar ul li{
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .discilpinesList .discilpine{
+        flex-direction: column;
+    }
+
+    .discilpinesList .discilpine h3{
+        text-align: center;
+    }
+
+    .discilpinesList .discilpine .discilpineModes{
+        text-align: center;
+    }
+
+    .discilpinesList .discilpine .discilpineModes a{
+        padding: 10px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+
+    /* Ātrrēķināšanas instrukcijas lapa / Mental Math Instruction Page */
+
+    .instructionSection .instructionQuestion p{
+        font-size: 24px;
+    }
+
+}
+
+@media (max-width: 540px){
+
+    body{
+        width: 125vw;
+    }
+
+    nav .navbar .nav-links .links li{
+        padding-top: 15px;
+        display: block;
+    }
+
+    nav .navbar .nav-links .links li a, .drop{
+        font-size: 24px;
+    }
+
+    nav .navbar .nav-links .links li .first-arrow,
+    nav .navbar .nav-links .links li .second-arrow,
+    nav .navbar .nav-links .links li .third-arrow {
+        font-size: 24px;
+    }
+
+    nav .navbar .nav-links .links .sub-menu li {
+        padding-top: 13.5px;
+    }
+
+    /* Galvenā lapa / The Main Page */
+
+    .indexImage {
+        height: 810px;
+        background-image: url(../Images/IndexBackground1_\,mobile.png);
+        background-size: scale-down;
+        /*background-position: center;*/
+    }
+
+    .indexImage .textOnImage1 .textOnImage1_1 {
+        font-size: 20px;
+    }
+    
+    .indexImage .textOnImage1 .textOnImage1_2 {
+        font-size: 35px;
+    }
+    
+    .indexImage .textOnImage1 .textOnImage1_3 {
+        font-size: 50px;
+    }
+    
+    .indexImage .textOnImage1 .textOnImage1_3 .matemila {
+        font-size: 60px;
+    }
+
+    .newsSection .newsContainer .newsBox{
+        width: 100%;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    .aboutUs{
+        width: 100%;
+    }
+    
+    .aboutUs h2{
+        font-size: 40px;
+    }
+
+    .aboutUs .aboutUsBox{
+        margin-left: -40px;
+        margin-right: -40px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .aboutUs .aboutUsBox p{
+        font-size: 20px;
+    }
+
+    /* Priekš vairākām lapām / For various pages */
+
+    .purplePageHeader .headerIcon{
+        height: 64px;
+    }
+    
+    .purplePageHeader h1{
+        font-size: 32px;
+    }
+
+    .instructionSection .instructionQuestion{
+        height: auto;
+    }
+
+    .instructionSection .instructionQuestion p{
+        font-size: 18px;
+    }
+
+    /* Ātrrēķināšanas treniņu lauku lapa / Mental Math Training Discilpines Page */
+
+    .numbersModeBar ul{
+        flex-direction: column;
+    }
+
+    .numbersModeBar ul li{
+        text-align: center;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+
+    .discilpinesList .discilpine .discilpineModes{
+        flex-wrap: wrap;
+    }
+    
+    .discilpinesList .discilpine .discilpineModes a{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 12px;
+    }
+
+}
