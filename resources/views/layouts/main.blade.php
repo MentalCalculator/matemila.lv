@@ -23,20 +23,20 @@
 
 <nav>
     <div class = "navbar">
-    <a href = "/"><img class = "logo" src = "..\Logo\Horizontal (without slogan)\Color logo - no background.png" alt = "Matemīla"></a>
+    <a href = "{{ route('mainPage') }}"><img class = "logo" src = "..\Logo\Horizontal (without slogan)\Color logo - no background.png" alt = "Matemīla"></a>
         <div class="nav-links">
             <ul class="links">
-                <li><a href = "/" class="link">Sākums</a></li>
+                <li><a href = "{{ route('mainPage') }}" class="link">Sākums</a></li>
                 <li class = "drop" id = "dropdown1">Ātrrēķināšana<i class='bx bxs-chevron-down arrow first-arrow' id="arrow1"></i>
                     <ul class = "sub-menu first-sub-menu" id = "subMenu1">
-                        <li><a href = "/mentalmath/news">Jaunumi</a></li>
-                        <li><a href = "/mentalmath/discilpines">Treniņu lauki</a></li>
-                        <li><a href = "/mentalmath/results">Treniņu rezultāti</a></li>
-                        <li><a href = "/mentalmath/instruction">Instrukcija</a></li>
+                        <li><a href = "{{ route('mentalMathNews') }}">Jaunumi</a></li>
+                        <li><a href = "{{ route('mentalMathDiscilpines') }}">Treniņu lauki</a></li>
+                        <li><a href = "{{ route('mentalMathResults') }}">Treniņu rezultāti</a></li>
+                        <li><a href = "{{ route('mentalMathInstruction') }}">Instrukcija</a></li>
                     </ul>
                 </li>
-                <li><a href = "/learning" class="link">E-skola</a></li>
-                <li><a href = "/forum" class="link">Forums</a></li>
+                <li><a href = "{{ route('eSchool') }}" class="link">E-skola</a></li>
+                <li><a href = "{{ route('forum') }}" class="link">Forums</a></li>
                 <li class = "drop" id = "dropdown2">Citi<i class='bx bxs-chevron-down arrow second-arrow' id="arrow2"></i>
                     <ul class = "sub-menu second-sub-menu" id = "subMenu2">
                         <li><a href = "#">Fakti</a></li>
@@ -57,7 +57,7 @@
                 </li>
                 <li>
                     <div class = "login-button">
-                    <a href = "#" style="color: var(--dark_purple2);"><i class='bx bx-key' ></i> Ieiet</a>
+                        <a href = "{{ route('login') }}" style="color: var(--dark_purple2);"><i class='bx bx-key' ></i> Ieiet</a>
                     </div>
                 </li>
             </ul>

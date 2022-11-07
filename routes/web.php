@@ -7,6 +7,7 @@ use App\Http\Controllers\LearningController;
 use App\Http\Controllers\ForumController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +19,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [MainController::class, 'index'])->name('mainPage');
 
-Route::get('/mentalmath/news', [MentalMathNewsController::class, 'seeNews']);
-Route::get('/mentalmath/instruction', [TrainingController::class, 'instruction']);
-Route::get('/mentalmath/results', [TrainingController::class, 'showResults']);
-Route::get('/mentalmath/discilpines', [TrainingController::class, 'showDiscilpines']);
+Route::get('/mentalmath/news', [MentalMathNewsController::class, 'seeNews'])->name('mentalMathNews');
+Route::get('/mentalmath/instruction', [TrainingController::class, 'instruction'])->name('mentalMathInstruction');
+Route::get('/mentalmath/results', [TrainingController::class, 'showResults'])->name('mentalMathResults');
+Route::get('/mentalmath/discilpines', [TrainingController::class, 'showDiscilpines'])->name('mentalMathDiscilpines');
 
-Route::get('/learning', [LearningController::class, 'seeTopics']);
+Route::get('/learning', [LearningController::class, 'seeTopics'])->name('eSchool');
 
-Route::get('/forum', [ForumController::class, 'seeCategories']);
+Route::get('/forum', [ForumController::class, 'seeCategories'])->name('forum');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
