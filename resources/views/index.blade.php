@@ -16,9 +16,10 @@
 </section>
 
 <section class = "newsSection">
-    <h2>Jaunumi</h2>
+    <h2 data-aos="zoom-in">Jaunumi</h2>
     <div class = "newsContainer">
-    <div class = "newsBox">
+    <div class = "newsBox" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom">
         <div class = "newsBox_half1">
             <img class = "newsBoxImage" src = "..\Images\example1.jpg" alt="Piemērs"></img>
         </div>
@@ -31,7 +32,7 @@
             <a class = "newsBoxButton" href = "#">Skatīt vairāk...</a>
         </div>
     </div>
-    <div class = "newsBox data-aos="fade-up"
+    <div class = "newsBox" data-aos="fade-up"
      data-aos-anchor-placement="top-bottom">
         <div class = "newsBox_half1">
             <img class = "newsBoxImage" src = "..\Images\example1.jpg" alt="Piemērs"></img>

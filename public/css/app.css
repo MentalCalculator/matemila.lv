@@ -10,7 +10,6 @@
     --light_purple: #8d3a95;
     --rose: #fd7aa3;
     --rose_2: #FEACC6;
- 
 }
 
 ::-webkit-scrollbar {
@@ -37,12 +36,15 @@ body{
     padding: 0;
     max-width: 2560px;
     margin: auto;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 200px;
 }
 
 nav{
     position: fixed;
     top: 0;
-    left: 0;
+    /*left: 0;*/
     width: 100%;
     height: 80px;
     background-color: var(--dark_purple2);
@@ -51,8 +53,9 @@ nav{
     border-bottom-right-radius: 40px;
     box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
     z-index: 9999;
-    /*max-width: 2560px;
-    margin: auto;*/
+    max-width: 2560px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .logo {
@@ -360,6 +363,9 @@ footer {
     background-image: linear-gradient(to bottom right, var(--dark_purple2), var(--dark_purple), var(--light_purple));
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 footer .footerBox{
@@ -426,6 +432,88 @@ footer .rightFooterContent .rightFooterField a:hover{
     margin: 0 10px 0 10px;
 }
 
+/* Ātrrēķināšanas jaunumu lapa / Mental Math News Page */
+
+.mentalMathNewsSection{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox{
+    display: flex;
+    padding: 12px;
+    background-image: linear-gradient(to bottom right, var(--rose), var(--rose_2), var(--light_purple));
+    border-radius: 32px;
+    box-shadow: 1px 4px 18px #000000;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox .mentalMathNewsImage{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide{
+    display: flex;
+    flex-direction: column;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide .generalInfo{
+    padding: 10px;
+    line-height: 1;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide .generalInfo h2{
+    font-size: 72px;
+    color: var(--dark_purple2);
+    font-weight: 500;
+    margin-top: 0px;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide .generalInfo p{
+    font-size: 20px;
+    font-style: oblique;
+    color: var(--light_purple);
+    margin-top: -50px;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide .newsText{
+    margin-top: -10px;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide .newsText p{
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide a{
+    padding-left: 10px;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox a{
+    text-decoration: none;
+    color: var(--rose_2);
+    font-size: 24px;
+    background-image: linear-gradient(to bottom right, var(--dark_purple2), var(--dark_purple));
+    width: 200px; 
+    margin-left: 10px;
+    border-radius: 28px;
+    box-shadow: 1px 4px 18px #000000;
+    transition: 0.3s all;
+}
+
+.mentalMathNewsSection .mentalMathNewsBox a:hover{
+    font-size: 28px;
+    color: yellow;
+    width: 250px;
+}
+
+
 /* Ātrrēķināšanas treniņu lauku lapa / Mental Math Training Discilpines Page */
 
 .numbersModeBar{
@@ -461,6 +549,10 @@ footer .rightFooterContent .rightFooterField a:hover{
     list-style-position: inside;
     padding: 6px;
     transition: background-image 0.5s ease-in-out, color 0.5s;
+}
+
+.numbersModeBar ul li:hover{
+    color: yellow;
 }
 
 .numbersModeBar ul li.active{
@@ -529,9 +621,166 @@ footer .rightFooterContent .rightFooterField a:hover{
     padding: 6px;
 }
 
-/*.discilpinesList#discilpinesList2, .discilpinesList#discilpinesList3{
+/* Ātrrēķināšanas treniņu rezultātu lapa / Mental Math Training Results Page */
+
+.trainingResultsForm{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border-radius: 32px;
+    background-image: linear-gradient(to top left, var(--dark_purple), var(--light_purple), var(--rose_2));
+    padding: 10px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.trainingResultsForm h2{
+    font-size: 40px;
+    color: var(--rose_2);
+    text-align: center;
+}
+
+.trainingResultsForm form{
+    display: flex;
+    flex-direction: column;
+}
+
+.trainingResultsForm form .trainingResFormFields{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trainingResultsForm form .trainingResFormFields .trainingResForm1Half{
+    margin-right: 20px;
+}
+
+.trainingResultsForm form .trainingResFormFields .trainingResForm2Half{
+    margin-left: 20px;
+}
+
+.trainingResultsForm form .trainingResFormFields label{
+    display: inline-block;
+    width: 120px;
+    margin: 15px;
+    color: var(--rose_2);
+}
+
+.trainingResultsForm form .trainingResFormFields select{
+    font-size: 16px;
+    border-radius: 12px;
+    padding: 5px;
+    font-family: Josefin Sans;
+    background-color: inherit;
+    border: 3px solid var(--rose_2);
+    color: var(--rose_2);
+}
+
+.trainingResultsForm form .trainingResFormFields option{
+    color: var(--dark_purple2);
+}
+
+.trainingResultsForm form .trainingResFormFields .trainingResForm1Half select{
+    width: 150px;
+}
+
+.trainingResultsForm form .trainingResFormFields .trainingResForm2Half select{
+    width: 300px;
+}
+
+.trainingResultsForm form .trainingResFormFields .trainingResForm2Half select.classes{
+    width: 142.5px;
+    font-size: 14px;
+}
+
+.trainingResultsForm form button{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: Josefin Sans;
+    border-radius: 24px;
+    background-image: linear-gradient(to top left, var(--dark_purple2), var(--dark_purple), var(--rose_2));
+    color: var(--rose_2);
+    border-color: var(--dark_purple2);
+    padding: 5px;
+    cursor: pointer;
+}
+
+.trainingResultsSection{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.trainingResultsSection table{
+    width: 100%;
+    border-radius: 32px;
+}
+
+.trainingResultsSection table, tr, th, td{
+    padding: 5px;
+}
+
+.trainingResultsSection tr{
+    background-color: var(--rose_2);
+}
+
+.trainingResultsSection tr:first-child{
+    background-color: var(--dark_purple2);
+    color: white;
+}
+
+.trainingResultsSection tr:first-child th:first-child{
+    border-top-left-radius: 20px;
+}
+
+.trainingResultsSection tr:first-child th:last-child{
+    border-top-right-radius: 20px;
+}
+
+.trainingResultsSection tr:last-child th:first-child{
+    border-bottom-left-radius: 20px;
+}
+
+.trainingResultsSection tr:last-child th:last-child{
+    border-bottom-right-radius: 20px;
+}
+
+.trainingResultsSection tr:nth-child(2){
+    background-color: #FEE101;
+}
+
+.trainingResultsSection tr:nth-child(3){
+    background-color: #D7D7D7;
+}
+
+.trainingResultsSection tr:nth-child(4){
+    background-color: #A77044;
+}
+
+.trainingResultsSection td{
+    text-align: center;
+    font-size: 18px;
+}
+
+.trainingResultsSection td .place{
+    font-size: 13px;
+}
+
+.trainingResultsSection td:nth-child(2) .classForMobile, .schoolForMobile{
     display: none;
-}*/
+}
+
+.trainingResultsSection td:nth-child(5){
+    font-size: 24px;
+}
+
+
+
+
 
 /* Ātrrēķināšanas instrukcijas lapa / Mental Math Instruction Page */
 
@@ -596,6 +845,208 @@ footer .rightFooterContent .rightFooterField a:hover{
     font-size: 18px;
 }
 
+/* E-skolas tēmu lapa / E-learning Topics Page */
+
+.eSchoolFilterBox{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    background-image: linear-gradient(to top left, var(--dark_purple), var(--light_purple), var(--rose_2));
+    padding: 20px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    border-radius: 32px;
+}
+
+.eSchoolFilterBox h2{
+    text-align: center;
+    font-size: 36px;
+    color: var(--rose_2);
+}
+
+.eSchoolFilterBox form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eSchoolFilterBox form .field{
+    margin-right: 20px;
+    /*display: inline-block;
+    width: 200px;*/
+}
+
+.eSchoolFilterBox form label{
+    font-size: 24px;
+    margin-right: 3px;
+    color: var(--rose_2);
+}
+
+.eSchoolFilterBox form select, input{
+    font-size: 24px;
+    border-radius: 20px;
+    font-family: Josefin Sans;
+    padding: 5px;
+    background-color: var(--dark_purple);
+    color: var(--rose_2);
+    margin-right: 5px;
+    border-color: var(--rose_2);
+    width: 240px;
+    display: inline-block;
+}
+
+.eSchoolFilterBox form select option{
+    background-color: white;
+    color: var(--dark_purple2);
+}
+
+.eSchoolFilterBox form button{
+    font-size: 24px;
+    font-family: Josefin Sans;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: var(--rose_2);
+    color: var(--dark_purple2);
+    transition: 0.5s all ease;
+}
+
+.eSchoolFilterBox form button:hover{
+    background-color: skyblue;
+    border: 2px solid slategray;
+}
+
+.eSchoolTopicsBox{
+    margin-top: 40px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.eSchoolTopicsBox .topicBox{
+    border-radius: 50% 50% 32px 32px;
+    background-image: linear-gradient(to bottom right, var(--dark_purple), var(--light_purple), var(--rose));
+    padding-bottom: 12px;
+    margin: 20px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease;
+}
+
+.eSchoolTopicsBox .topicBox:hover{
+    scale: 1.15;
+}
+
+.eSchoolTopicsBox .topicBox img{
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.eSchoolTopicsBox a{
+    text-decoration: none;
+}
+
+.eSchoolTopicsBox .topicBox .topicBoxText h3{
+    font-size: 32px;
+    text-align: center;
+    color: var(--rose_2);
+}
+
+.eSchoolTopicsBox .topicBox .topicBoxText p{
+    font-size: 16px;
+    text-align: center;
+    margin-top: -16px;
+    color: var(--rose_2);
+}
+
+/* Foruma kategoriju lapa / Forum Categories Page */
+
+.forumSearchBox{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+    text-align: center;
+}
+
+.forumSearchBox form .forumSearchInput{
+    width: 80%;
+    font-size: 30px;
+    color: var(--dark_purple2);
+    padding: 5px;
+    background-color: inherit;
+}
+
+.forumSearchBox form button{
+    font-size: 30px;
+    background-image: linear-gradient(to top left, var(--dark_purple2), var(--dark_purple), var(--rose_2));
+    color: var(--rose_2);
+    font-family: Josefin Sans;
+    border: 2px solid var(--rose_2);
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.forumCategoriesBox{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.forumCategoriesBox .forumCategory{
+    display: flex;
+    background-image: linear-gradient(to bottom left, var(--dark_purple), var(--light_purple), var(--rose));
+    box-shadow: 10px 10px 5px #aaaaaa;
+    padding: 10px;
+    border-radius: 30px 70px 30px 70px;
+    margin: 20px;
+    max-width: 550px;
+}
+
+.forumCategoriesBox a{
+    text-decoration: none;
+}
+
+.forumCategoriesBox .forumCategory img{
+    height: auto;
+    width: auto;
+    max-width: 200px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.forumCategoriesBox .forumCategory .forumCategoryText{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.forumCategoriesBox .forumCategory .forumCategoryText h3{
+    color: var(--rose_2);
+    font-size: 32px;
+}
+
+.forumCategoriesBox .forumCategory .forumCategoryText ul li{
+    list-style: none;
+    color: var(--rose);
+    font-size: 18px;
+}
+
 
 /*****/
 /*****/
@@ -635,13 +1086,16 @@ footer .rightFooterContent .rightFooterField a:hover{
     nav .navbar .nav-links{
         display: block;
         position: fixed;
-        background-color: var(--dark_purple2);
+        background-image: var(--dark_purple2);
         top: 80px;
         left: 100%;
         width: 100%;
         padding-bottom: 15px;
         border-radius: 30px;
         transition: all 0.5s ease;
+        height: 100vh;
+        background-image: linear-gradient(to bottom left, var(--dark_purple2), var(--dark_purple), var(--light_purple));
+        overflow-y: auto;
     }
 
     nav .navbar .nav-links .links{
@@ -651,10 +1105,13 @@ footer .rightFooterContent .rightFooterField a:hover{
     nav .navbar .nav-links .links li{
         padding-top: 20px;
         display: block;
+        font-size: 36px;
     }
 
-    nav .navbar .nav-links .links li a, .drop{
-        font-size: 32px;
+
+
+    nav .navbar .nav-links .links li a.link, .drop{
+        font-size: 36px;
     }
 
     nav .navbar .nav-links .links li.social-networks a{
@@ -700,7 +1157,7 @@ footer .rightFooterContent .rightFooterField a:hover{
     nav .navbar .nav-links .links li .sub-menu.third-sub-menu.show{
         display: block;
         margin-top: 10px;
-        background-color: var(--dark_purple2);
+        background-color: transparent;
         box-shadow: none;
         animation-name: sub-menu-fadein;
         animation-duration: 0.7s;
@@ -710,6 +1167,7 @@ footer .rightFooterContent .rightFooterField a:hover{
     nav .navbar .nav-links .links li .sub-menu.second-sub-menu.show li a,
     nav .navbar .nav-links .links li .sub-menu.third-sub-menu.show li a{
         color: #E78BB9;
+        font-size: 32px;
     }
 
     @keyframes sub-menu-fadein{
@@ -794,6 +1252,25 @@ footer .rightFooterContent .rightFooterField a:hover{
         font-size: 42px;
     }
 
+    /* Ātrrēķināšanas jaunumu lapa / Mental Math News Page */
+
+    .mentalMathNewsSection .mentalMathNewsBox .mentalMathNewsImage{
+        width: 150px;
+        height: 150px;
+    }
+
+    .mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide .generalInfo h2{
+        font-size: 48px;
+    }
+
+    .mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide .generalInfo p{
+        margin-top: -30px;
+    }
+
+    .mentalMathNewsSection .mentalMathNewsBox a{
+        padding: 10px;
+    }
+
     /* Ātrrēķināšanas treniņu lauku lapa / Mental Math Training Discilpines Page */
 
     .numbersModeBar{
@@ -831,6 +1308,75 @@ footer .rightFooterContent .rightFooterField a:hover{
         margin-right: 8px;
     }
 
+    /* Ātrrēķināšanas treniņu rezultātu lapa / Mental Math Results Page */
+
+    .trainingResultsForm form .trainingResFormFields{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .trainingResultsForm form .trainingResFormFields .trainingResForm1Half{
+        margin-right: 0px;
+    }
+    
+    .trainingResultsForm form .trainingResFormFields .trainingResForm2Half{
+        margin-left: 0px;
+    }
+
+    .trainingResultsForm form .trainingResFormFields select{
+        font-size: 16px;
+        border-radius: 12px;
+        padding: 5px;
+        font-family: Josefin Sans;
+    }
+    
+    .trainingResultsForm form .trainingResFormFields .trainingResForm1Half select{
+        width: 150px;
+    }
+
+    .trainingResultsForm form .trainingResFormFields .trainingResForm1Half select{
+        width: 300px;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .trainingResultsForm form .trainingResFormFields .trainingResForm2Half select{
+        width: 300px;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .trainingResultsSection th:nth-child(1), td:nth-child(1){
+        width: 7.5%;
+    }
+
+    .trainingResultsSection td:nth-child(1){
+        font-size: 24px;
+    }
+
+    .trainingResultsSection td:nth-child(2) .nameForMobile{
+        font-size: 24px;
+    }
+
+    .trainingResultsSection td:nth-child(2) .classForMobile, .schoolForMobile{
+        display: block;
+        font-size: 15px;
+        font-style: italic;
+    }
+
+    .trainingResultsSection th:nth-child(3), th:nth-child(4){
+        display: none;
+    }
+
+    .trainingResultsSection td:nth-child(3), td:nth-child(4){
+        display: none;
+    }
+
+    .trainingResultsSection th:nth-child(1), td:nth-child(5){
+        width: 12.5%;
+    }    
 
     /* Ātrrēķināšanas instrukcijas lapa / Mental Math Instruction Page */
 
@@ -838,12 +1384,68 @@ footer .rightFooterContent .rightFooterField a:hover{
         font-size: 24px;
     }
 
+    /* E-skolas tēmu lapa / E-learning Topics Page */
+
+    .eSchoolFilterBox form{
+        flex-direction: column;
+    }
+
+    .eSchoolFilterBox form .field{
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    .eSchoolFilterBox form button{
+        margin-top: 24px;
+        font-size: 28px;
+        padding: 4px;
+    }
+
+    .eSchoolFilterBox form label{
+        display: inline-block;
+        margin-right: 20px;
+        text-align: center;
+    }
+
+    .eSchoolTopicsBox .topicBox{
+        flex-direction: row;
+        border-radius: 50% 40% 60px 50%;
+        width: 90%;
+    }
+
+    .eSchoolTopicsBox .topicBox img{
+        height: 100%;
+        width: auto;
+        max-width: 160px;
+        margin-right: 20px;
+    }
+
+    .eSchoolTopicsBox .topicBox .topicBoxText{
+        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Foruma kategoriju lapa / Forum Categories Page */
+
+    .forumSearchBox form .forumSearchInput{
+        font-size: 24px;
+    }
+
+    .forumSearchBox form button{
+        margin-top: 20px;
+    }
+
+
 }
 
 @media (max-width: 540px){
 
     body{
-        width: 125vw;
+        width: 100vw;
+        padding-bottom: 250px;
     }
 
     nav .navbar .nav-links .links li{
@@ -933,6 +1535,27 @@ footer .rightFooterContent .rightFooterField a:hover{
         font-size: 18px;
     }
 
+    /* Ātrrēķināšanas jaunumu lapa / Mental Math News Page */
+
+    .mentalMathNewsSection .mentalMathNewsBox{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mentalMathNewsSection .mentalMathNewsBox .mentalMathNewsImage {
+        width: 200px;
+        height: 200px;
+    }
+
+    .mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide .generalInfo{
+        text-align: center;
+    }
+
+    .mentalMathNewsSection .mentalMathNewsBox .newsBoxRightSide .generalInfo h2{
+        font-size: 42px;
+    }
+
     /* Ātrrēķināšanas treniņu lauku lapa / Mental Math Training Discilpines Page */
 
     .numbersModeBar ul{
@@ -953,6 +1576,72 @@ footer .rightFooterContent .rightFooterField a:hover{
         margin-top: 10px;
         margin-bottom: 10px;
         padding: 12px;
+    }
+
+    /* Ātrrēķināšanas treniņu rezultātu lapa / Mental Math Training Results Page */
+
+    .trainingResultsSection td:nth-child(2) .nameForMobile{
+        font-size: 18px;
+    }
+
+    .trainingResultsSection td:nth-child(2) .classForMobile, .schoolForMobile{
+        display: block;
+        font-size: 12px;
+        font-style: italic;
+    }
+
+    .trainingResultsSection td:nth-child(5){
+        font-size: 16px;
+        width: 7.5%;
+    }
+
+     /* E-skolas tēmu lapa / E-learning Topics Page */
+
+    .eSchoolFilterBox form .field{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .eSchoolFilterBox form label{
+        margin-right: 0px;
+    }
+
+    .eSchoolFilterBox form select, input{
+        width: 100%;
+    }
+
+    .eSchoolTopicsBox .topicBox img{
+        height: 100%;
+        width: auto;
+        max-width: 130px;
+        margin-right: 12px;
+    }
+
+    .eSchoolTopicsBox .topicBox .topicBoxText h3{
+        font-size: 27px;
+    }
+
+    /* Foruma kategoriju lapa / Forum Categories Page */
+
+    .forumCategoriesBox .forumCategory{
+        flex-direction: column;
+    }
+
+    .forumCategoriesBox .forumCategory img{
+        height: auto;
+        width: auto;
+        max-width: 160px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .forumCategoriesBox .forumCategory .forumCategoryText h3{
+        font-size: 24px;
+    }
+
+    .forumCategoriesBox .forumCategory .forumCategoryText ul{
+        margin-top: -20px;
+        text-align: right;
     }
 
 }

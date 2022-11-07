@@ -16,6 +16,7 @@
         <li class="active">Naturālie skaitļi</li>
         <li>Veselie skaitļi</li>
         <li>Decimālskaitļi</li>
+        <li>Daļskaitļi</li>
     </ul>
 </div>
 
@@ -53,6 +54,10 @@
 
 <div class="discilpinesList hide" data-aos="zoom-in-up">
     <h2>Decimālskaitļi</h2>
+</div>
+
+<div class="discilpinesList hide" data-aos="zoom-in-up">
+    <h2>Daļskaitļi</h2>
 </div>
 
 @endsection

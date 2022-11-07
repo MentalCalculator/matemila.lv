@@ -13,5 +13,9 @@ class TrainingController extends Controller
     public function showDiscilpines(){
         return view('training.discilpines');
     }
+
+    public function showResults(){
+        return view('training.results');
+    }
     
 }
