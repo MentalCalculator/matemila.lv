@@ -1,35 +1,35 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.main')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+@section('title', 'Paroles atjaunošana - Matemīla.lv')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('content')
 
+<div class="purplePageHeader" data-aos="fade-down"
+     data-aos-anchor-placement="top-bottom">
+    <h1>Paroles atjaunošana</h1>
+</div>
+
+<div class="forgotPasswordBox" data-aos="zoom-in">
+
+    @if(session('status'))
+        <p class="forgotPasswordText">{{ session('status') }}</p>
+        <a href="{{ route('mainPage') }}" class="indexLink">Pāriet uz galveno lapu</a>
+    @else
+        <p class="forgotPasswordText"><i class='bx bx-info-circle'></i> Aizmirsi savu paroli? Neuztraucies, ievadi savu esošo e-pasta adresi un uzreiz saņemsi e-pasta vēstuli ar paroles atjaunošanas linku.</p>
+        
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
+            <label for="email">E-pasta adrese</label><br>
+            <input id="email" type="email" name="email" value="{{ old('email') }}" autofocus /><br>
+            @if ($errors->has('email'))
+                    <p class="text-danger">&#10071; {{ $errors->first('email') }}</p><br>
+            @endif
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-primary-button>
-            </div>
+            <button>Apstiprināt</button>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    @endif
+    
+    
+</div>
+
+@endsection

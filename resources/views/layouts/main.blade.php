@@ -14,6 +14,7 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -22,44 +23,58 @@
 <header>
 
 <nav>
-    <div class = "navbar">
-    <a href = "{{ route('mainPage') }}"><img class = "logo" src = "..\Logo\Horizontal (without slogan)\Color logo - no background.png" alt = "Matemīla"></a>
+    <div class="navbar">
+    <a href="{{ route('mainPage') }}"><img class="logo" src="..\Logo\Horizontal (without slogan)\Color logo - no background.png" alt="Matemīla"></a>
         <div class="nav-links">
             <ul class="links">
-                <li><a href = "{{ route('mainPage') }}" class="link">Sākums</a></li>
-                <li class = "drop" id = "dropdown1">Ātrrēķināšana<i class='bx bxs-chevron-down arrow first-arrow' id="arrow1"></i>
-                    <ul class = "sub-menu first-sub-menu" id = "subMenu1">
-                        <li><a href = "{{ route('mentalMathNews') }}">Jaunumi</a></li>
-                        <li><a href = "{{ route('mentalMathDiscilpines') }}">Treniņu lauki</a></li>
-                        <li><a href = "{{ route('mentalMathResults') }}">Treniņu rezultāti</a></li>
-                        <li><a href = "{{ route('mentalMathInstruction') }}">Instrukcija</a></li>
+                <li><a href="{{ route('mainPage') }}" class="link">Sākums</a></li>
+                <li class="drop">Ātrrēķināšana<i class='bx bxs-chevron-down arrow'></i>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('mentalMathNews') }}">Jaunumi</a></li>
+                        <li><a href="{{ route('mentalMathDiscilpines') }}">Treniņu lauki</a></li>
+                        <li><a href="{{ route('mentalMathResults') }}">Treniņu rezultāti</a></li>
+                        <li><a href="{{ route('mentalMathInstruction') }}">Instrukcija</a></li>
                     </ul>
                 </li>
-                <li><a href = "{{ route('eSchool') }}" class="link">E-skola</a></li>
-                <li><a href = "{{ route('forum') }}" class="link">Forums</a></li>
-                <li class = "drop" id = "dropdown2">Citi<i class='bx bxs-chevron-down arrow second-arrow' id="arrow2"></i>
-                    <ul class = "sub-menu second-sub-menu" id = "subMenu2">
-                        <li><a href = "#">Fakti</a></li>
-                        <li><a href = "#">Konkursi</a></li>
-                        <li><a href = "#">Joki</a></li>
+                <li><a href="{{ route('eSchool') }}" class="link">E-skola</a></li>
+                <li class="drop">Citi<i class='bx bxs-chevron-down arrow'></i>
+                    <ul class="sub-menu" id="subMenu2">
+                        <li><a href="{{ route('forum') }}">Forums</a></li>
+                        <li><a href="#">Fakti</a></li>
+                        <li><a href="#">Konkursi</a></li>
+                        <li><a href="#">Joki</a></li>
                     </ul>
                 </li>
-                <li class = "drop" id = "dropdown3"><i class='bx bx-world'></i>LV<i class='bx bxs-chevron-down arrow third-arrow'></i>
-                    <ul class = "sub-menu third-sub-menu" id = "subMenu3">
-                        <li><a href = "#">EN</a></li>
-                        <li><a href = "#">RU</a></li>
+                <li class="drop"><i class='bx bx-world'></i>LV<i class='bx bxs-chevron-down arrow'></i>
+                    <ul class="sub-menu">
+                        <li><a href="#">EN</a></li>
+                        <li><a href="#">RU</a></li>
                     </ul>
                 </li>
-                <li class = "social-networks"><a href = "https://www.facebook.com" target="_blank"><i class='bx bxl-facebook-circle' id="arrow3"></i></a>
-                    <a href = "https://www.instagram.com" target="_blank"><i class='bx bxl-instagram' ></i></a>
-                    <a href = "https://www.tiktok.com" target="_blank"><i class='bx bxl-tiktok' ></i></a>
-                    <a href = "https://www.youtube.com" target="_blank"><i class='bx bxl-youtube' ></i></a>
+                <li class="social-networks"><a href="https://www.facebook.com" target="_blank"><i class='bx bxl-facebook-circle' id="arrow3"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class='bx bxl-instagram' ></i></a>
+                    <a href="https://www.tiktok.com" target="_blank"><i class='bx bxl-tiktok' ></i></a>
+                    <a href="https://www.youtube.com" target="_blank"><i class='bx bxl-youtube' ></i></a>
                 </li>
+                @guest
                 <li>
-                    <div class = "login-button">
-                        <a href = "{{ route('login') }}" style="color: var(--dark_purple2);"><i class='bx bx-key' ></i> Ieiet</a>
-                    </div>
+                    <a class="login-button" href = "{{ route('login') }}" style="color: var(--dark_purple2);"><i class='bx bx-key' ></i> Ieiet</a>
                 </li>
+                @endguest
+                @auth
+                <li class="drop"><i class='bx bx-user-circle'></i> {{ Auth::user()->username }}<i class='bx bxs-chevron-down arrow'></i>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('viewProfile') }}">Profils</a></li>
+                        @if(Auth::user()->status == 'admin')
+                            <li><a href="{{ route('viewAllProfiles') }}">Visi profili</a></li>
+                        @endif
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <li><button class="logoutButton" type="submit">Iziet</button></li>
+                        </form>
+                    </ul>
+                </li>
+                @endauth
             </ul>
         </div>
 
@@ -69,6 +84,10 @@
 
     </div>
 </nav>
+
+@if(session('message'))
+    <div class="statusMessage" id="statusMessage" data-aos="fade-left">{{session('message')}}</div>
+@endif
 
 </header>
 

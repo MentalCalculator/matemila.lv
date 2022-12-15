@@ -1,57 +1,51 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.main')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('title', 'Ieiet sistēmā - Matemīla.lv')
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+@section('content')
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
+<div class="purplePageHeader" data-aos="fade-down"
+     data-aos-anchor-placement="top-bottom">
+    <h1>Ieiet sistēmā</h1>
+</div>
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+<div class="loginBox" data-aos="zoom-in">
+    <form method="POST" action="{{ route('login') }}">
+    @csrf
 
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
+    <label for="email">E-pasta adrese</label><br>
+    <input id="email" type="email" name="email" value="{{ old('email') }}" autofocus /><br>
+    @if ($errors->has('email'))
+            <p class="text-danger">&#10071; {{ $errors->first('email') }}</p><br>
+    @endif
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+    <label for="password">Parole</label><br>
+    <input id="password" type="password" name="password" autocomplete="current-password" /><br>
+    @if ($errors->has('password'))
+            <p class="text-danger">&#10071; {{ $errors->first('password') }}</p><br>
+    @endif    
+    <button>Ieiet</button><br>
+    <a class="forgotPasswordLink" href="{{ route('password.request') }}">Aizmirsi paroli?</a>
+    </form>
+</div>
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+<div class="secondLoginBox" data-aos="zoom-in">
+    <div class="firstPart">
+        <h2>Vai tev vēl nav sava Matemīlas konta? <i class='bx bx-shocked'></i></h2>
+        <ul>
+            <li>Trenējoties ātrrēķināšanā, tavi labākie rezultāti tiks automātiski saglabāti.</li>
+            <li>Tev būs iespēja piedalīties ātrrēķināšanas sacensībās.</li>
+            <li>Tu varēsi apgūt dažādas matemātikas tēmas un pildīt uzdevumus jaunā formātā.</li>
+            <li>Tu varēsi uzdot jautājumus un atbildēt uz jautājumiem mūsu forumā.</li>
+            <li>Mīlestību par naudu nenopirksi, tāpēc Matemīla ir bezmaksas. <i class='bx bxs-heart' ></i></li>
+        </ul>
+    </div>
+    <div class="secondPart">
+        <a class="registerLink" href="{{ route('register') }}"><i class='bx bxs-select-multiple'></i> Reģistrēties</a>
+    </div>
+</div>
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+@endsection
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
 
-                <x-primary-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>

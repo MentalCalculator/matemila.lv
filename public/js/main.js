@@ -19,53 +19,46 @@ function openMobileMenu(){
     }
 }
 
-let firstDropdown = document.getElementById("dropdown1");
-firstDropdown.addEventListener("click", clickFirstDropdown);
+let drops = document.getElementsByClassName('drop');
+let arrows = document.getElementsByClassName('arrow');
+let subMenus = document.getElementsByClassName('sub-menu');
 
-let secondDropdown = document.getElementById("dropdown2");
-secondDropdown.addEventListener("click", clickSecondDropdown);
-
-let thirdDropdown = document.getElementById("dropdown3");
-thirdDropdown.addEventListener("click", clickThirdDropdown);
-    
-let subMenu1 = document.getElementById("subMenu1");
-let subMenu2 = document.getElementById("subMenu2");
-let subMenu3 = document.getElementById("subMenu3");
-
-function clickFirstDropdown(){
-    subMenu1.classList.toggle("show");
-    subMenu2.classList.remove("show");
-    subMenu3.classList.remove("show");
-}
-
-function clickSecondDropdown(){
-    subMenu1.classList.remove("show");
-    subMenu2.classList.toggle("show");
-    subMenu3.classList.remove("show");
-}
-
-function clickThirdDropdown(){
-    subMenu1.classList.remove("show");
-    subMenu2.classList.remove("show");
-    subMenu3.classList.toggle("show");
-}
-
-// Instrukcijas blokiem / For instruction blocks
-
-let instQuestions = document.getElementsByClassName("instructionQuestion");
-
-for (let i = 0; i < instQuestions.length; i++) {
-    instQuestions[i].addEventListener("click", function() {
-        let instAnswer = this.nextElementSibling;
-        let arrow = this.querySelector('.bx-chevron-down');
-        if(instAnswer.style.maxHeight) {
-            instAnswer.style.maxHeight = null;
-            arrow.style.rotate = "0deg";
-        } else {
-            instAnswer.style.maxHeight = instAnswer.scrollHeight + "px";
-            arrow.style.rotate = "180deg";
+for(let i = 0; i < drops.length; i++){
+    drops[i].addEventListener("click", function(){
+        subMenus[i].classList.toggle("show");
+        for(let j = 0; j < drops.length; j++){
+            if(j != i){
+                subMenus[j].classList.remove("show");
+            }
         }
     })
+}
+
+// Statusa ziņojumam / For status message
+
+$("#statusMessage").delay(3200).fadeOut(800);
+
+// Dialoga blokiem / For dialog box
+
+let dialogs = document.getElementsByClassName("dialog");
+let deleteButtons = document.getElementsByClassName("deleteButton");
+let closeButtons = document.getElementsByClassName("close");
+
+for(let i = 0; i < dialogs.length; i++){
+
+    deleteButtons[i].onclick = function() {
+        dialogs[i].style.display = "block";
+    }
+
+    closeButtons[i].onclick = function() {
+        dialogs[i].style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if(event.target == dialogs[i]){
+            dialogs[i].style.display = "none";
+        }
+    }
 }
 
 // Ātrrēķināšanas treniņu laukiem / For mental math training fields
@@ -86,3 +79,25 @@ for(let i = 0; i < numbersModeList.length; i++){
         }
     })
 }
+
+// Instrukcijas blokiem / For instruction blocks
+
+let instQuestions = document.getElementsByClassName("instructionQuestion");
+
+for (let i = 0; i < instQuestions.length; i++) {
+    instQuestions[i].addEventListener("click", function() {
+        let instAnswer = this.nextElementSibling;
+        let arrow = this.querySelector('.bx-chevron-down');
+        if(instAnswer.style.maxHeight) {
+            instAnswer.style.maxHeight = null;
+            arrow.style.rotate = "0deg";
+        } else {
+            instAnswer.style.maxHeight = instAnswer.scrollHeight + "px";
+            arrow.style.rotate = "180deg";
+        }
+    })
+}
+
+
+
+

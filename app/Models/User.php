@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\TrainingResult;
+use App\Models\Race;
+use App\Models\RaceResult;
+use App\Models\NewsRecord;
 
 class User extends Authenticatable
 {
@@ -17,10 +21,35 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+
+    public function trainingResults(){
+        return $this->hasMany(TrainingResult::class);
+    }
+
+    public function races(){
+        return $this->hasMany(Race::class);
+    }
+
+    public function raceResults(){
+        return $this->hasMany(RaceResult::class);
+    }
+
+    public function newsRecords(){
+        return $this->hasMany(newsRecord::class);
+    }
+    
+
     protected $fillable = [
+        'username',
         'name',
+        'surname',
+        'phone',
+        'place',
+        'school',
+        'class',
         'email',
         'password',
+        'status'
     ];
 
     /**
@@ -30,7 +59,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'remember_token'
     ];
 
     /**
@@ -41,4 +70,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

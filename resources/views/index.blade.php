@@ -8,9 +8,15 @@
      data-aos-anchor-placement="top-bottom">
 <div class = "indexImageLayer">
 <div class = "textOnImage1">
+    @guest
     <p class = "textOnImage1_1">Pieejama ikvienam.</p>
     <p class = "textOnImage1_2">Noderīga ikvienam.</p>
     <p class = "textOnImage1_3">Lieliska ikvienam. Tāda ir <span class = "matemila">Matemīla</span>.</p>
+    @endguest
+    @auth
+    <p class = "textOnImage1_2">Laipni lūdzam, {{ Auth::user()->name }}!</p>
+    <p class = "textOnImage1_3">Prieks tevi redzēt <span class = "matemila">Matemīlā</span>! &#128522;</p>
+    @endauth
 </div>
 </div>
 </section>

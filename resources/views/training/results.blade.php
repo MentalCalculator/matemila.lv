@@ -57,7 +57,7 @@
                     <option value="school">Skola</option>    
                 </select><br>
                 <label for="region">Novads/pilsēta:</label>
-                <select name="region" id="region" disabled>
+                <select name="place" id="place" disabled>
                     <option>Izvēlēties...</option>
                     <option value="Rīga">Rīga</option>
                     <option value="Daugavpils">Daugavpils</option>
@@ -77,7 +77,7 @@
                 </select><br>
                 <label for="minClass maxClass">Klases:</label>
                 <select name="minClass" id="minClass" class="classes">
-                    <option value="kindergarten">bērnudārzs</option>
+                    <option value="0">bērnudārzs</option>
                     <option value="1">1.klase</option>
                     <option value="2">2.klase</option>
                     <option value="3">3.klase</option>
@@ -90,7 +90,7 @@
                     <option value="10">10.klase / 1.kurss</option>
                     <option value="11">11.klase / 2.kurss</option>
                     <option value="12">12.klase / 3.-4.kurss</option>
-                    <option value="veteran">pieaugušo klase</option>
+                    <option value="13">pieaugušo klase</option>
                 </select>
                 -
                 <select name="maxClass" id="maxClass" class="classes">

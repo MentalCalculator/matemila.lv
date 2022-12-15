@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'E-pasta adrese un/vai parole nav pareizi ievadīta.',
+    'password' => 'Ievadītā parole ir nepareiza.',
+    'throttle' => 'Pārāk daudz mēģinājumu ieiet sistēmā. Mēģiniet pēc :seconds sekundēm atkārtoti ieiet sistēmā.',
 
 ];
