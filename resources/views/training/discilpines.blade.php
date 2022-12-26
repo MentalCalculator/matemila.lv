@@ -22,38 +22,52 @@
 
 <div class="discilpinesList" data-aos="zoom-in-up">
     <h2>Naturālie skaitļi</h2>
+    @foreach($disciplines as $discipline)
+    @if($discipline->numbers_type == 'natural')
     <div class="discilpine">
-        <h3><i class='bx bx-plus'></i> Saskaitīšana</h3>
+        <h3>{{$discipline->name}}</h3>
         <div class="discilpineModes">
-            <a class="normalModeLink" href="#"><i class='bx bx-trip'></i> Standarts</a>
-            <a class="sprintModeLink" href="#"><i class='bx bx-timer'></i> Sprints</a>
-            <a class="newModeLink" href="#"><i class='bx bx-category'></i> Ar variantiem</a>
+            <a class="normalModeLink" href="{{ route('doDiscipline', [$discipline->id, 'normal']) }}" target="_blank"><i class='bx bx-trip'></i> Standarts</a>
+            <a class="sprintModeLink" href="{{ route('doDiscipline', [$discipline->id, 'sprint']) }}" target="_blank"><i class='bx bx-timer'></i> Sprints</a>
+            @if($discipline->name != 'Salīdzināšana')
+            <a class="newModeLink" href="{{ route('doDiscipline', [$discipline->id, 'variants']) }}" target="_blank"><i class='bx bx-category'></i> Ar variantiem</a>
+            @endif
         </div>
     </div>
-    <div class="discilpine">
-        <h3><i class='bx bx-minus'></i> Atņemšana</h3>
-        <div class="discilpineModes">
-            <a class="normalModeLink" href="#"><i class='bx bx-trip'></i> Standarts</a>
-            <a class="sprintModeLink" href="#"><i class='bx bx-timer'></i> Sprints</a>
-            <a class="newModeLink" href="#"><i class='bx bx-category'></i> Ar variantiem</a>
-        </div>
-    </div>
-    <div class="discilpine">
-        <h3><i class='bx bx-x'></i> Reizināšana</h3>
-        <div class="discilpineModes">
-            <a class="normalModeLink" href="#"><i class='bx bx-trip'></i> Standarts</a>
-            <a class="sprintModeLink" href="#"><i class='bx bx-timer'></i> Sprints</a>
-            <a class="newModeLink" href="#"><i class='bx bx-category'></i> Ar variantiem</a>
-        </div>
-    </div>
+    @endif
+    @endforeach
 </div>
 
 <div class="discilpinesList hide" data-aos="zoom-in-up">
     <h2>Veselie skaitļi</h2>
+    @foreach($disciplines as $discipline)
+    @if($discipline->numbers_type == 'integer')
+    <div class="discilpine">
+        <h3>{{$discipline->name}}</h3>
+        <div class="discilpineModes">
+            <a class="normalModeLink" href="{{ route('doDiscipline', [$discipline->id, 'normal']) }}" target="_blank"><i class='bx bx-trip'></i> Standarts</a>
+            <a class="sprintModeLink" href="{{ route('doDiscipline', [$discipline->id, 'sprint']) }}" target="_blank"><i class='bx bx-timer'></i> Sprints</a>
+            <a class="newModeLink" href="{{ route('doDiscipline', [$discipline->id, 'variants']) }}" target="_blank"><i class='bx bx-category'></i> Ar variantiem</a>
+        </div>
+    </div>
+    @endif
+    @endforeach
 </div>
 
 <div class="discilpinesList hide" data-aos="zoom-in-up">
     <h2>Decimālskaitļi</h2>
+    @foreach($disciplines as $discipline)
+    @if($discipline->numbers_type == 'decimal')
+    <div class="discilpine">
+        <h3>{{$discipline->name}}</h3>
+        <div class="discilpineModes">
+            <a class="normalModeLink" href="{{ route('doDiscipline', [$discipline->id, 'normal']) }}" target="_blank"><i class='bx bx-trip'></i> Standarts</a>
+            <a class="sprintModeLink" href="{{ route('doDiscipline', [$discipline->id, 'sprint']) }}" target="_blank"><i class='bx bx-timer'></i> Sprints</a>
+            <a class="newModeLink" href="{{ route('doDiscipline', [$discipline->id, 'variants']) }}" target="_blank"><i class='bx bx-category'></i> Ar variantiem</a>
+        </div>
+    </div>
+    @endif
+    @endforeach
 </div>
 
 <div class="discilpinesList hide" data-aos="zoom-in-up">

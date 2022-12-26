@@ -26,6 +26,9 @@ Route::get('/mentalmath/news', [MentalMathNewsController::class, 'seeNews'])->na
 Route::get('/mentalmath/instruction', [TrainingController::class, 'instruction'])->name('mentalMathInstruction');
 Route::get('/mentalmath/results', [TrainingController::class, 'showResults'])->name('mentalMathResults');
 Route::get('/mentalmath/discilpines', [TrainingController::class, 'showDiscilpines'])->name('mentalMathDiscilpines');
+Route::get('/mentalmath/disciplines/id={discipline}&mode={mode}', [TrainingController::class, 'doDiscipline'])->name('doDiscipline');
+Route::post('/mentalmath/disciplines/id={discipline}&mode={mode}/update', [TrainingController::class, 'saveTrainingResult'])->name('saveTrainingResult');
+Route::get('/mentalmath/disciplines/result', [TrainingController::class, 'viewTrainingResult'])->name('viewTrainingResult');
 
 Route::get('/learning', [LearningController::class, 'seeTopics'])->name('eSchool');
 

@@ -20,6 +20,8 @@ class TrainingResult extends Model
     }
 
     protected $fillable = [
+        'user_id',
+        'discipline_id',
         'level',
         'mode',
         'points'

@@ -1,0 +1,327 @@
+*{
+    font-family: Josefin Sans;
+}
+
+body{
+    background-color: purple;
+    height: 100%;
+}
+
+.startSection{
+    background-image: linear-gradient(to bottom right, wheat, whitesmoke);
+    width: 60%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 10px;
+    border-radius: 20px;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.startSection .title{
+    text-align: center;
+    color: purple;
+    font-size: 60px;
+}
+
+.startSection h3{
+    text-align: center;
+    font-size: 32px;
+    margin-top: -20px;
+}
+
+.startSection h3 .modeText{
+    color: blueviolet;
+}
+
+.startSection .instructionBox{
+    text-align: center;
+    padding: 5px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.startSection .instructionBox ul{
+    text-align: left;
+}
+
+.startSection .instructionBox ul li{
+    margin-top: 5px;
+}
+
+.startSection .selectBox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.startSection .selectBox .labelText{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.startSection .selectBox select{
+    font-family: Josefin Sans;
+    background-color: violet;
+    border-radius: 15px;
+    font-size: 24px;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.startSection .selectBox button{
+    margin-top: 15px;
+    font-size: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+}
+
+.startSection .line{
+    width: 50%;
+    border: 1px solid grey;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.startSection .copyrightText{
+    text-align: center;
+}
+
+.startSection .disciplineInfo, .pointsInfo{
+    text-align: center;
+}
+
+.startSection .disciplineInfo{
+    font-size: 20px;
+    color: blue;
+}
+
+.startSection .pointsInfo{
+    font-size: 28px;
+    color: darkmagenta;
+}
+
+.startSection .pointsInfo span{
+    color: darkviolet;
+}
+
+
+.gameSection{
+    background-image: linear-gradient(to bottom right, wheat, whitesmoke);
+    width: 85%;
+    height: 90vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding: 10px;
+    border-radius: 20px;
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.gameSection .infoBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    font-size: 24px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gameSection .infoBox:first-child{
+    margin-left: 7.5%;
+}
+
+.gameSection .infoBox .buttonText{
+    margin-right: 7.5%;
+    display: flex;
+}
+
+.gameSection .infoBox .timeText .time{
+    background-color: blueviolet;
+    padding: 10px;
+    color: whitesmoke;
+    border-radius: 50%;
+    box-shadow: 1px 3px 8px black;
+    font-size: 36px;
+}
+
+.gameSection .infoBox .pointsText .yourPoints{
+    background-color: darkmagenta;
+    padding: 10px;
+    color: wheat;
+    border-radius: 50%;
+    box-shadow: 1px 3px 8px black;
+    font-size: 36px;
+}
+
+.gameSection .infoBox .levelText .yourLevel{
+    background-color: darkviolet;
+    padding: 10px;
+    color: whitesmoke;
+    border-radius: 50%;
+    box-shadow: 1px 3px 8px black;
+    font-size: 36px;
+}
+
+.gameSection .infoBox .buttonText .button{
+    background-color: maroon;
+    padding: 10px;
+    color: white;
+    border-radius: 30px;
+    font-size: 20px;
+    box-shadow: 1px 3px 3px black;
+}
+
+.gameSection .infoBox .buttonText .backButton{
+    background-color: darkcyan;
+    padding: 10px;
+    color: white;
+    border-radius: 30px;
+    font-size: 20px;
+    box-shadow: 1px 3px 6px black;
+    margin-left: 10px;
+}
+
+.gameSection .notificationBox{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 45px;
+}
+
+.gameSection .exampleBox{
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameSection .exampleBox .example{
+    margin-right: 10px;
+    font-size: 60px;
+}
+
+.gameSection .exampleBox .input .inputField{
+    font-size: 45px;
+    width: 230px;
+    border-radius: 30px;
+    padding: 5px;
+    background-image: linear-gradient(to bottom right, white, aliceblue);
+    box-shadow: 1px 3px 5px black;
+}
+
+.gameSection .exampleBox .input .accept{
+    font-size: 32px;
+    background-color: green;
+    color: whitesmoke;
+    border-radius: 30px;
+    padding: 10px;
+    height: 58px;
+}
+
+.gameSection .keyboardBox{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.gameSection .keyboardBox .keyboardButton{
+    font-size: 50px;
+    background-color: purple;
+    border: 2px solid white;
+    color: white;
+    padding: 30px;
+    width: 33%;
+    text-align: center;
+    box-shadow: 1px 2px 5px black;
+}
+
+.gameSection .keyboardBox .keyboardButton.compare:nth-child(1){
+    border-bottom-left-radius: 30px;
+}
+
+.gameSection .keyboardBox .keyboardButton.compare:nth-child(3){
+    border-bottom-right-radius: 30px;
+}
+
+.gameSection .keyboardBox .keyboardButton.variant{
+    width: 50%;
+}
+
+.gameSection .keyboardBox .keyboardButton.variant:nth-child(2){
+    border-top-right-radius: 30px;
+}
+
+.gameSection .keyboardBox .keyboardButton.variant:nth-child(3){
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 30px;
+}
+
+.gameSection .keyboardBox .keyboardButton.variant:nth-child(4){
+    border-bottom-right-radius: 30px;
+}
+
+.gameSection .keyboardBox .keyboardButton.accept{
+    background-color: green;
+}
+
+.gameSection .keyboardBox .keyboardButton.clear{
+    background-color: darkred;
+    border-bottom-right-radius: 30px;
+}
+
+.gameSection .keyboardBox .keyboardButton.minus{
+    background-color: darkcyan;
+}
+
+.gameSection .keyboardBox .keyboardButton.comma{
+    background-color: darkorange;
+}
+
+.gameSection .keyboardBox .keyboardButton:first-of-type{
+    border-top-left-radius: 30px;
+}
+
+.gameSection .keyboardBox .keyboardButton:nth-of-type(3){
+    border-top-right-radius: 30px;
+}
+
+.gameSection .keyboardBox .keyboardButton:nth-of-type(10){
+    border-bottom-left-radius: 30px;
+}

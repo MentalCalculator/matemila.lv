@@ -86,7 +86,7 @@
 </nav>
 
 @if(session('message'))
-    <div class="statusMessage" id="statusMessage" data-aos="fade-left">{{session('message')}}</div>
+    <div class="statusMessage" id="statusMessage" data-aos="fade-left">{{ session('message') }}</div>
 @endif
 
 </header>
