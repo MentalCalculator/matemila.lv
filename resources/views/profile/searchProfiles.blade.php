@@ -7,10 +7,10 @@
     <h1>Profilu meklēšanas rezultāti</h1>
 </div>
 
-<div class="registerBox" data-aos="zoom-in">
+<div class="formBox" data-aos="zoom-in">
     <form action="{{ route('searchProfiles') }}">
-        <div class="registerForm">
-            <div class="registerFormHalf">
+        <div class="formHalfs">
+            <div class="formHalf">
                 <label for="username">Lietotājvārds</label><br>
                 <input id="username" type="text" name="username" value="{{ $fields['username'] }}" autofocus/><br>
                 <label for="name">Vārds</label><br>
@@ -20,7 +20,7 @@
                 <label for="email">E-pasta adrese</label><br>
                 <input id="email" type="email" name="email" value="{{ $fields['email'] }}" /><br>
             </div>
-            <div class="registerFormHalf">
+            <div class="formHalf">
                 <label for="place">Pilsēta/novads</label><br>
                 <select name="place" id="place">
                     <option value="">Izvēlēties...</option>
@@ -81,7 +81,7 @@
 </div>
 
 @if($profiles->count() == 0)
-    <h2 class="emptyProfListWarning">&#128533; Diemžēl netika atrasts neviens profils pēc norādītajiem kritērijiem.</h2>
+    <h2 class="emptyListWarning">&#128533; Diemžēl netika atrasts neviens profils pēc norādītajiem kritērijiem.</h2>
 @else
 <table class="allProfilesTable">
     <tr data-aos="zoom-in-up">
@@ -155,6 +155,24 @@
             </div>
         </td>
     </tr>
+
+    <div id="dialog" class="dialog" data-aos="zoom-in">
+    <div class="dialogContent">
+        <span class="close" id="close">&times;</span>
+        <h2 class="dialogText">Vai Jūs vēlaties dzēst šo profilu "{{ $profile->username }}"?</h2>
+        <p class="dialogSubtext">Ievadiet savu paroli, lai apstiprinātu savu izvēli.</p>
+        <form method="POST" action="{{ route('deleteAnotherProfile', $profile->id) }}">
+            @csrf
+            @method('DELETE')
+            <center><label for="password">Parole</label><br>
+            <input id="password" type="password" name="password" autofocus /><br>
+            @if ($errors->has('password'))
+                    <p class="textDanger">&#10071; {{ $errors->first('password') }}</p><br>
+            @endif
+            <button>Apstiprināt</button></center>
+        </form>
+    </div>
+    </div>
     @endforeach
 </table>
 

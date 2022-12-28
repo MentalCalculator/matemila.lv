@@ -98,6 +98,28 @@ for (let i = 0; i < instQuestions.length; i++) {
     })
 }
 
+// Sacensību blokiem / For race blocks
+
+/*let racesMenuButtons = document.getElementsByClassName("racesMenuButton");
+    let racesBoxes = document.getElementsByClassName("racesBox");
+
+    console.log(racesMenuButtons);
+    console.log(racesBoxes);
+
+    racesMenuButtons[0].addEventListener("click", function() {
+        racesMenuButtons[0].classList.add("selected");
+        racesMenuButtons[1].classList.remove("selected");
+        racesBoxes[0].classList.remove("hidden");
+        racesBoxes[1].classList.add("hidden");
+    });
+
+    racesMenuButtons[1].addEventListener("click", function() {
+        racesMenuButtons[0].classList.remove("selected");
+        racesMenuButtons[1].classList.add("selected");
+        racesBoxes[0].classList.add("hidden");
+        racesBoxes[1].classList.remove("hidden");
+    });*/
+
 
 
 

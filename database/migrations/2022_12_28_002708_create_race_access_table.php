@@ -13,18 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('races', function (Blueprint $table) {
+        Schema::create('race_access', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('creator_id');
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->integer('minClass');
-            $table->integer('maxClass');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('race_id');
             $table->dateTime('startTime');
             $table->dateTime('endTime');
-            $table->integer('minutes');
-            $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('race_id')->references('id')->on('races')->onDelete('cascade');
         });
     }
 
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('races');
+        Schema::dropIfExists('race_access');
     }
 };

@@ -577,6 +577,111 @@ footer .rightFooterContent .rightFooterField a:hover{
     border-radius: 50%;
 }
 
+.emptyListWarning{
+    text-align: center;
+    font-size: 40px;
+    color: var(--dark_purple2);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.dateInfo{
+    margin-top: 0px;
+    font-size: 16px;
+}
+
+.pointsInfo{
+    font-size: 24px;
+}
+
+.formBox{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    background-image: linear-gradient(to top left, var(--dark_purple), var(--light_purple), var(--rose_2));
+    padding: 20px;
+    border-radius: 32px;
+}
+
+.formBox form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formBox form .formHalfs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formBox form .formHalfs .formHalf{
+    text-align: center;
+    margin: 15px;
+}
+
+.formBox form .formHalfs label{
+    font-size: 20px;
+    color: var(--rose_2);
+}
+
+.formBox form .formHalfs input, select{
+    width: 400px;
+    background-color: inherit;
+    font-size: 20px;
+    border-radius: 32px;
+    padding: 5px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.formBox form .formHalfs select{
+    font-family: Josefin Sans;
+    border-color: var(--rose_2);
+    color: var(--rose_2);
+}
+
+.formBox form .formHalfs textarea{
+    background-color: inherit;
+    border: 2px solid var(--rose_2);
+    border-radius: 24px;
+    padding: 5px;
+    font-family: Josefin Sans;
+    color: var(--rose_2);
+    font-size: 20px;
+    resize: none;
+    width: 400px;
+    height: 300px;
+}
+
+.formBox form .formHalfs .rangeText{
+    color: var(--rose_2);
+}
+
+.formBox form .formHalfs option{
+    color: var(--dark_purple2);
+}
+
+.formBox form .formHalfs .infoText{
+    width: 400px;
+    color: var(--rose);
+}
+
+.formBox form button{
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 32px;
+    background-color: var(--rose_2);
+    color: var(--dark_purple2);
+    padding: 8px;
+    border-radius: 20px;
+    font-family: Josefin Sans;
+    border: 2px solid var(--rose_2);
+    width: 240px;
+}
+
 /* Ātrrēķināšanas jaunumu lapa / Mental Math News Page */
 
 .mentalMathNewsSection{
@@ -714,6 +819,16 @@ footer .rightFooterContent .rightFooterField a:hover{
     border-radius: 32px;
     border: 2px solid var(--rose);
     padding-bottom: 30px;
+    animation: fadeIn 0.5s
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
 .discilpinesList.hide{
@@ -826,11 +941,11 @@ footer .rightFooterContent .rightFooterField a:hover{
 }
 
 .trainingResultsForm form .trainingResFormFields .trainingResForm1Half select{
-    width: 150px;
+    width: 260px;
 }
 
 .trainingResultsForm form .trainingResFormFields .trainingResForm2Half select{
-    width: 300px;
+    width: 260px;
 }
 
 .trainingResultsForm form .trainingResFormFields .trainingResForm2Half select.classes{
@@ -1296,76 +1411,7 @@ footer .rightFooterContent .rightFooterField a:hover{
 
 /* Reģistrācijas lapa / Registration Page */
 
-.registerBox{
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    background-image: linear-gradient(to top left, var(--dark_purple), var(--light_purple), var(--rose_2));
-    padding: 20px;
-    border-radius: 32px;
-}
 
-.registerBox form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.registerBox form .registerForm{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.registerBox form .registerForm .registerFormHalf{
-    text-align: center;
-    margin: 15px;
-}
-
-.registerBox form .registerForm label{
-    font-size: 20px;
-    color: var(--rose_2);
-}
-
-.registerBox form .registerForm input, select{
-    width: 400px;
-    background-color: inherit;
-    font-size: 20px;
-    border-radius: 32px;
-    padding: 5px;
-    margin-top: 12px;
-    margin-bottom: 12px;
-}
-
-.registerBox form .registerForm select{
-    font-family: Josefin Sans;
-    border-color: var(--rose_2);
-    color: var(--rose_2);
-}
-
-.registerBox form .registerForm option{
-    color: var(--dark_purple2);
-}
-
-.registerBox form .registerForm .infoText{
-    width: 400px;
-    color: var(--rose);
-}
-
-.registerBox form button{
-    margin-bottom: 20px;
-    cursor: pointer;
-    font-size: 32px;
-    background-color: var(--rose_2);
-    color: var(--dark_purple2);
-    padding: 8px;
-    border-radius: 20px;
-    font-family: Josefin Sans;
-    border: 2px solid var(--rose_2);
-    width: 240px;
-}
 
 /* Paroles aizmiršanas lapa / Forgot Password Page */
 
@@ -1552,14 +1598,6 @@ footer .rightFooterContent .rightFooterField a:hover{
     display: none;
 }
 
-.emptyProfListWarning{
-    text-align: center;
-    font-size: 40px;
-    color: var(--dark_purple2);
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
 .pageLinks{
     text-align: center;
     font-size: 18px;
@@ -1579,6 +1617,141 @@ footer .rightFooterContent .rightFooterField a:hover{
     background-color: var(--dark_purple2);
     color: var(--rose_2);
     border-radius: 16px;
+}
+
+/* Sacensību galvenā lapa / Races Main Page */
+
+.racesMenuBar{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-image: linear-gradient(to top left, var(--dark_purple2), var(--dark_purple), var(--rose_2));
+    box-shadow: 4px 4px 2px #aaaaaa;
+    border-radius: 32px;
+}
+
+.racesMenuBar ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.racesMenuBar ul li{
+    margin: 20px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 32px;
+    border-radius: 32px;
+    color: var(--rose_2);
+    transition: all 0.5s;
+}
+
+.racesMenuBar ul li:hover{
+    color: yellow;
+}
+
+.racesMenuBar ul li.selected{
+    color: var(--dark_purple2);
+    background-color: var(--rose_2);
+    transition: all 0.3s all;
+}
+
+.racesMenuBar ul .createNewRaceButton{
+    text-decoration: none;
+    color: var(--rose_2);
+}
+
+.racesBox{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    padding: 10px;
+    animation: fadeIn 0.5s;
+}
+
+.racesBox .racesBoxField{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.racesBox.hidden{
+    display: none;
+}
+
+.raceBox{
+    width: 40%;
+    padding: 12px;
+    background-image: linear-gradient(to top right, var(--rose), var(--dark_purple), var(--dark_purple2));
+    border-radius: 32px;
+    color: var(--rose_2);
+    margin: 20px;
+    box-shadow: 4px 4px 2px #aaaaaa;
+}
+
+.raceBox h2{
+    text-align: center;
+    font-size: 32px;
+}
+
+.raceBox .raceInfo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: -20px;
+}
+
+.raceBox .raceInfo p{
+    margin: 5px;
+}
+
+.raceBox .raceLinksBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.raceBox .raceLinksBox{
+    font-size: 18px;
+}
+
+.raceBox .raceLinksBox a{
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.raceBox .raceLinksBox .openRaceButton{
+    background-color: green;
+    border: 2px solid white;
+}
+
+.raceBox .raceLinksBox .openRaceResultsButton{
+    background-color: darkturquoise;
+    border: 2px solid white;
+    color: white;
+}
+
+.raceBox .raceLinksBox .editRaceButton{
+    background-color: darkcyan;
+    border: 2px solid white;
+}
+
+.raceBox .raceLinksBox .editRaceDisciplinesButton{
+    background-color: darkblue;
+    border: 2px solid white;
+}
+
+.raceBox .raceLinksBox .deleteRaceButton{
+    background-color: red;
+    border: 2px solid white;
 }
 
 /*****/
@@ -1788,6 +1961,23 @@ footer .rightFooterContent .rightFooterField a:hover{
     
     .purplePageHeader h1{
         font-size: 42px;
+    }
+
+    .formBox{
+        margin-bottom: 50px;
+    }
+
+    .formBox form .formHalfs{
+        flex-direction: column;
+    }
+
+    .formBox form .formHalfs .formHalf label{
+        font-size: 28px;
+    }
+
+    .formBox form .formHalfs .formHalf input, select{
+        padding: 10px;
+        font-size: 22px;
     }
 
     /* Ātrrēķināšanas jaunumu lapa / Mental Math News Page */
@@ -2003,22 +2193,6 @@ footer .rightFooterContent .rightFooterField a:hover{
 
     /* Reģistrācijas lapa / Registration Page */
 
-    .registerBox{
-        margin-bottom: 50px;
-    }
-
-    .registerBox form .registerForm{
-        flex-direction: column;
-    }
-
-    .registerBox form .registerForm .registerFormHalf label{
-        font-size: 28px;
-    }
-
-    .registerBox form .registerForm .registerFormHalf input, select{
-        padding: 10px;
-        font-size: 22px;
-    }
 
     /* Lietotāja profila lapa / User Profile Page */
 
@@ -2162,6 +2336,14 @@ footer .rightFooterContent .rightFooterField a:hover{
         font-size: 18px;
     }
 
+    .formBox form .formHalfs .formHalf input, select, textarea{
+        width: 270px;
+    }
+
+    .formBox form .formHalfs p{
+        width: 270px;
+    }
+
     /* Ātrrēķināšanas jaunumu lapa / Mental Math News Page */
 
     .mentalMathNewsSection .mentalMathNewsBox{
@@ -2281,13 +2463,6 @@ footer .rightFooterContent .rightFooterField a:hover{
 
     /* Reģistrācijas lapa / Registration Page */
 
-    .registerBox form .registerForm .registerFormHalf input, select{
-        width: 270px;
-    }
-
-    .registerBox form .registerForm p{
-        width: 270px;
-    }
 
     /* Lietotāja profila lapa / User Profile Page */
 

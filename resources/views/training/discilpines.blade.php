@@ -24,7 +24,7 @@
     <h2>Naturālie skaitļi</h2>
     @foreach($disciplines as $discipline)
     @if($discipline->numbers_type == 'natural')
-    <div class="discilpine">
+    <div class="discilpine" data-aos="zoom-in-up">
         <h3>{{$discipline->name}}</h3>
         <div class="discilpineModes">
             <a class="normalModeLink" href="{{ route('doDiscipline', [$discipline->id, 'normal']) }}" target="_blank"><i class='bx bx-trip'></i> Standarts</a>
@@ -42,7 +42,7 @@
     <h2>Veselie skaitļi</h2>
     @foreach($disciplines as $discipline)
     @if($discipline->numbers_type == 'integer')
-    <div class="discilpine">
+    <div class="discilpine" data-aos="zoom-in-up">
         <h3>{{$discipline->name}}</h3>
         <div class="discilpineModes">
             <a class="normalModeLink" href="{{ route('doDiscipline', [$discipline->id, 'normal']) }}" target="_blank"><i class='bx bx-trip'></i> Standarts</a>
@@ -58,7 +58,7 @@
     <h2>Decimālskaitļi</h2>
     @foreach($disciplines as $discipline)
     @if($discipline->numbers_type == 'decimal')
-    <div class="discilpine">
+    <div class="discilpine" data-aos="zoom-in-up">
         <h3>{{$discipline->name}}</h3>
         <div class="discilpineModes">
             <a class="normalModeLink" href="{{ route('doDiscipline', [$discipline->id, 'normal']) }}" target="_blank"><i class='bx bx-trip'></i> Standarts</a>

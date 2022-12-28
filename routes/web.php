@@ -5,6 +5,7 @@ use App\Http\Controllers\MentalMathNewsController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\LearningController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\RacesController;
 use App\Http\Controllers\Auth\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ Route::get('/', [MainController::class, 'index'])->name('mainPage');
 Route::get('/mentalmath/news', [MentalMathNewsController::class, 'seeNews'])->name('mentalMathNews');
 Route::get('/mentalmath/instruction', [TrainingController::class, 'instruction'])->name('mentalMathInstruction');
 Route::get('/mentalmath/results', [TrainingController::class, 'showResults'])->name('mentalMathResults');
+Route::get('/mentalmath/results/search', [TrainingController::class, 'showSearchResults'])->name('mentalMathSearchResults');
 Route::get('/mentalmath/discilpines', [TrainingController::class, 'showDiscilpines'])->name('mentalMathDiscilpines');
 Route::get('/mentalmath/disciplines/id={discipline}&mode={mode}', [TrainingController::class, 'doDiscipline'])->name('doDiscipline');
 Route::post('/mentalmath/disciplines/id={discipline}&mode={mode}/update', [TrainingController::class, 'saveTrainingResult'])->name('saveTrainingResult');
@@ -42,7 +44,25 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/update_password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
     Route::delete('/delete_profile', [ProfileController::class, 'deleteProfile'])->name('deleteProfile');
 
+    //Route::delete('/delete_training_result', [TrainingController::class, 'deleteTrainingResult'])->name('deleteTrainingResult');
+
+    Route::get('/races', [RacesController::class, 'showAllRaces'])->name('allRaces');
+
+    Route::group(['middleware' => 'moderator'], function(){
+        Route::get('/create_race', [RacesController::class, 'createRace'])->name('createRace');
+        Route::post('/save_race', [RacesController::class, 'saveRace'])->name('saveRace');
+        Route::get('/edit_race/{id}', [RacesController::class, 'editRace'])->name('editRace');
+        Route::post('/update_race/{id}', [RacesController::class, 'updateRace'])->name('updateRace');
+        Route::get('/edit_race_disciplines/{id}', [RacesController::class, 'editRaceDisciplines'])->name('editRaceDisciplines');
+    });
+
     Route::group(['middleware' => 'admin'], function(){
+        Route::get('/create_race', [RacesController::class, 'createRace'])->name('createRace');
+        Route::post('/save_race', [RacesController::class, 'saveRace'])->name('saveRace');
+        Route::get('/edit_race/{id}', [RacesController::class, 'editRace'])->name('editRace');
+        Route::post('/update_race/{id}', [RacesController::class, 'updateRace'])->name('updateRace');
+        Route::get('/edit_race_disciplines/{id}', [RacesController::class, 'editRaceDisciplines'])->name('editRaceDisciplines');
+
         Route::get('/all_profiles', [ProfileController::class, 'viewAllProfiles'])->name('viewAllProfiles');
         Route::get('/all_profiles/edit/{id}', [ProfileController::class, 'editAnotherProfile'])->name('editAnotherProfile');
         Route::get('/all_profiles/search', [ProfileController::class, 'searchProfiles'])->name('searchProfiles');

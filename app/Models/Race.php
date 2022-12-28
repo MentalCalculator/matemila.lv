@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\RaceDiscipline;
 use App\Models\RaceResult;
+use App\Models\RaceAccess;
 
 class Race extends Model
 {
@@ -24,12 +25,18 @@ class Race extends Model
         return $this->hasMany(RaceResult::class);
     }
 
+    public function raceAccess(){
+        return $this->hasMany(RaceAccess::class);
+    }
+
     protected $fillable = [
+        'creator_id',
         'name',
         'description',
         'minClass',
         'maxClass',
         'startTime',
-        'endTime'
+        'endTime',
+        'minutes'
     ];
 }

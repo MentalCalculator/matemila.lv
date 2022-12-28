@@ -81,7 +81,7 @@ return [
     'max' => [
         'numeric' => ':attribute jābūt ne vairāk kā :max simbolu garam.',
         'file' => 'The :attribute must not be greater than :max kilobytes.',
-        'string' => 'The :attribute must not be greater than :max characters.',
+        'string' => ':attribute jābūt ne vairāk kā :max simbolu garam.',
         'array' => 'The :attribute must not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
@@ -159,6 +159,7 @@ return [
         'email' => 'E-pasta adresei',
         'phone' => 'Telefona numuram',
         'password' => 'Parolei',
+        'title' => 'Nosaukumam'
     ],
 
 ];

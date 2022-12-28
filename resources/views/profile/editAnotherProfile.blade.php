@@ -9,11 +9,11 @@
     <h1>Rediģēt profilu "{{ $user->username }}"</h1>
 </div>
 
-<div class="registerBox" data-aos="zoom-in">
+<div class="formBox" data-aos="zoom-in">
     <form method="POST" action="{{ route('updateAnotherProfile', $user->id) }}">
         @csrf
-        <div class="registerForm">
-            <div class="registerFormHalf">
+        <div class="formHalfs">
+            <div class="formHalf">
                 <label for="username">Lietotājvārds*</label><br>
                 <input id="username" type="text" name="username" value="{{ $user->username }}" autofocus/><br>
                 @if ($errors->has('username'))
@@ -35,7 +35,7 @@
                     <p class="text-danger">&#10071; {{ $errors->first('email') }}</p><br>
                 @endif
             </div>
-            <div class="registerFormHalf">
+            <div class="formHalf">
             <label for="phone">Telefona numurs</label><br>
                 <input id="phone" type="text" name="phone" value="{{ $user->phone }}" /><br>
                 <label for="place">Pilsēta/novads*</label><br>

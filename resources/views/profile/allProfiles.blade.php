@@ -7,22 +7,22 @@
     <h1>Visi profili</h1>
 </div>
 
-<div class="registerBox" data-aos="zoom-in">
+<div class="formBox" data-aos="zoom-in">
     <form action="{{ route('searchProfiles') }}">
-        <div class="registerForm">
-            <div class="registerFormHalf">
+        <div class="formHalfs">
+            <div class="formHalf">
                 <label for="username">Lietotājvārds</label><br>
-                <input id="username" type="text" name="username" value="{{ old('username') }}" autofocus/><br>
+                <input id="username" type="text" name="username" autofocus /><br>
                 <label for="name">Vārds</label><br>
-                <input id="name" type="text" name="name" value="{{ old('name') }}" /><br>
+                <input id="name" type="text" name="name" /><br>
                 <label for="surname">Uzvārds</label><br>
-                <input id="surname" type="text" name="surname" value="{{ old('surname') }}" /><br>
+                <input id="surname" type="text" name="surname" /><br>
                 <label for="email">E-pasta adrese</label><br>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" /><br>
+                <input id="email" type="email" name="email" /><br>
             </div>
-            <div class="registerFormHalf">
+            <div class="formHalf">
                 <label for="place">Pilsēta/novads</label><br>
-                <select name="place" id="place" selected="{{ old('place') }}">
+                <select name="place" id="place">
                     <option value="">Izvēlēties...</option>
                     <option value="Rīga">Rīga</option>
                     <option value="Daugavpils">Daugavpils</option>
@@ -36,12 +36,12 @@
                     <option value="Ventspils">Ventspils</option>
                 </select><br>
                 <label for="school">Skola</label><br>
-                <select name="school" id="school" selected="{{ old('school') }}">
+                <select name="school" id="school">
                     <option value="">Izvēlēties...</option> 
                     <option value="Rīgas Valsts 1.ģimnāzija">Rīgas Valsts 1. ģimnāzija</option>
                 </select><br>
                 <label for="minClass">Minimālā klase</label><br>
-                <select name="minClass" id="minClass" class="classes" selected="{{ old('minClass') }}">
+                <select name="minClass" id="minClass" class="classes">
                     <option value="0">bērnudārzs</option>
                     <option value="1">1.klase</option>
                     <option value="2">2.klase</option>
@@ -58,7 +58,7 @@
                     <option value="13">pieaugušo klase</option>
                 </select><br>
                 <label for="maxClass">Maksimālā klase</label><br>
-                <select name="maxClass" id="maxClass" class="classes" selected="{{ old('maxClass') }}">
+                <select name="maxClass" id="maxClass" class="classes">
                     <option value="kindergarten">bērnudārzs</option>
                     <option value="1">1.klase</option>
                     <option value="2">2.klase</option>

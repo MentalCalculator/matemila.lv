@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\TrainingResult;
 use App\Models\Race;
 use App\Models\RaceResult;
+use App\Models\RaceAccess;
 use App\Models\NewsRecord;
 
 class User extends Authenticatable
@@ -32,6 +33,10 @@ class User extends Authenticatable
 
     public function raceResults(){
         return $this->hasMany(RaceResult::class);
+    }
+
+    public function raceAccess(){
+        return $this->hasMany(RaceAccess::class);
     }
 
     public function newsRecords(){

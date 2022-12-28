@@ -24,16 +24,18 @@
 
 <nav>
     <div class="navbar">
-    <a href="{{ route('mainPage') }}"><img class="logo" src="..\Logo\Horizontal (without slogan)\Color logo - no background.png" alt="Matemīla"></a>
+    <a href="{{ route('mainPage') }}"><img class="logo" src="{{URL::asset('..\Logo\Horizontal (without slogan)\Color logo - no background.png')}}" alt="Matemīla"></a>
         <div class="nav-links">
             <ul class="links">
                 <li><a href="{{ route('mainPage') }}" class="link">Sākums</a></li>
                 <li class="drop">Ātrrēķināšana<i class='bx bxs-chevron-down arrow'></i>
                     <ul class="sub-menu">
-                        <li><a href="{{ route('mentalMathNews') }}">Jaunumi</a></li>
                         <li><a href="{{ route('mentalMathDiscilpines') }}">Treniņu lauki</a></li>
                         <li><a href="{{ route('mentalMathResults') }}">Treniņu rezultāti</a></li>
                         <li><a href="{{ route('mentalMathInstruction') }}">Instrukcija</a></li>
+                        @auth
+                        <li><a href="{{ route('allRaces') }}">Sacensības</a><li>
+                        @endauth
                     </ul>
                 </li>
                 <li><a href="{{ route('eSchool') }}" class="link">E-skola</a></li>
