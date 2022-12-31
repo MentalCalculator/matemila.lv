@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Aktuālās sacensības - Matemīla.lv')
+@section('title', 'Visas sacensības - Matemīla.lv')
 
 @section('content')
 
@@ -12,8 +12,8 @@
 
 <div class="racesMenuBar" data-aos="zoom-up">
     <ul>
-        <li class="selected"><a href="{{ route('allRaces') }}">Aktuālās sacensības</a></li>
-        <li><a href="{{ route('racesArchive') }}">Visas sacensības</a></li>
+        <li><a href="{{ route('allRaces') }}">Aktuālās sacensības</a></li>
+        <li class="selected"><a href="{{ route('racesArchive') }}">Visas sacensības</a></li>
         @if(Auth::user()->status == 'admin' || Auth::user()->status == 'moderator')
         <li><a href="{{ route('createRace') }}">Izveidot sacensības</a></li>
         @endif
@@ -21,9 +21,11 @@
 </div>
 
 <div class="racesBox">
-    <div class="racesBoxField">
+<div class="racesBoxField">
+    @if($races->count() == 0)
+    <h2 class="emptyListWarning">&#128533; Neviena sacensība netika izveidota.</h2>
+    @else
         @foreach($races as $race)
-        @if((Auth::user()->class >= $race->minClass) && (Auth::user()->class <= $race->maxClass) && (now() >= $race->startTime) && (now() <= $race->endTime))
         <div class="raceBox" data-aos="zoom-up">
             <h2>{{ $race->name }}</h2>
             <div class="raceInfo">
@@ -59,7 +61,6 @@
                 @endif
             </div>
         </div>
-        @endif
 
         <div id="dialog" class="dialog" data-aos="zoom-in">
             <div class="dialogContent">
@@ -76,6 +77,7 @@
             </div>
         </div>
         @endforeach
+    @endif
     </div>
 
     <div class="pageLinks">

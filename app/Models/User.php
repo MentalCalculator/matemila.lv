@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\TrainingResult;
 use App\Models\Race;
-use App\Models\RaceResult;
+use App\Models\RacesResult;
 use App\Models\RaceAccess;
 use App\Models\NewsRecord;
 
@@ -32,7 +32,7 @@ class User extends Authenticatable
     }
 
     public function raceResults(){
-        return $this->hasMany(RaceResult::class);
+        return $this->hasMany(RacesResult::class);
     }
 
     public function raceAccess(){

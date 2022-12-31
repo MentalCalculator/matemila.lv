@@ -9,7 +9,8 @@ body{
 
 .startSection{
     background-image: linear-gradient(to bottom right, wheat, whitesmoke);
-    width: 60%;
+    width: 70%;
+    max-width: 1792px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -113,12 +114,12 @@ body{
 }
 
 .startSection .disciplineInfo{
-    font-size: 20px;
+    font-size: 28px;
     color: blue;
 }
 
 .startSection .pointsInfo{
-    font-size: 28px;
+    font-size: 32px;
     color: darkmagenta;
 }
 
@@ -126,10 +127,59 @@ body{
     color: darkviolet;
 }
 
+.startSection .raceDisciplineBox{
+    width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.startSection .raceDisciplineBox .leftSide a{
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.startSection .raceDisciplineBox .leftSide .infoText{
+    font-size: 20px;
+}
+
+.startSection .raceDisciplineBox .rightSide .pointsText{
+    font-size: 40px;
+}
+
+.startSection .backToRaceButton{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    background-color: darkmagenta;
+    padding: 10px;
+    border-radius: 32px;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.startSection .totalPointsText{
+    margin-top: 28px;
+}
+
+
 
 .gameSection{
     background-image: linear-gradient(to bottom right, wheat, whitesmoke);
     width: 85%;
+    max-width: 2176px;
     height: 90vh;
     margin-left: auto;
     margin-right: auto;

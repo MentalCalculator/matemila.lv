@@ -43,6 +43,7 @@ $("#statusMessage").delay(3200).fadeOut(800);
 let dialogs = document.getElementsByClassName("dialog");
 let deleteButtons = document.getElementsByClassName("deleteButton");
 let closeButtons = document.getElementsByClassName("close");
+let closeButtons2 = document.getElementsByClassName("closeButton");
 
 for(let i = 0; i < dialogs.length; i++){
 
@@ -51,6 +52,10 @@ for(let i = 0; i < dialogs.length; i++){
     }
 
     closeButtons[i].onclick = function() {
+        dialogs[i].style.display = "none";
+    }
+
+    closeButtons2[i].onclick = function() {
         dialogs[i].style.display = "none";
     }
 

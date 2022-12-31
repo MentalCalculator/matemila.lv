@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\RaceDiscipline;
-use App\Models\RaceResult;
+use App\Models\RacesDiscipline;
+use App\Models\RacesResult;
 use App\Models\RaceAccess;
 
 class Race extends Model
@@ -18,11 +18,11 @@ class Race extends Model
     }
 
     public function raceDisciplines(){
-        return $this->hasMany(RaceDiscipline::class);
+        return $this->hasMany(RacesDiscipline::class);
     }
 
     public function raceResults(){
-        return $this->hasMany(RaceResult::class);
+        return $this->hasMany(RacesResult::class);
     }
 
     public function raceAccess(){

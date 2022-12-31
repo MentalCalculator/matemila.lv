@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Discipline;
 use App\Models\Race;
-use App\Models\RaceResult;
+use App\Models\RacesResult;
 
-class RaceDiscipline extends Model
+class RacesDiscipline extends Model
 {
     use HasFactory;
 
@@ -21,11 +21,15 @@ class RaceDiscipline extends Model
     }
 
     public function raceResults(){
-        return $this->hasMany(RaceResult::class);
+        return $this->hasMany(RacesResult::class);
     }
 
     protected $fillable = [
+        'race_id',
+        'discipline_id',
         'levelCount',
         'mode'
     ];
+
+    public $timestamps = false;
 }

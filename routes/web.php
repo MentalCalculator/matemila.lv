@@ -47,13 +47,22 @@ Route::group(['middleware' => 'auth'], function(){
     //Route::delete('/delete_training_result', [TrainingController::class, 'deleteTrainingResult'])->name('deleteTrainingResult');
 
     Route::get('/races', [RacesController::class, 'showAllRaces'])->name('allRaces');
+    Route::get('/races_archive', [RacesController::class, 'showRacesArchive'])->name('racesArchive');
+    Route::get('/races/{raceId}', [RacesController::class, 'doRace'])->name('doRace');
+    Route::get('/races/{raceId}/discipline/{disciplineId}', [RacesController::class, 'doRaceDiscipline'])->name('doRaceDiscipline');
+    Route::post('/races/{raceId}/discipline/{disciplineId}/update', [RacesController::class, 'saveRaceDisciplineResult'])->name('saveRaceDisciplineResult');
+    Route::get('/races/{raceId}/discipline/{disciplineId}/result', [RacesController::class, 'showRaceDisciplineResult'])->name('showRaceDisciplineResult');
 
     Route::group(['middleware' => 'moderator'], function(){
         Route::get('/create_race', [RacesController::class, 'createRace'])->name('createRace');
         Route::post('/save_race', [RacesController::class, 'saveRace'])->name('saveRace');
         Route::get('/edit_race/{id}', [RacesController::class, 'editRace'])->name('editRace');
         Route::post('/update_race/{id}', [RacesController::class, 'updateRace'])->name('updateRace');
+        Route::delete('/delete_race/{id}', [RacesController::class, 'deleteRace'])->name('deleteRace');
         Route::get('/edit_race_disciplines/{id}', [RacesController::class, 'editRaceDisciplines'])->name('editRaceDisciplines');
+        Route::post('/edit_race_disciplines/{id}/add_discipline', [RacesController::class, 'addRaceDiscipline'])->name('addRaceDiscipline');
+        Route::post('/edit/race_disciplines/{id}/update_discipline/{discId}', [RacesController::class, 'updateRaceDiscipline'])->name('updateRaceDiscipline');
+        Route::delete('/edit/race_disciplines/{id}/delete_discipline/{discId}', [RacesController::class, 'deleteRaceDiscipline'])->name('deleteRaceDiscipline');
     });
 
     Route::group(['middleware' => 'admin'], function(){
@@ -61,7 +70,11 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/save_race', [RacesController::class, 'saveRace'])->name('saveRace');
         Route::get('/edit_race/{id}', [RacesController::class, 'editRace'])->name('editRace');
         Route::post('/update_race/{id}', [RacesController::class, 'updateRace'])->name('updateRace');
+        Route::delete('/delete_race/{id}', [RacesController::class, 'deleteRace'])->name('deleteRace');
         Route::get('/edit_race_disciplines/{id}', [RacesController::class, 'editRaceDisciplines'])->name('editRaceDisciplines');
+        Route::post('/edit_race_disciplines/{id}/add_discipline', [RacesController::class, 'addRaceDiscipline'])->name('addRaceDiscipline');
+        Route::post('/edit/race_disciplines/{id}/update_discipline/{discId}', [RacesController::class, 'updateRaceDiscipline'])->name('updateRaceDiscipline');
+        Route::delete('/edit/race_disciplines/{id}/delete_discipline/{discId}', [RacesController::class, 'deleteRaceDiscipline'])->name('deleteRaceDiscipline');
 
         Route::get('/all_profiles', [ProfileController::class, 'viewAllProfiles'])->name('viewAllProfiles');
         Route::get('/all_profiles/edit/{id}', [ProfileController::class, 'editAnotherProfile'])->name('editAnotherProfile');

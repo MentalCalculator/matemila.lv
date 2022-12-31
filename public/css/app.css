@@ -447,6 +447,7 @@ footer .rightFooterContent .rightFooterField a:hover{
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    animation: fadeIn 0.5s;
 }
 
 .dialog .dialogContent{
@@ -456,6 +457,7 @@ footer .rightFooterContent .rightFooterField a:hover{
     border: 1px solid #888;
     width: 80%;
     border-radius: 32px;
+    animation: fadeIn 0.5s;
 }
 
 .dialog .dialogContent .close{
@@ -463,6 +465,24 @@ footer .rightFooterContent .rightFooterField a:hover{
     float: right;
     font-size: 42px;
     font-weight: bold;
+}
+
+.dialog .dialogContent .choiceButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog .dialogContent .closeButton{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    background-color: var(--dark_purple2);
+    color: var(--rose_2);
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .dialog .dialogContent .close:hover, .close:focus {
@@ -1658,7 +1678,11 @@ footer .rightFooterContent .rightFooterField a:hover{
     transition: all 0.3s all;
 }
 
-.racesMenuBar ul .createNewRaceButton{
+.racesMenuBar ul li.selected a{
+    color: var(--dark_purple2);
+}
+
+.racesMenuBar ul a{
     text-decoration: none;
     color: var(--rose_2);
 }
@@ -1749,9 +1773,99 @@ footer .rightFooterContent .rightFooterField a:hover{
     border: 2px solid white;
 }
 
-.raceBox .raceLinksBox .deleteRaceButton{
+.raceBox .raceLinksBox .deleteButton.race{
+    color: white;
+    border-radius: 20px;
     background-color: red;
+    font-size: 18px;
     border: 2px solid white;
+    padding-top: 0px;
+    cursor: pointer;
+}
+
+/* Sacensību disciplīnu rediģēšanas lapa / Race Disciplines Edit Page */
+
+.raceDisciplinesBox{
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.raceDisciplinesBox .raceDisciplineBox{
+    background-image: linear-gradient(to bottom right, purple, var(--light_purple), pink);
+    width: auto;
+    max-width: 1400px;
+    height: auto;
+    margin: 20px;
+    border-radius: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    color: var(--rose_2);
+    box-shadow: 4px 4px 2px #aaaaaa;
+    padding: 20px;
+}
+
+.raceDisciplineBox .raceDisciplineBox .formLabel{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.raceDisciplinesBox .raceDisciplineBox .raceDisciplineNumber{
+    font-size: 80px;
+    padding: 10px;
+}
+
+.raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm{
+    padding: 10px;
+    text-align: right;
+}
+
+.raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm select{
+    color: var(--rose_2);
+    font-family: Josefin Sans;
+}
+
+.raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm option{
+    color: var(--dark_purple2);
+}
+
+.raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm .range{
+    width: 380px;
+}
+
+.raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm .rangeText{
+    color: black;
+}
+
+.raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm button{
+    font-size: 24px;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm .updateButton{
+    background-color: var(--dark_purple);
+    color: var(--rose);
+    margin-top: 10px;
+    border: 2px solid var(--rose);
+    cursor: pointer;
+}
+
+.raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm .deleteButton{
+    background-color: red;
+    color: white;
+    margin-top: 10px;
+    display: inline;
+    border: 2px solid white;
+    cursor: pointer;
 }
 
 /*****/
@@ -2241,6 +2355,50 @@ footer .rightFooterContent .rightFooterField a:hover{
     .allProfilesTable .profileButtons .deleteButton{
         font-size: 18px;
     }
+
+    /* Sacensību galvenā lapa / Races Main Page */
+
+    .racesMenuBar ul{
+        padding-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .racesMenuBar ul li{
+        font-size: 20px;
+        margin-top: 0px;
+    }
+
+    .racesBox .racesBoxField .raceBox{
+        width: 100%;
+    }
+
+    .racesBox .racesBoxField .raceBox .raceLinksBox a{
+        font-size: 18px;
+        margin: 12px;
+    }
+    
+    /* Sacensību disciplīnu rediģēšanas lapa / Race Disciplines Edit Page */
+
+    .raceDisciplinesBox .raceDisciplineBox{
+        padding: 5px;
+    }
+    
+    .raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm{
+        text-align: center;
+    }
+
+    .raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm .formLabel{
+        flex-direction: column;
+    }
+
+    .raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm select{
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .raceDisciplinesBox .raceDisciplineBox .raceDisciplineForm .range{
+        width: 100%;
+    }
 }
 
 @media (max-width: 540px){
@@ -2485,4 +2643,11 @@ footer .rightFooterContent .rightFooterField a:hover{
         margin-right: 0px;
         width: 90%;
     }
+
+    /* Sacensību galvenā lapa / Races Main Page */
+
+    .racesBox .racesBoxField .raceBox .raceLinksBox a{
+        width: 100%;
+        text-align: center;
+    }   
 }

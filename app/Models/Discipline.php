@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\TrainingResult;
-use App\Models\RaceDiscipline;
+use App\Models\RacesDiscipline;
 
 class Discipline extends Model
 {

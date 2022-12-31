@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Race;
-use App\Models\RaceDiscipline;
+use App\Models\RacesDiscipline;
 
-class RaceResult extends Model
+class RacesResult extends Model
 {
     use HasFactory;
 
@@ -25,6 +25,9 @@ class RaceResult extends Model
     }
 
     protected $fillable = [
+        'user_id',
+        'race_id',
+        'race_discipline_id',
         'points'
     ];
 }

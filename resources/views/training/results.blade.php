@@ -115,6 +115,6 @@
     </form>
 </div>
 
-<h2 class="emptyListWarning">Izvēlieties vajadzīgos kritērijus, lai apskatītus savus un citu lietotāju labākos rezultātus konkrētajā disciplīnā.</h2>
+<h2 class="emptyListWarning" data-aos="zoom-in-up">Izvēlieties vajadzīgos kritērijus, lai apskatītus savus un citu lietotāju labākos rezultātus konkrētajā disciplīnā.</h2>
 
 @endsection
