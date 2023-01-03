@@ -12,6 +12,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body id="body">
+    @if(Auth::user()->status == 'user')
+    <div class="timer" id="timer">
+        <span>🕒</span>
+    </div>
+    @endif
     <section class="startSection" id="startSection">
         <h2 class="title">{{ $race->name }}</h2>
 
@@ -27,10 +32,12 @@
             </ul>    
         </div>
 
-        @if($totalRaceResult->points % 10 == 1 && $totalRaceResult->points != 11)
-        <h3 class="totalPointsText">Kopējais rezultāts: {{ $totalRaceResult->points }} punkts</h3>
-        @else
-        <h3 class="totalPointsText">Kopējais rezultāts: {{ $totalRaceResult->points }} punkti</h3>
+        @if($totalRaceResult != null)
+            @if($totalRaceResult->points % 10 == 1 && $totalRaceResult->points != 11)
+            <h3 class="totalPointsText">Kopējais rezultāts: {{ $totalRaceResult->points }} punkts</h3>
+            @else
+            <h3 class="totalPointsText">Kopējais rezultāts: {{ $totalRaceResult->points }} punkti</h3>
+            @endif
         @endif
 
         @foreach($raceDisciplines as $raceDiscipline)
@@ -63,4 +70,29 @@
         @endforeach
 
     </section>
+    <script>
+        /* Sacensību piekļuves masīvs / Array of the Race Access */
+        let raceAccess = {{ Illuminate\Support\Js::from($raceAccess) }};
+        
+        /* Taimeris / Timer */
+        setInterval(function() {
+            let expireTime = raceAccess.endTime;
+            expireTime = new Date(expireTime);
+
+            let now = new Date();
+            let timer = expireTime - now;
+            let d = new Date(1000 * Math.round(timer/1000));
+            function pad(i) {
+                return ('0'+i).slice(-2); 
+            }
+            let timerStr = d.getUTCHours() + ':' + pad(d.getUTCMinutes()) + ':' + pad(d.getUTCSeconds());
+            
+            if(timer < 0){
+                document.getElementById('timer').innerHTML = '🕒 0:00:00';
+            }
+            else{
+                document.getElementById('timer').innerHTML = '🕒' + timerStr;
+            }
+        }, 1000);
+    </script>
 </body>

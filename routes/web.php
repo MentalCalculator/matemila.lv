@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/races/{raceId}/discipline/{disciplineId}', [RacesController::class, 'doRaceDiscipline'])->name('doRaceDiscipline');
     Route::post('/races/{raceId}/discipline/{disciplineId}/update', [RacesController::class, 'saveRaceDisciplineResult'])->name('saveRaceDisciplineResult');
     Route::get('/races/{raceId}/discipline/{disciplineId}/result', [RacesController::class, 'showRaceDisciplineResult'])->name('showRaceDisciplineResult');
+    Route::get('/races/results/{raceId}', [RacesController::class, 'showRaceTotalResults'])->name('showRaceTotalResults');
+    Route::get('/races/results/{raceId}/user/{userId}', [RacesController::class, 'showUserRaceResults'])->name('showUserRaceResults');
 
     Route::group(['middleware' => 'moderator'], function(){
         Route::get('/create_race', [RacesController::class, 'createRace'])->name('createRace');
@@ -63,6 +65,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/edit_race_disciplines/{id}/add_discipline', [RacesController::class, 'addRaceDiscipline'])->name('addRaceDiscipline');
         Route::post('/edit/race_disciplines/{id}/update_discipline/{discId}', [RacesController::class, 'updateRaceDiscipline'])->name('updateRaceDiscipline');
         Route::delete('/edit/race_disciplines/{id}/delete_discipline/{discId}', [RacesController::class, 'deleteRaceDiscipline'])->name('deleteRaceDiscipline');
+        Route::delete('/races/results/{raceId}/user/{userId}/delete/{raceDiscId}', [RacesController::class, 'deleteRaceDisciplineResult'])->name('deleteRaceDisciplineResult');
     });
 
     Route::group(['middleware' => 'admin'], function(){
@@ -75,6 +78,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/edit_race_disciplines/{id}/add_discipline', [RacesController::class, 'addRaceDiscipline'])->name('addRaceDiscipline');
         Route::post('/edit/race_disciplines/{id}/update_discipline/{discId}', [RacesController::class, 'updateRaceDiscipline'])->name('updateRaceDiscipline');
         Route::delete('/edit/race_disciplines/{id}/delete_discipline/{discId}', [RacesController::class, 'deleteRaceDiscipline'])->name('deleteRaceDiscipline');
+        Route::delete('/races/delete_discipline_result/{raceDiscId}', [RacesController::class, 'deleteRaceDisciplineResult'])->name('deleteRaceDisciplineResult');
 
         Route::get('/all_profiles', [ProfileController::class, 'viewAllProfiles'])->name('viewAllProfiles');
         Route::get('/all_profiles/edit/{id}', [ProfileController::class, 'editAnotherProfile'])->name('editAnotherProfile');

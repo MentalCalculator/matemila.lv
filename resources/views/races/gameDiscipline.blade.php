@@ -20,6 +20,9 @@
     </script>
 </head>
 <body id="body">
+    <div class="timer" id="timer">
+        🕒
+    </div>
     <!-- Starta sekcija / Start Section -->
     <section class="startSection" id="startSection">
         <h2 class="title">{{ $raceDiscipline->name }}</h2>
@@ -168,6 +171,27 @@
     <script>
 
         AOS.init();
+        
+        /* Sacensību piekļuves masīvs / Array of the Race Access */
+        let raceAccess = {{ Illuminate\Support\Js::from($raceAccess) }};
+        
+        /* Taimeris / Timer */
+        setInterval(function() {
+            let expireTime = raceAccess.endTime;
+            expireTime = new Date(expireTime);
+
+            let now = new Date();
+            let timer = expireTime - now;
+            let d = new Date(1000 * Math.round(timer/1000));
+            function pad(i) {
+                return ('0'+i).slice(-2); 
+            }
+            let timerStr = d.getUTCHours() + ':' + pad(d.getUTCMinutes()) + ':' + pad(d.getUTCSeconds());
+            
+            document.getElementById('timer').innerHTML = '🕒' + timerStr;
+        }, 1000);
+        
+
 
         /* Disciplīnas masīvs / Array of the Discipline */
         let discipline = {{ Illuminate\Support\Js::from($raceDiscipline) }};

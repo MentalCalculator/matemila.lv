@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Discipline;
 use App\Models\User;
 use App\Models\Race;
+use App\Models\RaceAccess;
 use App\Models\RacesDiscipline;
 use App\Models\RacesResult;
 
@@ -124,39 +125,170 @@ class RacesController extends Controller
     public function doRace(Race $raceId){
 
         $user = Auth::user()->id;
+        $userClass = Auth::user()->class;
+        $userStatus = Auth::user()->status;
 
-        $raceDisciplines = RacesDiscipline::where('race_id', '=', $raceId->id)
-        ->join('disciplines', 'disciplines.id', '=', 'races_disciplines.discipline_id')
-        ->selectRaw('disciplines.*, races_disciplines.*')
-        ->get();
+        if(($userClass < $raceId->minClass) || ($userClass > $raceId->maxClass)){
+            echo "<script>";
+            echo "alert('Pieeja šīm sacensībām ir slēgta, jo neesat vajadzīgajā klašu grupā.');";
+            echo "window.close();";
+            echo "</script>";
+        }
+        else if((date("Y-m-d H:i:s") < $raceId->startTime) || (date("Y-m-d H:i:s") > $raceId->endTime)){
+            echo "<script>";
+            echo "alert('Pieeja šīm sacensībam tagad nav pieejama.');";
+            echo "window.close();";
+            echo "</script>";
+        }
+        else{
 
-        $raceResults = RacesResult::where('user_id', '=', $user)
-                    ->where('race_id', '=', $raceId->id)
-                    ->get();
-
-        $totalRaceResult = RacesResult::selectRaw('SUM(points) as points')
-                            ->where('race_id', '=', $raceId->id)
+            $raceAccessExists = RaceAccess::where('race_id', '=', $raceId->id)
                             ->where('user_id', '=', $user)
-                            ->groupBy('user_id')
-                            ->first();
+                            ->exists();
+
+            $raceMinutes = $raceId->minutes;
+
+            if(!$raceAccessExists){
+                $raceAccess = new RaceAccess;
+
+                if($userStatus == 'user'){
+                    $raceAccess->create([
+                        'user_id' => $user,
+                        'race_id' => $raceId->id,
+                        'startTime' => date("Y-m-d H:i:s"),
+                        'endTime' => date('Y-m-d H:i:s', strtotime("{$raceMinutes} minutes"))
+                    ]);
+                }
+                else{
+                    $raceAccess->create([
+                        'user_id' => $user,
+                        'race_id' => $raceId->id,
+                        'startTime' => date("Y-m-d H:i:s"),
+                        'endTime' => date('Y-m-d H:i:s', strtotime("1 year"))
+                    ]);
+                }
+            }
+
+            if($raceAccessExists){
+                $raceAccess = RaceAccess::where('race_id', '=', $raceId->id)
+                                    ->where('user_id', '=', $user)
+                                    ->first();
+                
+                $raceAccessExpireTime = $raceAccess->endTime;
+            }
+
+            if($raceAccessExists && (date("Y-m-d H:i:s") > $raceAccessExpireTime)){
+                echo "<script>";
+                echo "alert('Jūsu laiks šajās sacensībās ir beidzies. Paldies par Jūsu dalību!');";
+                echo "window.close();";
+                echo "</script>";
+            }
+            else{
+                $raceDisciplines = RacesDiscipline::where('race_id', '=', $raceId->id)
+                ->join('disciplines', 'disciplines.id', '=', 'races_disciplines.discipline_id')
+                ->selectRaw('disciplines.*, races_disciplines.*')
+                ->get();
+
+                $raceResults = RacesResult::where('user_id', '=', $user)
+                            ->where('race_id', '=', $raceId->id)
+                            ->get();
+
+                $totalRaceResult = RacesResult::selectRaw('SUM(points) as points')
+                                    ->where('race_id', '=', $raceId->id)
+                                    ->where('user_id', '=', $user)
+                                    ->groupBy('user_id')
+                                    ->first();
 
 
-        return view('races.gameMenu', [
-            'race' => $raceId, 
-            'raceDisciplines' => $raceDisciplines, 
-            'raceResults' => $raceResults,
-            'totalRaceResult' => $totalRaceResult
-        ]);
+                return view('races.gameMenu', [
+                    'race' => $raceId, 
+                    'raceDisciplines' => $raceDisciplines, 
+                    'raceResults' => $raceResults,
+                    'totalRaceResult' => $totalRaceResult,
+                    'raceAccess' => $raceAccess
+                ]);
+            }
+        }
     }
 
     public function doRaceDiscipline(Race $raceId, RacesDiscipline $disciplineId){
         
-        $raceDiscipline = RacesDiscipline::where('races_disciplines.id', '=', $disciplineId->id)
-                        ->join('disciplines', 'disciplines.id', '=', 'races_disciplines.discipline_id')
-                        ->selectRaw('disciplines.*, races_disciplines.*')
-                        ->first();
-        
-        return view('races.gameDiscipline', ['race' => $raceId, 'raceDiscipline' => $raceDiscipline]);
+        $user = Auth::user()->id;
+        $userClass = Auth::user()->class;
+        $userStatus = Auth::user()->status;
+
+        if(($userClass < $raceId->minClass) || ($userClass > $raceId->maxClass)){
+            echo "<script>";
+            echo "alert('Pieeja šīm sacensībām ir slēgta, jo neesat vajadzīgajā klašu grupā.');";
+            echo "window.close();";
+            echo "</script>";
+        }
+        else if((date("Y-m-d H:i:s") < $raceId->startTime) || (date("Y-m-d H:i:s") > $raceId->endTime)){
+            echo "<script>";
+            echo "alert('Pieeja šīm sacensībam tagad nav pieejama.');";
+            echo "window.close();";
+            echo "</script>";
+        }
+        else{
+
+            $raceAccessExists = RaceAccess::where('race_id', '=', $raceId->id)
+                            ->where('user_id', '=', $user)
+                            ->exists();
+
+            $raceMinutes = $raceId->minutes;
+
+            if(!$raceAccessExists){
+                $raceAccess = new RaceAccess;
+
+                if($userStatus == 'user'){
+                    $raceAccess->create([
+                        'user_id' => $user,
+                        'race_id' => $raceId->id,
+                        'startTime' => date("Y-m-d H:i:s"),
+                        'endTime' => date('Y-m-d H:i:s', strtotime("{$raceMinutes} minutes"))
+                    ]);
+                }
+                else{
+                    $raceAccess->create([
+                        'user_id' => $user,
+                        'race_id' => $raceId->id,
+                        'startTime' => date("Y-m-d H:i:s"),
+                        'endTime' => date('Y-m-d H:i:s', strtotime("1 year"))
+                    ]);
+                }
+            }
+
+            if($raceAccessExists){
+                $raceAccess = RaceAccess::where('race_id', '=', $raceId->id)
+                                    ->where('user_id', '=', $user)
+                                    ->first();
+                
+                $raceAccessExpireTime = $raceAccess->endTime;
+            }
+
+            if($raceAccessExists && (date("Y-m-d H:i:s") > $raceAccessExpireTime)){
+                echo "<script>";
+                echo "alert('Jūsu laiks šajās sacensībās ir beidzies. Paldies par Jūsu dalību!');";
+                echo "window.close();";
+                echo "</script>";
+            }
+            else{
+                $raceDiscipline = RacesDiscipline::where('races_disciplines.id', '=', $disciplineId->id)
+                                ->join('disciplines', 'disciplines.id', '=', 'races_disciplines.discipline_id')
+                                ->selectRaw('disciplines.*, races_disciplines.*')
+                                ->first();
+
+                /*$raceAccess = RaceAccess::where('race_id', '=', $raceId->id)
+                                ->where('user_id', '=', $user)
+                                ->first();*/
+                
+                return view('races.gameDiscipline', [
+                    'race' => $raceId, 
+                    'raceDiscipline' => $raceDiscipline,
+                    'raceAccess' => $raceAccess 
+                ]);
+            }
+        }
     }
 
     public function saveRaceDisciplineResult(Race $raceId, RacesDiscipline $disciplineId, Request $request){
@@ -226,5 +358,61 @@ class RacesController extends Controller
                     ->first();
 
         return view('races.gameResult', ['race' => $raceId, 'raceDiscipline' => $raceDiscipline, 'raceResult' => $raceResult]);
+    }
+
+    public function showRaceTotalResults(Race $raceId, Request $request){
+        
+
+        if(request('place') == '' && request('school') == '' && request('minClass') == '' && request('maxClass') == ''){
+            $raceTotalResults = RacesResult::selectRaw('@i := coalesce(@i + 1, 1) ranking, users.*, SUM(points) as points, races_results.user_id')
+                                ->join('users', 'users.id', '=', 'races_results.user_id')
+                                ->where('races_results.race_id', '=', $raceId->id)
+                                ->groupBy('user_id')
+                                ->orderBy('points', 'desc')
+                                ->latest()
+                                ->paginate(50);
+        }
+        else{
+            $raceTotalResults = RacesResult::selectRaw('@i := coalesce(@i + 1, 1) ranking, users.*, SUM(points) as points, races_results.user_id')
+                                ->join('users', 'users.id', '=', 'races_results.user_id')
+                                ->where('users.place', 'like', '%' . request('place') . '%')
+                                ->where('users.school', 'like', '%' . request('school') . '%')
+                                ->whereBetween('users.class', [request('minClass'), request('maxClass')])
+                                ->where('races_results.race_id', '=', $raceId->id)
+                                ->groupBy('user_id')
+                                ->orderBy('points', 'desc')
+                                ->latest()
+                                ->paginate(50);
+        }
+
+        return view('races.totalResults', [
+            'raceTotalResults' => $raceTotalResults,
+            'race' => $raceId
+        ]);
+    }
+
+    public function showUserRaceResults(Race $raceId, $userId){
+
+        $raceDisciplineResults = RacesResult::selectRaw('races_results.id, disciplines.name as disciplineName, disciplines.numbers_type as disciplineNumbersType, races_disciplines.mode, races_results.user_id, races_results.points')
+                                ->where('races_results.race_id', '=', $raceId->id)
+                                ->where('races_results.user_id', '=', $userId)
+                                ->join('races_disciplines', 'races_disciplines.id', '=', 'races_results.race_discipline_id')
+                                ->join('disciplines', 'disciplines.id', '=', 'races_disciplines.discipline_id')
+                                ->get();
+
+        $user = User::where('id', '=', $userId)->first();
+
+        return view('races.disciplinesResults', [
+            'raceDisciplineResults' => $raceDisciplineResults,
+            'race' => $raceId,
+            'user' => $user
+        ]);
+    }
+
+    public function deleteRaceDisciplineResult(RacesResult $raceDiscId){
+        
+        $raceDiscId->delete();
+
+        return redirect()->back()->with('message', '✅ Šīs sacensību disciplīnas rezultāts ir izdzēsts.');
     }
 }

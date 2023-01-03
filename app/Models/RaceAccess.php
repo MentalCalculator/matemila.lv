@@ -19,8 +19,12 @@ class RaceAccess extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected $hidden = [
+    protected $fillable = [
+        'user_id',
+        'race_id',
         'startTime',
         'endTime'
     ];
+
+    public $timestamps = false;
 }

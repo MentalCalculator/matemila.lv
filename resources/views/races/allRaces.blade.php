@@ -51,7 +51,7 @@
             <p>{{ $race->description }}</p>
             <div class="raceLinksBox">
                 <a href="{{ route('doRace', $race->id) }}" class="openRaceButton" target="_blank">Atvērt</a>
-                <a href="#" class="openRaceResultsButton">Rezultāti</a>
+                <a href="{{ route('showRaceTotalResults', $race->id) }}" class="openRaceResultsButton">Rezultāti</a>
                 @if(Auth::user()->status == 'admin' || Auth::user()->status == 'moderator')
                 <a href="{{ route('editRace', $race->id) }}" class="editRaceButton">Rediģēt</a>
                 <a href="{{ route('editRaceDisciplines', $race->id) }}" class="editRaceDisciplinesButton">Rediģēt disciplīnas</a>

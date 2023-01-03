@@ -141,6 +141,8 @@ nav .navbar .nav-links .links .sub-menu .logoutButton{
     border-color: inherit;
     font-size: 20px;
     color: var(--rose_2);
+    cursor: pointer;
+    border-radius: 16px;
 }
 
 nav .navbar .nav-links .links li:hover > .sub-menu {
@@ -571,6 +573,7 @@ footer .rightFooterContent .rightFooterField a:hover{
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
 }
 
 .pageLinks a{
@@ -612,6 +615,10 @@ footer .rightFooterContent .rightFooterField a:hover{
 
 .pointsInfo{
     font-size: 24px;
+}
+
+.raceDisciplineResultsIcon{
+    
 }
 
 .formBox{
@@ -1866,6 +1873,44 @@ footer .rightFooterContent .rightFooterField a:hover{
     display: inline;
     border: 2px solid white;
     cursor: pointer;
+}
+
+/* Lietotāja sacensību disciplīnu rezultātu lapa / User Race Disciplines Results Page */
+
+.raceName{
+    text-align: center;
+    font-size: 42px;
+    color: var(--dark_purple2);
+}
+
+.userDisciplineResultBox{
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid var(--dark_purple2);
+    border-radius: 32px;
+    padding: 20px;
+    background-color: var(--dark_purple);
+    color: var(--rose_2);
+    box-shadow: 4px 4px 2px #aaaaaa;
+}
+
+.userDisciplineResultBox .leftSide .disciplineName{
+    font-size: 32px;
+}
+
+.userDisciplineResultBox .rightSide{
+    margin-left: 20px;
+    text-align: right;
+}
+
+.userDisciplineResultBox .rightSide .pointsText{
+    font-size: 32px;
 }
 
 /*****/

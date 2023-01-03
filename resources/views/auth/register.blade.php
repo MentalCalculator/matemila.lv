@@ -95,20 +95,20 @@
                 </select><br>
                 <label for="class">Klase*</label><br>
                 <select name="class" id="class">
-                    <option value="0" @if (old('minClass') == "0") {{ 'selected' }} @endif>bērnudārzs</option>
-                    <option value="1" @if (old('minClass') == "1") {{ 'selected' }} @endif>1.klase</option>
-                    <option value="2" @if (old('minClass') == "2") {{ 'selected' }} @endif>2.klase</option>
-                    <option value="3" @if (old('minClass') == "3") {{ 'selected' }} @endif>3.klase</option>
-                    <option value="4" @if (old('minClass') == "4") {{ 'selected' }} @endif>4.klase</option>
-                    <option value="5" @if (old('minClass') == "5") {{ 'selected' }} @endif>5.klase</option>
-                    <option value="6" @if (old('minClass') == "6") {{ 'selected' }} @endif>6.klase</option>
-                    <option value="7" @if (old('minClass') == "7") {{ 'selected' }} @endif>7.klase</option>
-                    <option value="8" @if (old('minClass') == "8") {{ 'selected' }} @endif>8.klase</option>
-                    <option value="9" @if (old('minClass') == "9") {{ 'selected' }} @endif>9.klase</option>
-                    <option value="10" @if (old('minClass') == "10") {{ 'selected' }} @endif>10.klase / 1.kurss</option>
-                    <option value="11" @if (old('minClass') == "11") {{ 'selected' }} @endif>11.klase / 2.kurss</option>
-                    <option value="12" @if (old('minClass') == "12") {{ 'selected' }} @endif>12.klase / 3.-4.kurss</option>
-                    <option value="13" @if (old('minClass') == "13") {{ 'selected' }} @endif>pieaugušo klase</option>
+                    <option value="0" @if (old('class') == "0") {{ 'selected' }} @endif>bērnudārzs</option>
+                    <option value="1" @if (old('class') == "1") {{ 'selected' }} @endif>1.klase</option>
+                    <option value="2" @if (old('class') == "2") {{ 'selected' }} @endif>2.klase</option>
+                    <option value="3" @if (old('class') == "3") {{ 'selected' }} @endif>3.klase</option>
+                    <option value="4" @if (old('class') == "4") {{ 'selected' }} @endif>4.klase</option>
+                    <option value="5" @if (old('class') == "5") {{ 'selected' }} @endif>5.klase</option>
+                    <option value="6" @if (old('class') == "6") {{ 'selected' }} @endif>6.klase</option>
+                    <option value="7" @if (old('class') == "7") {{ 'selected' }} @endif>7.klase</option>
+                    <option value="8" @if (old('class') == "8") {{ 'selected' }} @endif>8.klase</option>
+                    <option value="9" @if (old('class') == "9") {{ 'selected' }} @endif>9.klase</option>
+                    <option value="10" @if (old('class') == "10") {{ 'selected' }} @endif>10.klase / 1.kurss</option>
+                    <option value="11" @if (old('class') == "11") {{ 'selected' }} @endif>11.klase / 2.kurss</option>
+                    <option value="12" @if (old('class') == "12") {{ 'selected' }} @endif>12.klase / 3.-4.kurss</option>
+                    <option value="13" @if (old('class') == "13") {{ 'selected' }} @endif>pieaugušo klase</option>
                 </select><br>
                 <p class="infoText"">Ņemiet vērā, ka 1.-4.kursi attiecas uz tehnikumu audzēkņiem. Augstskolu studentiem jāizvēlas pieaugušo klase.</p>
                 <label for="password">Parole*</label><br>
