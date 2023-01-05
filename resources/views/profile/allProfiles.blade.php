@@ -148,14 +148,14 @@
         <td>
             <div class="profileButtons">
                 <a href="{{ route('editAnotherProfile', $profile->id) }}" class="editProfileLink">Rediģēt</a>
-                <button class="deleteButton" id="deleteButton">Dzēst</button>
+                <button class="deleteButton">Dzēst</button>
             </div>
         </td>
     </tr>
 
-    <div id="dialog" class="dialog" data-aos="zoom-in">
+    <div class="dialog" data-aos="zoom-in">
     <div class="dialogContent">
-        <span class="close" id="close">&times;</span>
+        <span class="close">&times;</span>
         <h2 class="dialogText">Vai Jūs vēlaties dzēst šo profilu "{{ $profile->username }}"?</h2>
         <p class="dialogSubtext">Ievadiet savu paroli, lai apstiprinātu savu izvēli.</p>
         <form method="POST" action="{{ route('deleteAnotherProfile', $profile->id) }}">

@@ -44,6 +44,11 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'moderators_and_admins' => [
+            \App\Http\Middleware\Moderator::class,
+            \App\Http\Middleware\Admin::class
+        ]
     ];
 
     /**
@@ -64,6 +69,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'moderator' => \App\Http\Middleware\Moderator::class,
-        'admin' => \App\Http\Middleware\Admin::class
+        'admin' => \App\Http\Middleware\Admin::class,
+        'adminOrModerator' => \App\Http\Middleware\AdminOrModerator::class
     ];
 }

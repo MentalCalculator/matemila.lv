@@ -52,6 +52,9 @@
                     <option value="Valmiera" {{ Auth::user()->place == 'Valmiera' ? 'selected' : '' }}>Valmiera</option>
                     <option value="Ventspils" {{ Auth::user()->place == 'Ventspils' ? 'selected' : '' }}>Ventspils</option>
                 </select><br>
+                @if ($errors->has('place'))
+                    <p class="text-danger">&#10071; {{ $errors->first('place') }}</p><br>
+                @endif
                 <label for="school">Skola</label><br>
                 <select name="school" id="school">
                     <option value="">Izvēlēties...</option> 

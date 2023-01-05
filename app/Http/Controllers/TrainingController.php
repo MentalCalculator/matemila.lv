@@ -21,7 +21,12 @@ class TrainingController extends Controller
     }
 
     public function doDiscipline(Discipline $discipline, $mode){
-        return view('training.game', ['discipline' => $discipline, 'mode' => $mode]);
+        if($mode != 'normal' && $mode != 'sprint' && $mode != 'variants'){
+            return redirect()->back()->with('message', 'Ir jāizvēlais pareizais režīms.');
+        }
+        else{
+            return view('training.game', ['discipline' => $discipline, 'mode' => $mode]);
+        }
     }
 
     public function saveTrainingResult(Discipline $discipline, $mode, Request $request){

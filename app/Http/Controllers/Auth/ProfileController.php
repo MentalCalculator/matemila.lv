@@ -29,7 +29,8 @@ class ProfileController extends Controller
             'username' => ['required', 'string', 'max:36'],
             'name' => ['required', 'string', 'max:128'],
             'surname' => ['required', 'string', 'max:128'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($id)]
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($id)],
+            'place' => 'required'
         ]);
 
         User::where('id', $id)->update([
@@ -123,7 +124,8 @@ class ProfileController extends Controller
             'username' => ['required', 'string', 'max:36'],
             'name' => ['required', 'string', 'max:128'],
             'surname' => ['required', 'string', 'max:128'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($id)]
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($id)],
+            'place' => 'required'
         ]);
 
         $id->update([

@@ -51,7 +51,16 @@ class RacesController extends Controller
     }
 
     public function editRace(Race $id){
-        return view('races.editRace', ['race' => $id]);
+        
+        $user = Auth::user()->id;
+        $userStatus = Auth::user()->status;
+
+        if($userStatus == 'moderator' && $id->creator_id != $user){
+            return redirect()->back()->with('message', '🚫 Jūs varat rediģēt tikai savas sacensības.');
+        }
+        else{
+            return view('races.editRace', ['race' => $id]);
+        }
     }
 
     public function deleteRace(Race $id){
@@ -80,13 +89,21 @@ class RacesController extends Controller
     }
 
     public function editRaceDisciplines(Race $id){
-        $disciplines = Discipline::all();
-        $raceDisciplines = RacesDiscipline::where('race_id', '=', $id->id)->get();
-        return view('races.editRaceDisciplines', [
-            'race' => $id, 
-            'disciplines' => $disciplines,
-            'raceDisciplines' => $raceDisciplines
-        ]);
+        $user = Auth::user()->id;
+        $userStatus = Auth::user()->status;
+
+        if($userStatus == 'moderator' && $id->creator_id != $user){
+            return redirect()->back()->with('message', '🚫 Jūs varat rediģēt tikai savas sacensības.');
+        }
+        else{
+            $disciplines = Discipline::all();
+            $raceDisciplines = RacesDiscipline::where('race_id', '=', $id->id)->get();
+            return view('races.editRaceDisciplines', [
+                'race' => $id, 
+                'disciplines' => $disciplines,
+                'raceDisciplines' => $raceDisciplines
+            ]);
+        }
     }
 
     public function addRaceDiscipline(Race $id, Request $request){
@@ -111,6 +128,8 @@ class RacesController extends Controller
             'mode' => $request->mode,
             'levelCount' => $request->levelCount
         ]);
+
+        RacesResult::where('race_discipline_id', '=', $discId->id)->delete();
 
         return redirect()->back()->with('message', '✅ Šī sacensību disciplīna ir atjaunināta.');
     }

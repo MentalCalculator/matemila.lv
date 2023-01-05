@@ -159,7 +159,8 @@ return [
         'email' => 'E-pasta adresei',
         'phone' => 'Telefona numuram',
         'password' => 'Parolei',
-        'title' => 'Nosaukumam'
+        'title' => 'Nosaukumam',
+        'place' => 'Pilsētai vai novadam'
     ],
 
 ];

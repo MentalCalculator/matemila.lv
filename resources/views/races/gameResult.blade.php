@@ -30,10 +30,15 @@
         </p>
         @if(session('points'))
             @if((session('points') % 10 == 1) && (session('points') != 11))
-                <p class="pointsInfo">Jūs esat ieguvis <span>{{ session('points') }}</span> punktu.</p>
+                <p class="pointsInfo">Jūs esat ieguvis <span><b>{{ session('points') }}</b></span> punktu.</p>
             @else
                 <p class="pointsInfo">Jūs esat ieguvis <span><b>{{ session('points') }}</b></span> punktus.</p>
             @endif
+        @endif
+        @if($raceResult->points % 10 == 1 && $raceResult->points != 11)
+            <p class="pointsInfo bestResult">Jūsu labākais rezultāts: <span><b>{{ $raceResult->points }}</b></span> punkts.</p>
+        @else
+            <p class="pointsInfo bestResult">Jūsu labākais rezultāts: {{ $raceResult->points }}</b></span> punkti.</p>
         @endif
         <a class="backToRaceButton" href="{{ route('doRace', $race->id) }}">Atgriezties uz sacensībām</a>
         <div class="line"></div>

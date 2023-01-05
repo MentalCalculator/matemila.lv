@@ -134,6 +134,11 @@ body{
     color: darkmagenta;
 }
 
+.startSection .pointsInfo.bestResult{
+    font-size: 24px;
+    color: green;
+}
+
 .startSection .pointsInfo span{
     color: darkviolet;
 }

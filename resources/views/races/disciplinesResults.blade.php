@@ -31,23 +31,23 @@
             </div>
             <div class="rightSide">
                 <span class="pointsText">{{ $raceDisciplineResult->points }}</span>
-                @if(Auth::user()->status == 'moderator' || Auth::user()->status == 'admin')
-                <br><button class="deleteButton" id="deleteButton">Dzēst</button>
+                @if((Auth::user()->status == 'moderator' && $race->creator_id == Auth::user()->id ) || Auth::user()->status == 'admin')
+                <br><button class="deleteButton">Dzēst</button>
                 @endif
             </div>
         </div>
 
-        <div id="dialog" class="dialog" data-aos="zoom-in">
+        <div class="dialog" data-aos="zoom-in">
             <div class="dialogContent">
-                <span class="close" id="close">&times;</span>
+                <span class="close">&times;</span>
                 <h2 class="dialogText">Vai Jūs vēlaties dzēst lietotāja "{{ $user->username }}" rezultātu disciplīnā "{{ $raceDisciplineResult->disciplineName }}"?</h2>
                 <div class="choiceButtons">
-                    <form method="POST" action="{{ route('deleteRaceDisciplineResult', $raceDisciplineResult->id) }}">
+                    <form method="POST" action="{{ route('deleteRaceDisciplineResult', [$race->id, $user->id, $raceDisciplineResult->id]) }}">
                         @csrf
                         @method('DELETE')
                         <button>Jā</button></center>
                     </form>
-                    <button class="closeButton" id="close2">Nē</button>
+                    <button class="closeButton">Nē</button>
                 </div>
             </div>
         </div>

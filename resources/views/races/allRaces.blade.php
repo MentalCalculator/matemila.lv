@@ -45,14 +45,13 @@
                     @endif 
                 </p>
                 <p>🕒 {{ $race->minutes }} min.</p>
-                <p>🧮 x disciplīnas</p>
                 <p>🗓️ {{ date("d.m.Y H:i", strtotime($race->startTime)) }} - {{ date("d.m.Y H:i", strtotime($race->endTime)) }}</p>
             </div>
             <p>{{ $race->description }}</p>
             <div class="raceLinksBox">
                 <a href="{{ route('doRace', $race->id) }}" class="openRaceButton" target="_blank">Atvērt</a>
                 <a href="{{ route('showRaceTotalResults', $race->id) }}" class="openRaceResultsButton">Rezultāti</a>
-                @if(Auth::user()->status == 'admin' || Auth::user()->status == 'moderator')
+                @if(Auth::user()->status == 'admin' || (Auth::user()->status == 'moderator' && $race->creator_id == Auth::user()->id) )
                 <a href="{{ route('editRace', $race->id) }}" class="editRaceButton">Rediģēt</a>
                 <a href="{{ route('editRaceDisciplines', $race->id) }}" class="editRaceDisciplinesButton">Rediģēt disciplīnas</a>
                 <button class="deleteButton race" id="deleteButton">Dzēst</a>
@@ -64,7 +63,7 @@
         <div id="dialog" class="dialog" data-aos="zoom-in">
             <div class="dialogContent">
                 <span class="close" id="close">&times;</span>
-                <h2 class="dialogText">Vai Jūs vēlaties dzēst šīs sacensības {{ $race->name }}?</h2>
+                <h2 class="dialogText">Vai Jūs vēlaties dzēst šīs sacensības "{{ $race->name }}"?</h2>
                 <div class="choiceButtons">
                     <form method="POST" action="{{ route('deleteRace', $race->id) }}">
                         @csrf

@@ -64,8 +64,15 @@
                 </li>
                 @endguest
                 @auth
-                <li class="drop"><i class='bx bx-user-circle'></i> {{ Auth::user()->username }}<i class='bx bxs-chevron-down arrow'></i>
+                <li class="drop"><i class='bx bx-user-circle'></i> {{ Auth::user()->username }}<i class='bx bxs-chevron-down arrow'></i><br>
                     <ul class="sub-menu">
+                        <li><small>{{ Auth::user()->name }} {{Auth::user()->surname }}<br>
+                        @if(Auth::user()->status == 'moderator')
+                        (moderators)
+                        @elseif(Auth::user()->status == 'admin')
+                        (administrators)
+                        @endif
+                        </small></li>
                         <li><a href="{{ route('viewProfile') }}">Profils</a></li>
                         @if(Auth::user()->status == 'admin')
                             <li><a href="{{ route('viewAllProfiles') }}">Visi profili</a></li>

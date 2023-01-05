@@ -88,6 +88,9 @@
                     <option value="Ventspils" @if (old('place') == "Ventspils") {{ 'selected' }} @endif>Ventspils</option>
                     <option value="Ventspils novads" @if (old('place') == "Ventspils novads") {{ 'selected' }} @endif>Ventspils novads</option>
                 </select><br>
+                @if ($errors->has('place'))
+                    <p class="text-danger">&#10071; {{ $errors->first('place') }}</p><br>
+                @endif
                 <label for="school">Skola</label><br>
                 <select name="school" id="school">
                     <option value="">Izvēlēties...</option> 
