@@ -222,12 +222,10 @@
         let gameSection = document.getElementById("gameSection");
 
         /* Izvēlētā līmeņa vērtība / Selected Level Value */
-        let level = document.getElementById("levelSelect").value;
+        //let level = document.getElementById("levelSelect").value;
 
-        /* Mainīt līmeni / Change level */
-        /*function changeLevel(){
-            level = document.getElementById("levelSelect").value;
-        }*/
+        /* Visi līmeņi pēc noklusējuma / All levels as default */
+        let level = 'all';
 
         function gameFunction() {
 
@@ -264,11 +262,9 @@
             let variants = document.getElementsByClassName("variant");
 
             /* Visi līmeņi / All levels */
-            let level = 'all';
 
             /* Parametru piemērošana, atkarībā no režīma / Applying Parameters depending on the Mode */
             if(discipline.mode == 'normal' || discipline.mode == 'variants'){
-                if(level == 'all'){
                     neededPoints = 30;
                     timer = 45;
                     yourLevel = 1;
@@ -277,17 +273,18 @@
                     maxRounds = discipline.levelCount;
                     neededPointsText.innerHTML = ' / ' + neededPoints;
                     maxLevelText.innerHTML = ' / ' + maxLevel;
-                }
             }
             else if(discipline.mode == 'sprint'){
                 timer = 30 * discipline.levelCount;
                 yourLevel = 1;
                 maxLevel = discipline.levelCount;
                 completedRounds = 1;
-                maxRounds = discipline.levelCount;
+                maxRounds = 1;
             }
+            
+            console.log(level);
 
-            /* Raunndu skaita parādīšana / Showing a Count of Rounds */
+            /* Raundu skaita parādīšana / Showing a Count of Rounds */
             if(discipline.mode == 'normal' || discipline.mode == 'variants'){
                 roundsCount = maxRounds;
                 showRoundsCount();

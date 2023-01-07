@@ -34,6 +34,10 @@ class TrainingController extends Controller
         if($auth == true){
             $user = Auth::user()->id;
             $trainingResult = new TrainingResult();
+
+            if($request->points == null){
+                $request->points = 0;
+            }
             
             $trainingResult->create([
                 'user_id' => $user,

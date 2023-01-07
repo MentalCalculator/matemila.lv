@@ -36,6 +36,8 @@
             </p>
             @if((session('points') % 10 == 1) && (session('points') != 11))
                 <p class="pointsInfo">Jūs esat ieguvis <span>{{ session('points') }}</span> punktu.</p>
+            @elseif(session('points') == 0)
+                <p class="pointsInfo">Jūs esat ieguvis 0 punktu.</p>
             @else
                 <p class="pointsInfo">Jūs esat ieguvis <span><b>{{ session('points') }}</b></span> punktus.</p>
             @endif

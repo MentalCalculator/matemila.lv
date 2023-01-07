@@ -41,52 +41,52 @@
                 <label for="place">Pilsēta/novads*</label><br>
                 <select name="place" id="place">
                     <option value="">Izvēlēties...</option>
-                    <option value="Rīga" @if (old('place') == "Rīga") {{ 'selected' }} @endif>Rīga</option>
-                    <option value="Aizkraukles novads" @if (old('place') == "Aizkraukles novads") {{ 'selected' }} @endif>Aizkraukles novads</option>
-                    <option value="Alūksnes novads" @if (old('place') == "Alūksnes novads") {{ 'selected' }} @endif>Alūksnes novads</option>
-                    <option value="Augšdaugavas novads" @if (old('place') == "Augšdaugavas novads") {{ 'selected' }} @endif>Augšdaugavas novads</option>
-                    <option value="Ādažu novads" @if (old('place') == "Ādažu novds") {{ 'selected' }} @endif>Ādažu novads</option>
-                    <option value="Balvu novads" @if (old('place') == "Balvu novads") {{ 'selected' }} @endif>Balvu novads</option>
-                    <option value="Bauskas novads" @if (old('place') == "Bauskas novads") {{ 'selected' }} @endif>Bauskas novads</option>
-                    <option value="Cēsu novads" @if (old('place') == "Cēsu novads") {{ 'selected' }} @endif>Cēsu novads</option>
-                    <option value="Daugavpils" @if (old('place') == "Daugavpils") {{ 'selected' }} @endif>Daugavpils</option>
-                    <option value="Dienvidkurzemes novads" @if (old('place') == "Dienvidkurzemes novads") {{ 'selected' }} @endif>Dienvidkurzemes novads</option>
-                    <option value="Dobeles novads" @if (old('place') == "Dobeles novads") {{ 'selected' }} @endif>Dobeles novads</option>
-                    <option value="Gulbenes novads" @if (old('place') == "Gulbenes novads") {{ 'selected' }} @endif>Gulbenes novads</option>
-                    <option value="Jelgava" @if (old('place') == "Jelgava") {{ 'selected' }} @endif>Jelgava</option>
-                    <option value="Jelgavas novads" @if (old('place') == "Jelgavas novads") {{ 'selected' }} @endif>Jelgavas novads</option>
-                    <option value="Jēkabpils" @if (old('place') == "Jēkabpils") {{ 'selected' }} @endif>Jēkabpils</option>
-                    <option value="Jēkabpils novads" @if (old('place') == "Jēkabpils novads") {{ 'selected' }} @endif>Jēkabpils novads</option>
-                    <option value="Jūrmala" @if (old('place') == "Jūrmala") {{ 'selected' }} @endif>Jūrmala</option>
-                    <option value="Krāslavas novads" @if (old('place') == "Krāslavas novads") {{ 'selected' }} @endif>Krāslavas novads</option>
-                    <option value="Kuldīgas novads" @if (old('place') == "Kuldīgas novads") {{ 'selected' }} @endif>Kuldīgas novads</option>
-                    <option value="Ķekavas novads" @if (old('place') == "Ķekavas novads") {{ 'selected' }} @endif>Ķekavas novads</option>
-                    <option value="Liepāja" @if (old('place') == "Liepāja") {{ 'selected' }} @endif>Liepāja</option>
-                    <option value="Limbažu novads" @if (old('place') == "Limbažu novads") {{ 'selected' }} @endif>Limbažu novads</option>
-                    <option value="Līvānu novads" @if (old('place') == "Līvānu novads") {{ 'selected' }} @endif>Līvānu novads</option>
-                    <option value="Ludzas novads" @if (old('place') == "Ludzas novads") {{ 'selected' }} @endif>Ludzas novads</option>
-                    <option value="Madonas novads" @if (old('place') == "Madonas novads") {{ 'selected' }} @endif>Madonas novads</option>
-                    <option value="Mārupes novads" @if (old('place') == "Mārupes novads") {{ 'selected' }} @endif>Mārupes novads</option>
-                    <option value="Ogre" @if (old('place') == "Ogre") {{ 'selected' }} @endif>Ogre</option>
-                    <option value="Ogres novads" @if (old('place') == "Ogres novads") {{ 'selected' }} @endif>Ogres novads</option>
-                    <option value="Olaines novads" @if (old('place') == "Olaines novads") {{ 'selected' }} @endif>Olaines novads</option>
-                    <option value="Preiļu novads" @if (old('place') == "Preiļu novads") {{ 'selected' }} @endif>Preiļu novads</option>
-                    <option value="Rēzekne" @if (old('place') == "Rēzekne") {{ 'selected' }} @endif>Rēzekne</option>
-                    <option value="Rēzeknes novads" @if (old('place') == "Rēzeknes novads") {{ 'selected' }} @endif>Rēzeknes novads</option>
-                    <option value="Ropažu novads" @if (old('place') == "Ropažu novads") {{ 'selected' }} @endif>Ropažu novads</option>
-                    <option value="Salaspils novads" @if (old('place') == "Salaspils novads") {{ 'selected' }} @endif>Salaspils novads</option>
-                    <option value="Saldus novads" @if (old('place') == "Saldus novads") {{ 'selected' }} @endif>Saldus novads</option>
-                    <option value="Saulkrastu novads" @if (old('place') == "Saulkrastu novads") {{ 'selected' }} @endif>Saulkrastu novads</option>
-                    <option value="Siguldas novads" @if (old('place') == "Siguldas novads") {{ 'selected' }} @endif>Siguldas novads</option>
-                    <option value="Smiltenes novads" @if (old('place') == "Smiltenes novads") {{ 'selected' }} @endif>Smiltenes novads</option>
-                    <option value="Talsu novads" @if (old('place') == "Talsu novads") {{ 'selected' }} @endif>Talsu novads</option>
-                    <option value="Tukuma novads" @if (old('place') == "Tukuma novads") {{ 'selected' }} @endif>Tukuma novads</option>
-                    <option value="Valkas novads" @if (old('place') == "Valkas novads") {{ 'selected' }} @endif>Valkas novads</option>
-                    <option value="Valmiera" @if (old('place') == "Valmiera") {{ 'selected' }} @endif>Valmiera</option>
-                    <option value="Valmieras novads" @if (old('place') == "Limbažu novads") {{ 'selected' }} @endif>Valmieras novads</option>
-                    <option value="Varakļānu novads" @if (old('place') == "Varakļānu novads") {{ 'selected' }} @endif>Varakļānu novads</option>
-                    <option value="Ventspils" @if (old('place') == "Ventspils") {{ 'selected' }} @endif>Ventspils</option>
-                    <option value="Ventspils novads" @if (old('place') == "Ventspils novads") {{ 'selected' }} @endif>Ventspils novads</option>
+                    <option value="Rīga" {{ old('place') == 'Rīga' ? "selected" : "" }}>Rīga</option>
+                    <option value="Aizkraukles novads" {{ old('place') == "Aizkraukles novads" ? "selected" : "" }}>Aizkraukles novads</option>
+                    <option value="Alūksnes novads" {{ old('place') == "Alūksnes novads" ? "selected" : "" }}>Alūksnes novads</option>
+                    <option value="Augšdaugavas novads" {{ old('place') == "Augšdaugavas novads" ? "selected" : "" }}>Augšdaugavas novads</option>
+                    <option value="Ādažu novads" {{ old('place') == "Ādažu novds" ? "selected" : "" }}>Ādažu novads</option>
+                    <option value="Balvu novads" {{ old('place') == "Balvu novads" ? "selected" : "" }}>Balvu novads</option>
+                    <option value="Bauskas novads" {{ old('place') == "Bauskas novads" ? "selected" : "" }}>Bauskas novads</option>
+                    <option value="Cēsu novads" {{ old('place') == "Cēsu novads" ? "selected" : "" }}>Cēsu novads</option>
+                    <option value="Daugavpils" {{ old('place') == "Daugavpils" ? "selected" : "" }}>Daugavpils</option>
+                    <option value="Dienvidkurzemes novads" {{ old('place') == "Dienvidkurzemes novads" ? "selected" : "" }}>Dienvidkurzemes novads</option>
+                    <option value="Dobeles novads" {{ old('place') == "Dobeles novads" ? "selected" : "" }}>Dobeles novads</option>
+                    <option value="Gulbenes novads" {{ old('place') == "Gulbenes novads" ? "selected" : "" }}>Gulbenes novads</option>
+                    <option value="Jelgava" {{ old('place') == "Jelgava" ? "selected" : "" }}>Jelgava</option>
+                    <option value="Jelgavas novads" {{ old('place') == "Jelgavas novads" ? "selected" : "" }}>Jelgavas novads</option>
+                    <option value="Jēkabpils" {{ old('place') == "Jēkabpils" ? "selected" : "" }}>Jēkabpils</option>
+                    <option value="Jēkabpils novads" {{ old('place') == "Jēkabpils novads" ? "selected" : "" }}>Jēkabpils novads</option>
+                    <option value="Jūrmala" {{ old('place') == "Jūrmala" ? "selected" : "" }}>Jūrmala</option>
+                    <option value="Krāslavas novads" {{ old('place') == "Krāslavas novads" ? "selected" : "" }}>Krāslavas novads</option>
+                    <option value="Kuldīgas novads" {{ old('place') == "Kuldīgas novads" ? "selected" : "" }}>Kuldīgas novads</option>
+                    <option value="Ķekavas novads" {{ old('place') == "Ķekavas novads" ? "selected" : "" }}>Ķekavas novads</option>
+                    <option value="Liepāja" {{ old('place') == "Liepāja" ? "selected" : "" }}>Liepāja</option>
+                    <option value="Limbažu novads" {{ old('place') == "Limbažu novads" ? "selected" : "" }}>Limbažu novads</option>
+                    <option value="Līvānu novads" {{ old('place') == "Līvānu novads" ? "selected" : "" }}>Līvānu novads</option>
+                    <option value="Ludzas novads" {{ old('place') == "Ludzas novads" ? "selected" : "" }}>Ludzas novads</option>
+                    <option value="Madonas novads" {{ old('place') == "Madonas novads" ? "selected" : "" }}>Madonas novads</option>
+                    <option value="Mārupes novads" {{ old('place') == "Mārupes novads" ? "selected" : "" }}>Mārupes novads</option>
+                    <option value="Ogre" {{ old('place') == "Ogre" ? "selected" : "" }}>Ogre</option>
+                    <option value="Ogres novads" {{ old('place') == "Ogres novads" ? "selected" : "" }}>Ogres novads</option>
+                    <option value="Olaines novads" {{ old('place') == "Olaines novads" ? "selected" : "" }}>Olaines novads</option>
+                    <option value="Preiļu novads" {{ old('place') == "Preiļu novads" ? "selected" : "" }}>Preiļu novads</option>
+                    <option value="Rēzekne" {{ old('place') == "Rēzekne" ? "selected" : "" }}>Rēzekne</option>
+                    <option value="Rēzeknes novads" {{ old('place') == "Rēzeknes novads" ? "selected" : "" }}>Rēzeknes novads</option>
+                    <option value="Ropažu novads" {{ old('place') == "Ropažu novads" ? "selected" : "" }}>Ropažu novads</option>
+                    <option value="Salaspils novads" {{ old('place') == "Salaspils novads" ? "selected" : "" }}>Salaspils novads</option>
+                    <option value="Saldus novads" {{ old('place') == "Saldus novads" ? "selected" : "" }}>Saldus novads</option>
+                    <option value="Saulkrastu novads" {{ old('place') == "Saulkrastu novads" ? "selected" : "" }}>Saulkrastu novads</option>
+                    <option value="Siguldas novads" {{ old('place') == "Siguldas novads" ? "selected" : "" }}>Siguldas novads</option>
+                    <option value="Smiltenes novads" {{ old('place') == "Smiltenes novads" ? "selected" : "" }}>Smiltenes novads</option>
+                    <option value="Talsu novads" {{ old('place') == "Talsu novads" ? "selected" : "" }}>Talsu novads</option>
+                    <option value="Tukuma novads" {{ old('place') == "Tukuma novads" ? "selected" : "" }}>Tukuma novads</option>
+                    <option value="Valkas novads" {{ old('place') == "Valkas novads" ? "selected" : "" }}>Valkas novads</option>
+                    <option value="Valmiera" {{ old('place') == "Valmiera" ? "selected" : "" }}>Valmiera</option>
+                    <option value="Valmieras novads" {{ old('place') == "Limbažu novads" ? "selected" : "" }}>Valmieras novads</option>
+                    <option value="Varakļānu novads" {{ old('place') == "Varakļānu novads" ? "selected" : "" }}>Varakļānu novads</option>
+                    <option value="Ventspils" {{ old('place') == "Ventspils" ? "selected" : "" }}>Ventspils</option>
+                    <option value="Ventspils novads" {{ old('place') == "Ventspils novads" ? "selected" : "" }}>Ventspils novads</option>
                 </select><br>
                 @if ($errors->has('place'))
                     <p class="text-danger">&#10071; {{ $errors->first('place') }}</p><br>
@@ -94,24 +94,24 @@
                 <label for="school">Skola</label><br>
                 <select name="school" id="school">
                     <option value="">Izvēlēties...</option> 
-                    <option value="Rīgas Valsts 1.ģimnāzija" @if (old('school') == "Rīgas Valsts 1.ģimnāzija") {{ 'selected' }} @endif>Rīgas Valsts 1. ģimnāzija</option>
+                    <option value="Rīgas Valsts 1.ģimnāzija" {{ old('school') == 'Rīgas Valsts 1.ģimnāzija' ? "selected" : "" }}>Rīgas Valsts 1. ģimnāzija</option>
                 </select><br>
                 <label for="class">Klase*</label><br>
                 <select name="class" id="class">
-                    <option value="0" @if (old('class') == "0") {{ 'selected' }} @endif>bērnudārzs</option>
-                    <option value="1" @if (old('class') == "1") {{ 'selected' }} @endif>1.klase</option>
-                    <option value="2" @if (old('class') == "2") {{ 'selected' }} @endif>2.klase</option>
-                    <option value="3" @if (old('class') == "3") {{ 'selected' }} @endif>3.klase</option>
-                    <option value="4" @if (old('class') == "4") {{ 'selected' }} @endif>4.klase</option>
-                    <option value="5" @if (old('class') == "5") {{ 'selected' }} @endif>5.klase</option>
-                    <option value="6" @if (old('class') == "6") {{ 'selected' }} @endif>6.klase</option>
-                    <option value="7" @if (old('class') == "7") {{ 'selected' }} @endif>7.klase</option>
-                    <option value="8" @if (old('class') == "8") {{ 'selected' }} @endif>8.klase</option>
-                    <option value="9" @if (old('class') == "9") {{ 'selected' }} @endif>9.klase</option>
-                    <option value="10" @if (old('class') == "10") {{ 'selected' }} @endif>10.klase / 1.kurss</option>
-                    <option value="11" @if (old('class') == "11") {{ 'selected' }} @endif>11.klase / 2.kurss</option>
-                    <option value="12" @if (old('class') == "12") {{ 'selected' }} @endif>12.klase / 3.-4.kurss</option>
-                    <option value="13" @if (old('class') == "13") {{ 'selected' }} @endif>pieaugušo klase</option>
+                    <option value="0" {{ old('class') == '0' ? "selected" : "" }}>bērnudārzs</option>
+                    <option value="1" {{ old('class') == '1' ? "selected" : "" }}>1.klase</option>
+                    <option value="2" {{ old('class') == '2' ? "selected" : "" }}>2.klase</option>
+                    <option value="3" {{ old('class') == '3' ? "selected" : "" }}>3.klase</option>
+                    <option value="4" {{ old('class') == '4' ? "selected" : "" }}>4.klase</option>
+                    <option value="5" {{ old('class') == '5' ? "selected" : "" }}>5.klase</option>
+                    <option value="6" {{ old('class') == '6' ? "selected" : "" }}>6.klase</option>
+                    <option value="7" {{ old('class') == '7' ? "selected" : "" }}>7.klase</option>
+                    <option value="8" {{ old('class') == '8' ? "selected" : "" }}>8.klase</option>
+                    <option value="9" {{ old('class') == '9' ? "selected" : "" }}>9.klase</option>
+                    <option value="10" {{ old('class') == '10' ? "selected" : "" }}>10.klase / 1.kurss</option>
+                    <option value="11" {{ old('class') == '11' ? "selected" : "" }}>11.klase / 2.kurss</option>
+                    <option value="12" {{ old('class') == '12' ? "selected" : "" }}>12.klase / 3.-4.kurss</option>
+                    <option value="13" {{ old('class') == '13' ? "selected" : "" }}>pieaugušo klase</option>
                 </select><br>
                 <p class="infoText"">Ņemiet vērā, ka 1.-4.kursi attiecas uz tehnikumu audzēkņiem. Augstskolu studentiem jāizvēlas pieaugušo klase.</p>
                 <label for="password">Parole*</label><br>

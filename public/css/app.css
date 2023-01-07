@@ -2694,5 +2694,9 @@ footer .rightFooterContent .rightFooterField a:hover{
     .racesBox .racesBoxField .raceBox .raceLinksBox a{
         width: 100%;
         text-align: center;
-    }   
+    }
+
+    .raceBox .raceLinksBox .deleteButton.race{
+        width: 100%;
+    }    
 }

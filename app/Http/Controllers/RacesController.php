@@ -319,6 +319,10 @@ class RacesController extends Controller
                             ->where('race_discipline_id', '=', $disciplineId->id)
                             ->exists();
 
+        if($request->points == null){
+            $request->points = 0;
+        }
+
         if(!$raceResultExists){
             $raceResult = new RacesResult;
 
@@ -428,10 +432,10 @@ class RacesController extends Controller
         ]);
     }
 
-    public function deleteRaceDisciplineResult(RacesResult $raceDiscId){
+    public function deleteRaceDisciplineResult(Race $raceId, User $userId, RacesResult $raceDiscId){
         
         $raceDiscId->delete();
 
-        return redirect()->back()->with('message', '✅ Šīs sacensību disciplīnas rezultāts ir izdzēsts.');
+        return redirect()->back()->refresh()->with('message', '✅ Šīs sacensību disciplīnas rezultāts ir izdzēsts.');
     }
 }

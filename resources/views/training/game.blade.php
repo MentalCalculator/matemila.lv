@@ -2098,6 +2098,7 @@
                             else if(completedRounds == maxRounds){
                                 // Spēles pabeigšana / Finishing the Game
                                 document.getElementById('finishButton').click();
+                                
                                 //alert('Laiks beidzies!');
                             }
                             console.log(completedRounds);
