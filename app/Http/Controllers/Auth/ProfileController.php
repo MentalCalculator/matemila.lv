@@ -13,15 +13,17 @@ use Illuminate\Support\Facades\Password;
 
 class ProfileController extends Controller
 {
-
+    /* Lietotāja profila lapa / The User Profile Page */
     public function viewProfile(){
         return view('profile.viewProfile');
     }
 
+    /* Lietotāja profila rediģēšanas lapa / The Profile Edit Page of the User */
     public function editProfile(){
         return view('profile.editProfile');
     }
 
+    /* Atjaunināt savu profilu / Update Own Profile */  
     public function updateProfile(Request $request){
         $id = Auth::user()->id;
 
@@ -47,10 +49,12 @@ class ProfileController extends Controller
         return redirect(route('viewProfile'))->with('message', '✅ Profils ir atjaunināts.');
     }
 
+    /* Paroles nomaiņas lapa / The Password Edit Page */
     public function editPassword(Request $request){
         return view('profile.editPassword', ['request' => $request]);
     }
 
+    /* Atjaunināt paroli / Update the Password */
     public function updatePassword(Request $request){
         $request->validate([
             'old_password' => ['required', 'min:8'],
@@ -72,6 +76,7 @@ class ProfileController extends Controller
         }
     }
 
+    /* Izdzēst savu profilu / Delete Own Profile */
     public function deleteProfile(Request $request){
 
         $passwordStatus = Hash::check($request->password, Auth::user()->password);
@@ -85,6 +90,7 @@ class ProfileController extends Controller
         return redirect()->back()->with('message', '🚫 Ievadītā parole nav pareiza.');
     }
 
+    /* Apskatīt visus lietotāju profilus / View All Users Profiles */
     public function viewAllProfiles(){
         $profiles = User::latest()->paginate(50);
 
@@ -99,6 +105,7 @@ class ProfileController extends Controller
                     ->where('place', 'like', '%' . request('place') . '%')
                     ->where('school', 'like', '%' . request('school') . '%')
                     ->whereBetween('class', [request('minClass'), request('maxClass')])
+                    ->latest()
                     ->paginate(50);
         $fields = array(
                     "username" => $request->username,
@@ -114,10 +121,12 @@ class ProfileController extends Controller
         return view('profile.searchProfiles', compact('profiles', 'fields'));
     }
 
+    /* Cita lietotāja profila rediģēšanas lapa / The Profile Edit Page for Another User */
     public function editAnotherProfile(User $id){
         return view('profile.editAnotherProfile', ['user' => $id]);
     }
 
+    /* Atjaunināt cita lietotāja profilu / Update the Another User Profile */
     public function updateAnotherProfile(Request $request, User $id){
 
         $request->validate([
@@ -143,12 +152,13 @@ class ProfileController extends Controller
         return redirect(route('viewAllProfiles'))->with('message', '✅ Profils ir atjaunināts.');
     }
 
+    /* Dzēst cita lietotāja profilu / Delete the Another User Profile */
     public function deleteAnotherProfile(Request $request, User $id){
 
         $passwordStatus = Hash::check($request->password, Auth::user()->password);
         if($passwordStatus){
             $id->delete();
-            return redirect()->back()->with('message', '🥺 Šis profils ir izdzēsts.');
+            return redirect(route('viewAllProfiles'))->with('message', '🥺 Šis profils ir izdzēsts.');
         }
 
         return redirect()->back()->with('message', '🚫 Ievadītā parole nav pareiza.');

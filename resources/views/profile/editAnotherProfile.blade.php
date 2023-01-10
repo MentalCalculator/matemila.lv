@@ -59,6 +59,9 @@
                 <select name="school" id="school">
                     <option value="">Izvēlēties...</option> 
                     <option value="Rīgas Valsts 1.ģimnāzija" {{ $user->school == 'Rīgas Valsts 1.ģimnāzija' ? 'selected' : '' }}>Rīgas Valsts 1. ģimnāzija</option>
+                    <option value="Rīgas Valsts 2.ģimnāzija" {{ $user->school == 'Rīgas Valsts 2.ģimnāzija' ? 'selected' : '' }}>Rīgas Valsts 2. ģimnāzija</option>
+                    <option value="Rīgas Valsts 3.ģimnāzija" {{ $user->school == 'Rīgas Valsts 3.ģimnāzija' ? 'selected' : '' }}>Rīgas Valsts 3. ģimnāzija</option>
+                    <option value="Āgenskalna Valsts ģimnāzija" {{ $user->school == 'Āgenskalna Valsts ģimnāzija' ? 'selected' : '' }}>Āgenskalna Valsts ģimnāzija</option>
                 </select><br>
                 <label for="class">Klase*</label><br>
                 <select name="class" id="class">
@@ -88,7 +91,29 @@
         </div>
         <button>Atjaunināt</button><br>
     </form>
+
+    <div class="deleteButtonPlacement">
+        <button class="deleteButton">Dzēst profilu</button>
+    </div>
+
 </div>
 
+<div class="dialog" data-aos="zoom-in">
+    <div class="dialogContent">
+        <span class="close">&times;</span>
+        <h2 class="dialogText">Vai Jūs vēlaties dzēst šo profilu "{{ $user->username }}"?</h2>
+        <p class="dialogSubtext">Ievadiet savu paroli, lai apstiprinātu savu izvēli.</p>
+        <form method="POST" action="{{ route('deleteAnotherProfile', $user->id) }}">
+            @csrf
+            @method('DELETE')
+            <center><label for="password">Parole</label><br>
+            <input id="password" type="password" name="password" autofocus /><br>
+            @if ($errors->has('password'))
+                    <p class="textDanger">&#10071; {{ $errors->first('password') }}</p><br>
+            @endif
+            <button>Apstiprināt</button></center>
+        </form>
+    </div>
+</div>
 
 @endsection

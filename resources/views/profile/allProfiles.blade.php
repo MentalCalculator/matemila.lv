@@ -39,6 +39,9 @@
                 <select name="school" id="school">
                     <option value="">Izvēlēties...</option> 
                     <option value="Rīgas Valsts 1.ģimnāzija">Rīgas Valsts 1. ģimnāzija</option>
+                    <option value="Rīgas Valsts 2.ģimnāzija">Rīgas Valsts 2. ģimnāzija</option>
+                    <option value="Rīgas Valsts 3.ģimnāzija">Rīgas Valsts 3. ģimnāzija</option>
+                    <option value="Āgenskalna Valsts ģimnāzija">Āgenskalna Valsts ģimnāzija</option>
                 </select><br>
                 <label for="minClass">Minimālā klase</label><br>
                 <select name="minClass" id="minClass" class="classes">
@@ -87,7 +90,7 @@
         <th>Kontaktinformācija</th>
         <th>Vieta un skola</th>
         <th>Klase</th>
-        <th>Darbības</th>
+        <th>Darbība</th>
     </tr>
     @foreach($profiles as $profile)
     <tr data-aos="zoom-in-up">
@@ -148,28 +151,10 @@
         <td>
             <div class="profileButtons">
                 <a href="{{ route('editAnotherProfile', $profile->id) }}" class="editProfileLink">Rediģēt</a>
-                <button class="deleteButton">Dzēst</button>
             </div>
         </td>
     </tr>
 
-    <div class="dialog" data-aos="zoom-in">
-    <div class="dialogContent">
-        <span class="close">&times;</span>
-        <h2 class="dialogText">Vai Jūs vēlaties dzēst šo profilu "{{ $profile->username }}"?</h2>
-        <p class="dialogSubtext">Ievadiet savu paroli, lai apstiprinātu savu izvēli.</p>
-        <form method="POST" action="{{ route('deleteAnotherProfile', $profile->id) }}">
-            @csrf
-            @method('DELETE')
-            <center><label for="password">Parole</label><br>
-            <input id="password" type="password" name="password" autofocus /><br>
-            @if ($errors->has('password'))
-                    <p class="textDanger">&#10071; {{ $errors->first('password') }}</p><br>
-            @endif
-            <button>Apstiprināt</button></center>
-        </form>
-    </div>
-    </div>
     @endforeach
 </table>
 

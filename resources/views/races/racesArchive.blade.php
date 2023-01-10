@@ -51,7 +51,14 @@
             </div>
             <p>{{ $race->description }}</p>
             <div class="raceLinksBox">
-                @if((Auth::user()->class >= $race->minClass) && (Auth::user()->class <= $race->maxClass) && (date("Y-m-d H:i:s") >= $race->startTime) && (date("Y-m-d H:i:s") <= $race->endTime))
+                @if((Auth::user()->class >= $race->minClass) && 
+                    (Auth::user()->class <= $race->maxClass) && 
+                    (date("Y-m-d H:i:s") >= $race->startTime) && 
+                    (date("Y-m-d H:i:s") <= $race->endTime) &&
+                    (Auth::user()->status == 'user' || (Auth::user()->status == 'moderator' && $race->creator_id != Auth::user()->id)))
+                    <a href="{{ route('doRace', $race->id) }}" class="openRaceButton" target="_blank">Atvērt</a>
+                @elseif((Auth::user()->status == 'moderator' && $race->creator_id == Auth::user()->id) ||
+                        (Auth::user()->status == 'admin'))
                     <a href="{{ route('doRace', $race->id) }}" class="openRaceButton" target="_blank">Atvērt</a>
                 @endif
                 <a href="#" class="openRaceResultsButton">Rezultāti</a>

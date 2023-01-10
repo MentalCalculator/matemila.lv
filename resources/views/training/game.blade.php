@@ -125,7 +125,7 @@
                     <!--<input type="hidden" name="errors" id="inputErrors" />-->
                     <button type="submit" class="button" id="finishButton" formaction="{{ route('saveTrainingResult', [$discipline->id, request('mode')]) }}">Pabeigt</button>
                 </form>
-                    <button class="backButton" onclick="returnFunction()">Atgriezties</button>
+                    <button class="backButton" id="backButton" onclick="returnFunction()">Atgriezties</button>
             </div>
         </div>
 
@@ -134,7 +134,7 @@
         </div>
         
         @if($discipline->short_name == 'com')
-        <div class="exampleBox">
+        <div class="exampleBox comparison" id="exampleBox">
             <div class="example" id="compNum1"></div>
             <div class="input">
                 <input class="inputField" id="inputField" style="width:40px" maxLength="1"/>
@@ -142,7 +142,7 @@
             <div class="example" id="compNum2"></div>
         </div>
         @else
-        <div class="exampleBox">
+        <div class="exampleBox" id="exampleBox">
             <div class="example" id="exampleField"></div>
             <div class="input">
                 <input class="inputField" id="inputField"/>
@@ -244,6 +244,7 @@
             let roundsText = document.getElementById("roundsText");
             let roundsCountText = document.getElementById("yourRoundsCount");
             let notificationBox = document.getElementById("notificationBox");
+            let exampleBox = document.getElementById("exampleBox");
 
             /* Mainīgās vērtības / Variable Values */
             let yourPoints = 0;
@@ -2022,9 +2023,12 @@
                                     yourLevel++;
                                     notificationBox.innerHTML = "Ļoti labi! Jūs tiekat nākamajā līmenī.";
                                     notificationBox.style.color = "blue";
+                                    exampleBox.style.display = "none";
                                     setTimeout(function() {
                                         notificationBox.innerHTML = "";
                                         notificationBox.style.color = "black";
+                                        exampleBox.style.display = "flex";
+                                        inputField.focus();
                                     }, 1000);
                                     // Nepieciešamo punktu skaita palielināšana nākamajā raundā / Increasing Neccesary Points in the Next Round
                                     if(yourLevel == 2){
@@ -2056,9 +2060,12 @@
                                 else{
                                     notificationBox.innerHTML = "Nepietiek punktu, lai pārietu nākamajā līmenī.";
                                     notificationBox.style.color = "red";
+                                    exampleBox.style.display = "none";
                                     setTimeout(function() {
                                         notificationBox.innerHTML = "";
                                         notificationBox.style.color = "black";
+                                        exampleBox.style.display = "flex";
+                                        inputField.focus();
                                     }, 1000);
                                     // Nepieciešamo punktu skaita palielināšana nākamajā raundā / Increasing Neccesary Points in the Next Round
                                     if(yourLevel == 1){

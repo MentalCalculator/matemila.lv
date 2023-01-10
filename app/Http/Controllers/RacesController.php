@@ -14,20 +14,24 @@ use App\Models\RacesResult;
 
 class RacesController extends Controller
 {
+    /* Sacensību galvenā lapa (Aktuālās sacensības) / The Races Main Page (Current Races) */
     public function showAllRaces(){
         $races = Race::latest()->paginate(20);
         return view('races.allRaces', compact('races'));
     }
 
+    /* Sacensību galvenā lapa (Visas sacensības) / The Races Main Page (All Races) */
     public function showRacesArchive(){
         $races = Race::latest()->paginate(20);
         return view('races.racesArchive', compact('races'));
     }
 
+    /* Sacensību izveidošanas lapa / The Race Creation Page */
     public function createRace(){
         return view('races.createRace');
     }
 
+    /* Saglabāt sacensības / Save a Race */
     public function saveRace(Request $request){
         $request->validate([
             'title' => ['required', 'string', 'max:64']
@@ -50,6 +54,7 @@ class RacesController extends Controller
         return redirect(route('allRaces'))->with('message', '✅ Sacensības ir izveidotas.');
     }
 
+    /* Sacensību rediģēšanas lapa / The Race Edit Page */
     public function editRace(Race $id){
         
         $user = Auth::user()->id;
@@ -63,6 +68,7 @@ class RacesController extends Controller
         }
     }
 
+    /* Izdzēst sacensības / Delete a Race */
     public function deleteRace(Race $id){
         
         $id->delete();
@@ -70,6 +76,7 @@ class RacesController extends Controller
         return redirect()->back()->with('message', '✅ Šīs sacensības ir izdzēstas.');
     }
 
+    /* Atjaunināt sacensības / Update a Race */
     public function updateRace(Race $id, Request $request){
         $request->validate([
             'title' => ['required', 'string', 'max:64']
@@ -88,6 +95,7 @@ class RacesController extends Controller
         return redirect(route('allRaces'))->with('message', '✅ Sacensības ir atjauninātas.');
     }
 
+    /* Sacensību disciplīnu rediģēšanas lapa / The Race Disciplines Edit Page */
     public function editRaceDisciplines(Race $id){
         $user = Auth::user()->id;
         $userStatus = Auth::user()->status;
@@ -106,6 +114,7 @@ class RacesController extends Controller
         }
     }
 
+    /* Pievienot sacensību disciplīnu / Add a Race Discipline */
     public function addRaceDiscipline(Race $id, Request $request){
         
         $raceDiscipline = new RacesDiscipline();
@@ -120,6 +129,7 @@ class RacesController extends Controller
         return redirect()->back()->with('message', '✅ Sacensību disciplīna ir pievienota.');
     }
 
+    /* Atjaunināt sacensību disciplīnu / Update a Races Discipline */
     public function updateRaceDiscipline(Race $id, RacesDiscipline $discId, Request $request){
 
         $discId->update([
@@ -134,6 +144,7 @@ class RacesController extends Controller
         return redirect()->back()->with('message', '✅ Šī sacensību disciplīna ir atjaunināta.');
     }
 
+    /* Izdzēst sacensību disciplīnu / Delete a Races Discipline */
     public function deleteRaceDiscipline(Race $id, RacesDiscipline $discId){
         
         $discId->delete();
@@ -141,36 +152,43 @@ class RacesController extends Controller
         return redirect()->back()->with('message', '✅ Šī sacensību disciplīna ir izdzēsta.');
     }
 
+    /* Sacensību lapa / The Race Page */
     public function doRace(Race $raceId){
 
         $user = Auth::user()->id;
         $userClass = Auth::user()->class;
         $userStatus = Auth::user()->status;
 
-        if(($userClass < $raceId->minClass) || ($userClass > $raceId->maxClass)){
+        /* Ja lietotājs neatbilst vajadzīgajai klašu grupai / If the User is not in the Required Class Group */
+        if((($userClass < $raceId->minClass) || ($userClass > $raceId->maxClass)) && 
+            (($userStatus == 'user') || ($userStatus == 'moderator' && $raceId->creator_id != $user))){
             echo "<script>";
             echo "alert('Pieeja šīm sacensībām ir slēgta, jo neesat vajadzīgajā klašu grupā.');";
             echo "window.close();";
             echo "</script>";
         }
-        else if((date("Y-m-d H:i:s") < $raceId->startTime) || (date("Y-m-d H:i:s") > $raceId->endTime)){
+        /* Ja sacensības pašreizējā brīdī nav pieejamas / If the Race is not available now */
+        else if(((date("Y-m-d H:i:s") < $raceId->startTime) || (date("Y-m-d H:i:s") > $raceId->endTime)) &&
+                (($userStatus == 'user') || ($userStatus == 'moderator' && $raceId->creator_id != $user))){
             echo "<script>";
             echo "alert('Pieeja šīm sacensībam tagad nav pieejama.');";
             echo "window.close();";
             echo "</script>";
         }
         else{
-
+            /* Pārbaudīt, vai lietotājam ir sacensību piekļuve / Check If User has the Race Access */
             $raceAccessExists = RaceAccess::where('race_id', '=', $raceId->id)
                             ->where('user_id', '=', $user)
                             ->exists();
 
+            /* Sacensību laiks minūtēs / The Races Time in Minutes */
             $raceMinutes = $raceId->minutes;
 
+            /* Sacensību piekļuves pilnvaras izveidošana lietotājam / Creating the Race Access for the user */
             if(!$raceAccessExists){
                 $raceAccess = new RaceAccess;
 
-                if($userStatus == 'user'){
+                if(($userStatus == 'user') || ($userStatus == 'moderator' && $raceId->creator_id != $user)){
                     $raceAccess->create([
                         'user_id' => $user,
                         'race_id' => $raceId->id,
@@ -188,14 +206,19 @@ class RacesController extends Controller
                 }
             }
 
+            
             if($raceAccessExists){
                 $raceAccess = RaceAccess::where('race_id', '=', $raceId->id)
                                     ->where('user_id', '=', $user)
                                     ->first();
                 
+                /* Sacensību piekļuves termiņa beigu laiks konkrētajam lietotājam / 
+                   The Race Access Expire Time for Current User */
                 $raceAccessExpireTime = $raceAccess->endTime;
             }
 
+            /* Rādīt paziņojumu pēc sacensību piekļuves derīguma beigu laika /
+               Show The Notification after The Race Access Expire Time  */ 
             if($raceAccessExists && (date("Y-m-d H:i:s") > $raceAccessExpireTime)){
                 echo "<script>";
                 echo "alert('Jūsu laiks šajās sacensībās ir beidzies. Paldies par Jūsu dalību!');";
@@ -203,15 +226,21 @@ class RacesController extends Controller
                 echo "</script>";
             }
             else{
+                /* Iegūst visas vajadzīgās sacensību disciplīnas priekš konkrētajām sacensībām /
+                   Get All Needed Race Disciplines for the Current Race */  
                 $raceDisciplines = RacesDiscipline::where('race_id', '=', $raceId->id)
                 ->join('disciplines', 'disciplines.id', '=', 'races_disciplines.discipline_id')
                 ->selectRaw('disciplines.*, races_disciplines.*')
                 ->get();
 
+                /* Lietotāja rezultāti visās sacensību disciplīnās / 
+                   The User Results of All Race Disciplines of the Current Race */
                 $raceResults = RacesResult::where('user_id', '=', $user)
                             ->where('race_id', '=', $raceId->id)
                             ->get();
 
+                /* Lietotāja kopējais rezultāts sacensībās / 
+                   The User Total Result of the Race */
                 $totalRaceResult = RacesResult::selectRaw('SUM(points) as points')
                                     ->where('race_id', '=', $raceId->id)
                                     ->where('user_id', '=', $user)
@@ -230,36 +259,44 @@ class RacesController extends Controller
         }
     }
 
+    /* Sacensību disciplīnas (ātrrēķināšanas spēles) lapa / The Race Discipline (Mental Math Game) Page */
     public function doRaceDiscipline(Race $raceId, RacesDiscipline $disciplineId){
         
         $user = Auth::user()->id;
         $userClass = Auth::user()->class;
         $userStatus = Auth::user()->status;
 
-        if(($userClass < $raceId->minClass) || ($userClass > $raceId->maxClass)){
+        /* Ja lietotājs neatbilst vajadzīgajai klašu grupai / If the User is not in the Required Class Group */
+        if((($userClass < $raceId->minClass) || ($userClass > $raceId->maxClass)) && 
+            (($userStatus == 'user') || ($userStatus == 'moderator' && $raceId->creator_id != $user))){
             echo "<script>";
             echo "alert('Pieeja šīm sacensībām ir slēgta, jo neesat vajadzīgajā klašu grupā.');";
             echo "window.close();";
             echo "</script>";
         }
-        else if((date("Y-m-d H:i:s") < $raceId->startTime) || (date("Y-m-d H:i:s") > $raceId->endTime)){
+        /* Ja sacensības pašreizējā brīdī nav pieejamas / If the Race is not available now */
+        else if(((date("Y-m-d H:i:s") < $raceId->startTime) || (date("Y-m-d H:i:s") > $raceId->endTime)) &&
+                (($userStatus == 'user') || ($userStatus == 'moderator' && $raceId->creator_id != $user))){
             echo "<script>";
             echo "alert('Pieeja šīm sacensībam tagad nav pieejama.');";
             echo "window.close();";
             echo "</script>";
         }
         else{
-
+            /* Pārbaudīt, vai lietotājam ir sacensību piekļuve / Check If User has the Race Access */
             $raceAccessExists = RaceAccess::where('race_id', '=', $raceId->id)
                             ->where('user_id', '=', $user)
                             ->exists();
 
+            /* Sacensību laiks minūtēs / The Races Time in Minutes */
             $raceMinutes = $raceId->minutes;
 
+            /* Sacensību piekļuves pilnvaras izveidošana lietotājam, ja tā nav izveidota / 
+               Creating the Race Access for the User, if it is not created */
             if(!$raceAccessExists){
                 $raceAccess = new RaceAccess;
 
-                if($userStatus == 'user'){
+                if(($userStatus == 'user') || ($userStatus == 'moderator' && $raceId->creator_id != $user)){
                     $raceAccess->create([
                         'user_id' => $user,
                         'race_id' => $raceId->id,
@@ -282,9 +319,13 @@ class RacesController extends Controller
                                     ->where('user_id', '=', $user)
                                     ->first();
                 
+                /* Sacensību piekļuves termiņa beigu laiks konkrētajam lietotājam / 
+                   The Race Access Expire Time for Current User */
                 $raceAccessExpireTime = $raceAccess->endTime;
             }
 
+            /* Rādīt paziņojumu pēc sacensību piekļuves derīguma beigu laika /
+               Show The Notification after The Race Access Expire Time  */ 
             if($raceAccessExists && (date("Y-m-d H:i:s") > $raceAccessExpireTime)){
                 echo "<script>";
                 echo "alert('Jūsu laiks šajās sacensībās ir beidzies. Paldies par Jūsu dalību!');";
@@ -310,6 +351,7 @@ class RacesController extends Controller
         }
     }
 
+    /* Saglabāt rezultātu sacensību disciplīnā / Save a Result in the Race Discipline */
     public function saveRaceDisciplineResult(Race $raceId, RacesDiscipline $disciplineId, Request $request){
         
         $user = Auth::user()->id;
@@ -319,10 +361,12 @@ class RacesController extends Controller
                             ->where('race_discipline_id', '=', $disciplineId->id)
                             ->exists();
 
+        /* Ja punktu skaits nav definēts / If Points are not defined */  
         if($request->points == null){
             $request->points = 0;
         }
 
+        /* Ja rezultāts tiek saglabāts pirmo reizi / If a Result is saved the First Time */ 
         if(!$raceResultExists){
             $raceResult = new RacesResult;
 
@@ -344,8 +388,11 @@ class RacesController extends Controller
                         ->where('race_discipline_id', '=', $disciplineId->id)
                         ->first();
 
+            /* Labākais rezultāts sacensību disciplīnā / The Best Result in the Race Discipline */
             $bestResult = $raceResult->points;
 
+            /* Ja pēdējais rezultāts ir lielāks par labāko rezultātu, atjaunināt sacensību disciplīnas rezultātu /
+               If the last Result is greater than the Best Result, update the Race Discipline Result */
             if($request->points > $bestResult){
                 $raceResult->update([
                     'points' => $request->points
@@ -356,6 +403,8 @@ class RacesController extends Controller
                     'message' => '✅ Lieliski! Jūsu rezultāts ir uzlabots!'
                 ]);
             }
+            /* Ja pēdējais rezultāts ir mazāks par labāko rezultātu, rādīt vajadzīgo paziņojumu /
+               If the last Result is less than the Best Result, show the Desired Notification */
             else{
                 return redirect()->route('showRaceDisciplineResult', [$raceId, $disciplineId])->with([
                     'points' => $request->points, 
@@ -366,6 +415,7 @@ class RacesController extends Controller
 
     }
 
+    /* Sacensību disciplīnas rezultāta lapa / The Race Discipline Result Page */
     public function showRaceDisciplineResult(Race $raceId, RacesDiscipline $disciplineId){
 
         $user = Auth::user()->id;
@@ -383,6 +433,7 @@ class RacesController extends Controller
         return view('races.gameResult', ['race' => $raceId, 'raceDiscipline' => $raceDiscipline, 'raceResult' => $raceResult]);
     }
 
+    /* Sacensību rezultātu lapa / The Race Results Page */
     public function showRaceTotalResults(Race $raceId, Request $request){
         
 
@@ -408,12 +459,21 @@ class RacesController extends Controller
                                 ->paginate(50);
         }
 
+        $fields = array(
+            "place" => $request->place,
+            "school" => $request->school,
+            "minClass" => $request->minClass,
+            "maxClass" => $request->maxClass    
+        );
+
         return view('races.totalResults', [
             'raceTotalResults' => $raceTotalResults,
-            'race' => $raceId
+            'race' => $raceId,
+            'fields' => $fields
         ]);
     }
 
+    /* Rādīt dalībnieka sacensību disciplīnu rezultātus / Show Race Disciplines Results of a Participant */
     public function showUserRaceResults(Race $raceId, $userId){
 
         $raceDisciplineResults = RacesResult::selectRaw('races_results.id, disciplines.name as disciplineName, disciplines.numbers_type as disciplineNumbersType, races_disciplines.mode, races_results.user_id, races_results.points')
@@ -432,6 +492,7 @@ class RacesController extends Controller
         ]);
     }
 
+    /* Izdzēst sacensību disciplīnas rezultātu / Delete a Race Discipline Result */
     public function deleteRaceDisciplineResult(Race $raceId, User $userId, RacesResult $raceDiscId){
         
         $raceDiscId->delete();

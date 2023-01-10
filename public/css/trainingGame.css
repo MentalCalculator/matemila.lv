@@ -287,7 +287,7 @@ body{
     width: 85%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -390,4 +390,203 @@ body{
 
 .gameSection .keyboardBox .keyboardButton:nth-of-type(10){
     border-bottom-left-radius: 30px;
+}
+
+@media(max-width: 1599px) {
+
+.gameSection .keyboardBox .keyboardButton{
+    font-size: 48px;
+    padding: 25px;
+}
+}
+
+@media (max-width: 1190px){
+
+.startSection, .gameSection{
+    width: 90%;
+}
+
+.gameSection .infoBox{
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gameSection .infoBox div{
+    font-size: 26px;
+    margin: 10px;
+}
+
+.gameSection .infoBox div.buttonText{
+    flex: 100%;
+    align-items: baseline;
+}
+
+#time, #yourPoints, #yourLevel, #yourRoundsCount{
+    font-size: 26px;
+}
+
+#finishButton, #backButton{
+    font-size: 20px;
+}
+
+.gameSection .notificationBox{
+    font-size: 42px;
+}
+
+.gameSection .exampleBox .example{
+    font-size: 48px;
+}
+
+.gameSection .exampleBox .input .inputField{
+    font-size: 36px;
+}
+
+.gameSection .keyboardBox{
+    width: 60%;
+}
+
+.gameSection .keyboardBox .keyboardButton{
+    font-size: 45px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+
+}
+
+
+@media (max-width: 990px){
+
+.startSection, .gameSection{
+    width: 90%;
+}
+
+.gameSection .infoBox{
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.gameSection .infoBox div{
+    margin: 10px;
+    flex: 45%;
+}
+
+.gameSection .notificationBox{
+    font-size: 36px;
+}
+
+.gameSection .exampleBox{
+    flex-direction: column;
+    width: 95%;
+}
+
+.gameSection .exampleBox.comparison{
+    flex-direction: column;
+    width: 95%;
+}
+
+.gameSection .exampleBox .example{
+    font-size: 48px;
+    width: 90%;
+    text-align: center;
+}
+
+.gameSection .exampleBox .input .inputField{
+    font-size: 32px;
+    width: 360px;
+    flex: 100%;
+    text-align: center;
+}
+
+
+.gameSection .keyboardBox{
+    width: 90%;
+}
+}
+
+@media (max-width: 540px){
+
+.startSection .title{
+    font-size: 30px;
+}
+
+.startSection h3{
+    font-size: 20px;
+}
+
+.startSection .raceDisciplineBox{
+    padding-top: 20px;
+}
+
+.startSection .raceDisciplineBox .leftSide a{
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.startSection .raceDisciplineBox .leftSide .infoText{
+    font-size: 16px;
+}
+
+.startSection .raceDisciplineBox .rightSide .pointsText{
+    font-size: 24px;
+}
+
+.gameSection{
+    margin-top: 0px;
+    width: 95%;
+    height: 92.5vh;
+    padding: 5px;
+}
+
+.gameSection .infoBox{
+    margin-top: 0px;
+}
+
+.gameSection .infoBox div{
+    font-size: 16px;
+    margin: 15px 5px 15px 5px;
+}
+
+#time, #yourPoints, #yourLevel, #yourRoundsCount{
+    font-size: 16px;
+}
+
+#finishButton, #backButton{
+    font-size: 16px;
+}
+
+.gameSection .notificationBox{
+    font-size: 24px;
+}
+
+.gameSection .exampleBox .example{
+    font-size: 30px;
+    width: 90%;
+    text-align: center;
+}
+
+.gameSection .exampleBox .input .inputField{
+    font-size: 24px;
+    width: 100%;
+    text-align: center;
+}
+
+.gameSection .keyboardBox .keyboardButton{
+    font-size: 32px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+}
+
+@media(max-width: 400px){
+
+.gameSection .keyboardBox .keyboardButton{
+    font-size: 24px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 }

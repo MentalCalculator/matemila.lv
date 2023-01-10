@@ -20,9 +20,11 @@
     </script>
 </head>
 <body id="body">
+    @if((Auth::user()->status == 'user') || (Auth::user()->status == 'moderator' && $race->creator_id != Auth::user()->id))
     <div class="timer" id="timer">
-        🕒
+        <span>🕒</span>
     </div>
+    @endif
     <!-- Starta sekcija / Start Section -->
     <section class="startSection" id="startSection">
         <h2 class="title">{{ $raceDiscipline->name }}</h2>
@@ -242,6 +244,7 @@
             let roundsText = document.getElementById("roundsText");
             let roundsCountText = document.getElementById("yourRoundsCount");
             let notificationBox = document.getElementById("notificationBox");
+            let exampleBox = document.getElementById("exampleBox");
 
             /* Mainīgās vērtības / Variable Values */
             let yourPoints = 0;
@@ -2016,9 +2019,12 @@
                                     yourLevel++;
                                     notificationBox.innerHTML = "Ļoti labi! Jūs tiekat nākamajā līmenī.";
                                     notificationBox.style.color = "blue";
+                                    //exampleBox.style.display = "none";
                                     setTimeout(function() {
                                         notificationBox.innerHTML = "";
                                         notificationBox.style.color = "black";
+                                        //exampleBox.style.display = "flex";
+                                        //inputField.focus();
                                     }, 1000);
                                     // Nepieciešamo punktu skaita palielināšana nākamajā raundā / Increasing Neccesary Points in the Next Round
                                     if(yourLevel == 2){
@@ -2100,7 +2106,7 @@
                 }, 1000);
 
                 
-                document.getElementById("inputLevel").value = level;
+                //document.getElementById("inputLevel").value = level;
                 //document.getElementById("inputErrors").value = JSON.stringify(arrayOfErrors);
                 
         }

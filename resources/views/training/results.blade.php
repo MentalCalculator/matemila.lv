@@ -73,7 +73,10 @@
                 <label for="school">Skola</label>
                 <select name="school" id="school">
                     <option value="">Visas skolas</option> 
-                    <option value="Rīgas Valsts 1.ģimnāzija">Rīgas Valsts 1. ģimnāzija</option>
+                    <option value="Rīgas Valsts 1.ģimnāzija">Rīgas Valsts 1.ģimnāzija</option>
+                    <option value="Rīgas Valsts 2.ģimnāzija">Rīgas Valsts 2.ģimnāzija</option>
+                    <option value="Rīgas Valsts 3.ģimnāzija">Rīgas Valsts 3.ģimnāzija</option>
+                    <option value="Āgenskalna Valsts ģimnāzija">Āgenskalna Valsts ģimnāzija</option>
                 </select><br>
                 <label for="minClass maxClass">Klases:</label>
                 <select name="minClass" id="minClass" class="classes">

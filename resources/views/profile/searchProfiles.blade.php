@@ -39,6 +39,9 @@
                 <select name="school" id="school">
                     <option value="">Izvēlēties...</option> 
                     <option value="Rīgas Valsts 1.ģimnāzija" {{ ($fields['school'] == "Rīgas Valsts 1.ģimnāzija") ? 'selected' : '' }}>Rīgas Valsts 1. ģimnāzija</option>
+                    <option value="Rīgas Valsts 2.ģimnāzija" {{ ($fields['school'] == "Rīgas Valsts 2.ģimnāzija") ? 'selected' : '' }}>Rīgas Valsts 2. ģimnāzija</option>
+                    <option value="Rīgas Valsts 3.ģimnāzija" {{ ($fields['school'] == "Rīgas Valsts 3.ģimnāzija") ? 'selected' : '' }}>Rīgas Valsts 3. ģimnāzija</option>
+                    <option value="Āgenskalna Valsts ģimnāzija" {{ ($fields['school'] == "Āgenskalna Valsts ģimnāzija") ? 'selected' : '' }}>Āgenskalna Valsts ģimnāzija</option>
                 </select><br>
                 <label for="minClass">Minimālā klase</label><br>
                 <select name="minClass" id="minClass" class="classes">
@@ -90,7 +93,7 @@
         <th>Kontaktinformācija</th>
         <th>Vieta un skola</th>
         <th>Klase</th>
-        <th>Darbības</th>
+        <th>Darbība</th>
     </tr>
     @foreach($profiles as $profile)
     <tr data-aos="zoom-in-up">
@@ -151,44 +154,26 @@
         <td>
             <div class="profileButtons">
                 <a href="{{ route('editAnotherProfile', $profile->id) }}" class="editProfileLink">Rediģēt</a>
-                <button class="deleteButton">Dzēst</button>
             </div>
         </td>
     </tr>
 
-    <div class="dialog" data-aos="zoom-in">
-    <div class="dialogContent">
-        <span class="close">&times;</span>
-        <h2 class="dialogText">Vai Jūs vēlaties dzēst šo profilu "{{ $profile->username }}"?</h2>
-        <p class="dialogSubtext">Ievadiet savu paroli, lai apstiprinātu savu izvēli.</p>
-        <form method="POST" action="{{ route('deleteAnotherProfile', $profile->id) }}">
-            @csrf
-            @method('DELETE')
-            <center><label for="password">Parole</label><br>
-            <input id="password" type="password" name="password" autofocus /><br>
-            @if ($errors->has('password'))
-                    <p class="textDanger">&#10071; {{ $errors->first('password') }}</p><br>
-            @endif
-            <button>Apstiprināt</button></center>
-        </form>
-    </div>
-    </div>
     @endforeach
 </table>
 
 <div class="pageLinks">
     @if(!$profiles->onFirstPage())
-        <a href="{{$profiles->previousPageUrl()}}" class="previousPageLink"><i class='bx bxs-chevron-left'></i> Atpakaļ</a>
+        <a href="{{$profiles->appends($fields)->previousPageUrl()}}" class="previousPageLink"><i class='bx bxs-chevron-left'></i> Atpakaļ</a>
     @endif
     @for($i=1; $i<=$profiles->lastPage(); $i++)
         @if($i == $profiles->currentPage())
-        <a href="{{$profiles->url($i)}}" class="currentPageNumberLink">{{$i}}</a>
+        <a href="{{$profiles->appends($fields)->url($i)}}" class="currentPageNumberLink">{{$i}}</a>
         @else
-        <a href="{{$profiles->url($i)}}" class="pageNumberLink">{{$i}}</a>
+        <a href="{{$profiles->appends($fields)->url($i)}}" class="pageNumberLink">{{$i}}</a>
         @endif
     @endfor
     @if($profiles->currentPage() != $profiles->lastPage())
-    <a href="{{$profiles->nextPageUrl()}}" class="nextPageLink"><i class='bx bxs-chevron-right'></i> Tālāk</a>
+    <a href="{{$profiles->appends($fields)->nextPageUrl()}}" class="nextPageLink"><i class='bx bxs-chevron-right'></i> Tālāk</a>
     @endif
 </div>
 

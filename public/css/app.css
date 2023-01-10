@@ -709,6 +709,22 @@ footer .rightFooterContent .rightFooterField a:hover{
     width: 240px;
 }
 
+.formBox .deleteButtonPlacement{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formBox .deleteButtonPlacement .deleteButton{
+    text-align: center;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
 /* Ātrrēķināšanas jaunumu lapa / Mental Math News Page */
 
 .mentalMathNewsSection{
@@ -2539,11 +2555,15 @@ footer .rightFooterContent .rightFooterField a:hover{
         font-size: 18px;
     }
 
-    .formBox form .formHalfs .formHalf input, select, textarea{
+    .formBox form .formHalfs .formHalf input, select{
         width: 270px;
     }
 
     .formBox form .formHalfs p{
+        width: 270px;
+    }
+
+    .formBox form .formHalfs .formHalf textarea{
         width: 270px;
     }
 

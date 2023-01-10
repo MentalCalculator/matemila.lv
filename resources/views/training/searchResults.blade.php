@@ -73,11 +73,14 @@
                 <label for="school">Skola</label>
                 <select name="school" id="school">
                     <option value="">Visas skolas</option> 
-                    <option value="Rīgas Valsts 1.ģimnāzija" {{ ($fields['school'] == "Rīgas Valsts 1.ģimnāzija") ? 'selected' : '' }}>Rīgas Valsts 1. ģimnāzija</option>
+                    <option value="Rīgas Valsts 1.ģimnāzija" {{ ($fields['school'] == "Rīgas Valsts 1.ģimnāzija") ? 'selected' : '' }}>Rīgas Valsts 1.ģimnāzija</option>
+                    <option value="Rīgas Valsts 2.ģimnāzija" {{ ($fields['school'] == "Rīgas Valsts 2.ģimnāzija") ? 'selected' : '' }}>Rīgas Valsts 2.ģimnāzija</option>
+                    <option value="Rīgas Valsts 3.ģimnāzija" {{ ($fields['school'] == "Rīgas Valsts 3.ģimnāzija") ? 'selected' : '' }}>Rīgas Valsts 3.ģimnāzija</option>
+                    <option value="Āgenskalna Valsts ģimnāzija" {{ ($fields['school'] == "Āgenskalna Valsts ģimnāzija") ? 'selected' : '' }}>Āgenskalna Valsts ģimnāzija</option>
                 </select><br>
                 <label for="minClass maxClass">Klases:</label>
                 <select name="minClass" id="minClass" class="classes">
-                <option value="0" {{ ($fields['minClass'] == "0") ? 'selected' : '' }}>bērnudārzs</option>
+                    <option value="0" {{ ($fields['minClass'] == "0") ? 'selected' : '' }}>bērnudārzs</option>
                     <option value="1" {{ ($fields['minClass'] == "1") ? 'selected' : '' }}>1.klase</option>
                     <option value="2" {{ ($fields['minClass'] == "2") ? 'selected' : '' }}>2.klase</option>
                     <option value="3" {{ ($fields['minClass'] == "3") ? 'selected' : '' }}>3.klase</option>
@@ -196,6 +199,22 @@
         </div>-->
         @endforeach
     </table>
+
+    <div class="pageLinks">
+        @if(!$trainingResults->onFirstPage())
+            <a href="{{$trainingResults->appends($fields)->previousPageUrl()}}" class="previousPageLink"><i class='bx bxs-chevron-left'></i> Atpakaļ</a>
+        @endif
+        @for($i=1; $i<=$trainingResults->lastPage(); $i++)
+            @if($i == $trainingResults->currentPage())
+            <a href="{{$trainingResults->appends($fields)->url($i)}}" class="currentPageNumberLink">{{$i}}</a>
+            @else
+            <a href="{{$trainingResults->appends($fields)->url($i)}}" class="pageNumberLink">{{$i}}</a>
+            @endif
+        @endfor
+        @if($trainingResults->currentPage() != $trainingResults->lastPage())
+        <a href="{{$trainingResults->appends($fields)->nextPageUrl()}}" class="nextPageLink"><i class='bx bxs-chevron-right'></i> Tālāk</a>
+        @endif
+    </div>
 </div>
 @endif
 

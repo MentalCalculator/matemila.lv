@@ -11,15 +11,18 @@ use App\Models\TrainingResult;
 
 class TrainingController extends Controller
 {
+    /* Instrukcijas lapa / The Instruction Page */ 
     public function instruction(){
         return view('training.instruction');
     }
 
+    /* Treniņu lauku lapa / The Training Fields Page */
     public function showDiscilpines(){
         $disciplines = Discipline::all();
         return view('training.discilpines', compact('disciplines'));
     }
 
+    /* Veikt ātrrēķināšanas spēli (treniņu disciplīnu) / Do Mental Meth Game (training discipline) */
     public function doDiscipline(Discipline $discipline, $mode){
         if($mode != 'normal' && $mode != 'sprint' && $mode != 'variants'){
             return redirect()->back()->with('message', 'Ir jāizvēlais pareizais režīms.');
@@ -29,6 +32,8 @@ class TrainingController extends Controller
         }
     }
 
+    /* Saglabāt ātrrēķināšanas spēles (treniņa) rezultātu izvēlētajā disciplīnā /
+       Save Mental Math Game (Training) Result in the Selected Discipline */
     public function saveTrainingResult(Discipline $discipline, $mode, Request $request){
         $auth = Auth::check();
         if($auth == true){
@@ -66,14 +71,18 @@ class TrainingController extends Controller
         }
     }
 
+    /* Apskatīt ātrrēķināšanas spēles (treniņa) rezultātu izvēlētajā disciplīnā /
+       View Mental Math Game (Training) Result in the Selected Discipline */
     public function viewTrainingResult(Request $request){
         return view('training.result');
     }
 
+    /* Treniņu rezultātu lapa / Training Results Page */
     public function showResults(Request $request){
         return view('training.results');
     }
 
+    /* Rādīt rezultātus treniņu rezultātu lapā / Show results in the Training Results Page */
     public function showSearchResults(Request $request){
 
         $trainingResults = DB::table('training_results')
@@ -88,7 +97,8 @@ class TrainingController extends Controller
                             ->where('users.school', 'like', '%' . request('school') . '%')
                             ->whereBetween('class', [request('minClass'), request('maxClass')])
                             ->orderBy('points', 'desc')
-                            ->get();
+                            ->latest()
+                            ->paginate(50);
 
         $fields = array(
             "discipline" => $request->discipline,
@@ -104,9 +114,9 @@ class TrainingController extends Controller
         return view('training.searchResults', compact('trainingResults', 'fields'));
     }
 
-    public function deleteTrainingResult (TrainingResult $id){
+    /*public function deleteTrainingResult (TrainingResult $id){
         $id->delete();
         return redirect()->back()->with('message', '✅ Šis rezultāts ir izdzēsts.');
-    }
+    }*/
     
 }

@@ -95,6 +95,9 @@
                 <select name="school" id="school">
                     <option value="">Izvēlēties...</option> 
                     <option value="Rīgas Valsts 1.ģimnāzija" {{ old('school') == 'Rīgas Valsts 1.ģimnāzija' ? "selected" : "" }}>Rīgas Valsts 1. ģimnāzija</option>
+                    <option value="Rīgas Valsts 2.ģimnāzija" {{ old('school') == 'Rīgas Valsts 2.ģimnāzija' ? "selected" : "" }}>Rīgas Valsts 2. ģimnāzija</option>
+                    <option value="Rīgas Valsts 3.ģimnāzija" {{ old('school') == 'Rīgas Valsts 3.ģimnāzija' ? "selected" : "" }}>Rīgas Valsts 3. ģimnāzija</option>
+                    <option value="Āgenskalna Valsts ģimnāzija" {{ old('school') == 'Āgenskalna Valsts ģimnāzija' ? "selected" : "" }}>Āgenskalna Valsts ģimnāzija</option>
                 </select><br>
                 <label for="class">Klase*</label><br>
                 <select name="class" id="class">

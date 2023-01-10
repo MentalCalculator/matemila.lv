@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body id="body">
-    @if(Auth::user()->status == 'user')
+    @if((Auth::user()->status == 'user') || (Auth::user()->status == 'moderator' && $race->creator_id != Auth::user()->id))
     <div class="timer" id="timer">
         <span>🕒</span>
     </div>
