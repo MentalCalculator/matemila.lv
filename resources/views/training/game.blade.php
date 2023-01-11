@@ -2023,12 +2023,12 @@
                                     yourLevel++;
                                     notificationBox.innerHTML = "Ļoti labi! Jūs tiekat nākamajā līmenī.";
                                     notificationBox.style.color = "blue";
-                                    exampleBox.style.display = "none";
+                                    //exampleBox.style.display = "none";
                                     setTimeout(function() {
                                         notificationBox.innerHTML = "";
                                         notificationBox.style.color = "black";
-                                        exampleBox.style.display = "flex";
-                                        inputField.focus();
+                                        //exampleBox.style.display = "flex";
+                                        //inputField.focus();
                                     }, 1000);
                                     // Nepieciešamo punktu skaita palielināšana nākamajā raundā / Increasing Neccesary Points in the Next Round
                                     if(yourLevel == 2){
@@ -2060,12 +2060,12 @@
                                 else{
                                     notificationBox.innerHTML = "Nepietiek punktu, lai pārietu nākamajā līmenī.";
                                     notificationBox.style.color = "red";
-                                    exampleBox.style.display = "none";
+                                    //exampleBox.style.display = "none";
                                     setTimeout(function() {
                                         notificationBox.innerHTML = "";
                                         notificationBox.style.color = "black";
-                                        exampleBox.style.display = "flex";
-                                        inputField.focus();
+                                        //exampleBox.style.display = "flex";
+                                        //inputField.focus();
                                     }, 1000);
                                     // Nepieciešamo punktu skaita palielināšana nākamajā raundā / Increasing Neccesary Points in the Next Round
                                     if(yourLevel == 1){
