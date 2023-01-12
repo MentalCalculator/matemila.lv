@@ -497,6 +497,6 @@ class RacesController extends Controller
         
         $raceDiscId->delete();
 
-        return redirect()->back()->refresh()->with('message', '✅ Šīs sacensību disciplīnas rezultāts ir izdzēsts.');
+        return redirect()->back()->with('message', '✅ Šīs sacensību disciplīnas rezultāts ir izdzēsts.');
     }
 }
